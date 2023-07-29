@@ -1,6 +1,6 @@
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
-import project from './sanity/schemas/project-schema';
+import schemas from './sanity/schemas';
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || '';
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
@@ -13,8 +13,8 @@ const config = defineConfig({
   dataset,
   plugins: [deskTool()],
   projectId,
+  schema: { types: schemas },
   title,
-  schema: { types: [project] },
 });
 
 export default config;
