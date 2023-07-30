@@ -10,7 +10,9 @@ export const metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="fr">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className + ' max-w-7xl mx-auto py-8'}>
+        {children}
+      </body>
     </html>
   );
 };

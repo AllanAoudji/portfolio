@@ -16,7 +16,7 @@ const Home = async () => {
       <h1 className="text-3xl uppercase font-extrabold">
         I&apos;m a graphic and web designer
       </h1>
-      <section className="flex gap-3">
+      <section className="flex gap-3 flex-wrap">
         {projects.map((project) => (
           <div
             className="rounded-lg overflow-hidden bg-white"
@@ -25,7 +25,8 @@ const Home = async () => {
             {project.image && (
               <Image
                 alt={project.name}
-                height={100}
+                className="object-contain object-center"
+                height={300}
                 src={project.image}
                 width={200}
               />
