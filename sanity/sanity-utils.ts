@@ -3,7 +3,7 @@ import config from './config/client-config';
 
 export async function getProjects(): Promise<Project[]> {
   return createClient(config).fetch(
-    groq`*[_type == "project"]{
+    groq`*[_type == "project"] | order(_createdAt desc){
         _id,
         _createdAt,
         name,
