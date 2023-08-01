@@ -1,16 +1,18 @@
 import Link from 'next/link';
+import { ArrowUturnLeftIcon } from '@heroicons/react/20/solid';
 
 export { metadata } from 'next-sanity/studio/metadata';
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <body>
-      <header className="px-10 py-4 flex flex-row-reverse">
+      <header className="flex flex-row-reverse px-10 py-4">
         <Link
           href="/"
-          className="px-5 py-1 border-2 rounded-xl bg-white text-black ease-in-out font-bold"
+          className="bg-white border-2 flex items-center pl-4 pr-5 py-1 rounded-xl text-black"
         >
-          Go back to the front
+          <ArrowUturnLeftIcon className="h-4 mr-2 w-4" />
+          Go to website
         </Link>
       </header>
       <main>{children}</main>
