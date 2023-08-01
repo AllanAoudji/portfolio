@@ -1,6 +1,8 @@
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
 import schemas from './sanity/schemas';
+import SanityNavBar from '@src/components/SanityNavBar';
+import { myTheme } from './theme';
 
 const apiVersion = process.env.NEXT_PUBLIC_API_VERSION || '2023-05-03';
 const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production';
@@ -14,6 +16,12 @@ const config = defineConfig({
   plugins: [deskTool()],
   projectId,
   schema: { types: schemas },
+  studio: {
+    components: {
+      navbar: SanityNavBar,
+    },
+  },
+  theme: myTheme,
   title,
 });
 
