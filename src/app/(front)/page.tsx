@@ -1,46 +1,23 @@
-import { getProjects } from '@/sanity/sanity-utils';
-import Image from 'next/image';
+import { draftMode } from 'next/headers';
+import { getCachedClient } from '@/sanity/lib/getClient';
+import { postsQuery } from '@/sanity/queries';
+import PreviewProvider from '@src/components/PreviewProvider';
+import PreviewPosts from '@src/components/PreviewPosts';
+import Posts from '@src/components/Posts';
 
-const Home = async () => {
-  const projects = await getProjects();
+export default async function Home() {
+  const preview = draftMode().isEnabled
+    ? { token: process.env.SANITY_API_READ_TOKEN }
+    : undefined;
+  const posts = await getCachedClient(preview)(postsQuery);
 
-  return (
-    <main className="content-center">
-      <div className="text-4xl">
-        <h1 className="uppercase font-extrabold">Hello world</h1>
-        <h1 className="uppercase font-extrabold">
-          my name is{' '}
-          <b className="font-black bg-gradient-to-r from-orange-400 via-red-500 to-purple-500 bg-clip-text text-transparent">
-            Allan Aoudji
-          </b>
-        </h1>
-        <h1 className="uppercase font-extrabold">
-          I&apos;m a graphic and web designer
-        </h1>
-      </div>
-      <section className="flex gap-3 flex-wrap">
-        {projects.map((project) => (
-          <div
-            className="rounded-lg overflow-hidden bg-white"
-            key={project._id}
-          >
-            {project.image && (
-              <Image
-                alt={project.name}
-                className="object-contain object-center"
-                height={300}
-                src={project.image}
-                width={200}
-              />
-            )}
-            <div className="p-2 bg-white">
-              <p className="text-center text-black font-bold">{project.name}</p>
-            </div>
-          </div>
-        ))}
-      </section>
-    </main>
-  );
-};
+  if (preview && preview.token) {
+    return (
+      <PreviewProvider token={preview.token}>
+        <PreviewPosts posts={posts} />
+      </PreviewProvider>
+    );
+  }
 
-export default Home;
+  return <Posts posts={posts} />;
+}

@@ -1,7 +1,7 @@
 import { PortableTextBlock } from 'sanity';
 
 declare global {
-  type Project = {
+  type Post = {
     _id: string;
     _createdAt: Date;
     content: PortableTextBlock[];

@@ -1,23 +1,22 @@
-import { createClient, type SanityClient } from 'next-sanity';
+import { createClient } from '@sanity/client';
+import type { SanityClient } from '@sanity/client';
+import { cache } from 'react';
+
 import {
   sanityAPIVersion as apiVersion,
   sanityDataset as dataset,
   sanityProjectId as projectId,
+  sanityUseCdn as useCdn,
 } from '@/lib/environment';
 
-export function getClient({
-  preview,
-}: {
-  preview?: { token: string };
-}): SanityClient {
+export function getClient(preview?: { token?: string }): SanityClient {
   const client = createClient({
-    apiVersion,
-    dataset,
-    perspective: 'published',
     projectId,
-    useCdn: true,
+    dataset,
+    apiVersion,
+    useCdn,
+    perspective: 'published',
   });
-
   if (preview) {
     if (!preview.token) {
       throw new Error('You must provide a token to preview drafts');
@@ -31,3 +30,9 @@ export function getClient({
   }
   return client;
 }
+
+export const getCachedClient = (preview?: { token?: string }) => {
+  const client = getClient(preview);
+
+  return cache(client.fetch.bind(client));
+};

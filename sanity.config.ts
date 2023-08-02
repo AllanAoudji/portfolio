@@ -1,21 +1,22 @@
 import { defineConfig } from 'sanity';
 import { deskTool } from 'sanity/desk';
-import schemas from './sanity/schemas';
-import SanityNavBar from '@src/components/SanityNavBar';
-import { myTheme } from './theme';
+
 import {
   sanityAPIVersion as apiVersion,
   sanityDataset as dataset,
   sanityProjectId as projectId,
+  sanityTitle as title,
 } from './lib/environment';
-
-const title = process.env.NEXT_PUBLIC_SANITY_TITLE || 'title';
+import schemas from './sanity/schemas';
+import { defaultDocumentNode } from './sanity/desk/defaultDocumentNode';
+import SanityNavBar from './src/components/SanityNavBar';
+import { myTheme } from './theme';
 
 const config = defineConfig({
   apiVersion,
   basePath: '/admin',
   dataset,
-  plugins: [deskTool()],
+  plugins: [deskTool({ defaultDocumentNode })],
   projectId,
   schema: { types: schemas },
   studio: {

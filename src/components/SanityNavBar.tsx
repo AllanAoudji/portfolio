@@ -7,7 +7,7 @@ const SanityNavBar = (props: NavbarProps) => {
     <div>
       <div className="flex p-5">
         <Link
-          href="/"
+          href="/api/exit-preview"
           className="font-bold flex items-center pl-4 pr-5 py-1 text-white"
         >
           <ArrowUturnLeftIcon className="h-4 mr-2 w-4" />

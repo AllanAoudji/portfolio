@@ -1,6 +1,6 @@
 const project = {
-  name: 'project',
-  title: 'Projects',
+  name: 'post',
+  title: 'Posts',
   type: 'document',
   fields: [
     {
