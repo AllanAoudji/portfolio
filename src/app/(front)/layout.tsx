@@ -6,9 +6,13 @@ export const metadata = {
   title: 'Default frontend NextJs/sanity v3 app',
 };
 
+type Props = {
+  children: React.ReactNode;
+};
+
 const inter = Inter({ subsets: ['latin'] });
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const RootLayout = ({ children }: Props) => {
   return (
     <body className={inter.className}>
       <Header />

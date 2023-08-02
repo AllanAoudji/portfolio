@@ -1,6 +1,10 @@
 export { metadata } from 'next-sanity/studio/metadata';
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const RootLayout = ({ children }: Props) => {
   return <body>{children}</body>;
 };
 

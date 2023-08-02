@@ -1,6 +1,10 @@
 import PostCard from './PostCard';
 
-function Posts({ posts }: { posts: Post[] }) {
+type Props = {
+  posts: Post[];
+};
+
+function Posts({ posts }: Props) {
   return (
     <section className="flex gap-3 flex-wrap">
       {posts.map((post) => (

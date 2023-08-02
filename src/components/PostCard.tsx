@@ -1,6 +1,10 @@
 import Image from 'next/image';
 
-function PostCard({ post }: { post: Post }) {
+type Props = {
+  post: Post;
+};
+
+function PostCard({ post }: Props) {
   return (
     <div className="rounded-lg overflow-hidden bg-white" key={post._id}>
       {post.image && (
