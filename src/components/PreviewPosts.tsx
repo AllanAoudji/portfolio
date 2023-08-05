@@ -2,7 +2,7 @@
 
 import { useLiveQuery } from '@sanity/preview-kit';
 import Posts from './Posts';
-import { postsQuery } from '@/sanity/queries';
+import { postsQuery } from '@/sanity/sanity.queries';
 
 type Props = {
   posts: Post[];
