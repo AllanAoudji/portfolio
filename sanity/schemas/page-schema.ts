@@ -1,9 +1,11 @@
 import { defineField, defineType } from 'sanity';
+import { BiSolidFileBlank } from 'react-icons/bi';
 
 export default defineType({
   name: 'page',
   title: 'Pages',
   type: 'document',
+  icon: BiSolidFileBlank,
   fields: [
     defineField({
       name: 'name',
@@ -30,8 +32,8 @@ export default defineType({
       initialValue: 0,
     }),
     defineField({
-      name: 'Image',
-      title: 'image',
+      name: 'image',
+      title: 'Image',
       type: 'image',
       validation: (Rule) => Rule.required(),
       options: {

@@ -1,9 +1,11 @@
 import { defineField, defineType } from 'sanity';
+import { BiDetail } from 'react-icons/bi';
 
 export default defineType({
   name: 'post',
   title: 'Posts',
   type: 'document',
+  icon: BiDetail,
   fields: [
     defineField({
       name: 'title',
@@ -54,6 +56,7 @@ export default defineType({
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'body',

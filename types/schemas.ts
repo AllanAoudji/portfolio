@@ -46,7 +46,7 @@ declare global {
       url: string;
       alt: string;
     };
-    publishedAt: Date | null;
+    publishedAt: string;
     slug: string;
     title: string;
   };
