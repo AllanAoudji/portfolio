@@ -6,16 +6,18 @@ type Props = {
 
 function PostCard({ post }: Props) {
   return (
-    <div className="rounded-lg overflow-hidden bg-white" key={post._id}>
-      {post.mainImage && post.mainImage.url && (
-        <Image
-          alt={post.mainImage.alt || post.title}
-          className="object-contain object-center"
-          height={300}
-          src={post.mainImage.url}
-          width={200}
-        />
-      )}
+    <div className="overflow-hidden col-span-1" key={post._id}>
+      <div className="relative pb-5/12 bg-white">
+        {post.mainImage && post.mainImage.url && (
+          <Image
+            alt={post.mainImage.alt || post.title}
+            className="absolute top-0 h-full w-full object-cover"
+            height={300}
+            src={post.mainImage.url}
+            width={200}
+          />
+        )}
+      </div>
     </div>
   );
 }
