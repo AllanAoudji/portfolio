@@ -1,9 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Drawer from './Drawer';
 
 function Header() {
   return (
     <header className="bg-dark flex items-center justify-between p-4 sticky top-0 z-50">
+      <Drawer />
       <Link href="/">
         <Image
           alt="main logo"
