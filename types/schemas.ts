@@ -24,7 +24,7 @@ declare global {
     body: PortableTextBlock[] | null;
     image: string;
     name: string;
-    slud: string;
+    slug: string;
   };
 
   type Post = {

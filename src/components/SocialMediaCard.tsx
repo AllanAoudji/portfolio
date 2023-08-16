@@ -8,6 +8,7 @@ function SocialMediaCard({ socialMedia }: Props) {
   return (
     <a href={socialMedia.url} key={socialMedia._id} target="_blank">
       <Image
+        className="h-6 w-auto"
         alt={socialMedia.title}
         height={30}
         src={socialMedia.logo}
