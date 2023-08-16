@@ -14,7 +14,7 @@ const inter = Inter({ subsets: ['latin'] });
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <body className={inter.className}>
+    <body className={`bg-dark ${inter.className}`}>
       <Header />
       <main>{children}</main>
       <Footer />

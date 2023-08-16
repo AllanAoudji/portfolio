@@ -1,6 +1,7 @@
+import { Metadata } from 'next';
 import './globals.css';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Default NextJs/sanity v3 app',
 };
 
