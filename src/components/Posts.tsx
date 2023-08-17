@@ -74,7 +74,7 @@ function Posts({ posts: initialPost }: Props) {
     <section className="grid grid-cols-1 gap-0">
       <Image
         alt="home-text"
-        className="px-4 py-24"
+        className="px-2 py-24"
         src="/header-text.png"
         width="2415"
         height="1564"
