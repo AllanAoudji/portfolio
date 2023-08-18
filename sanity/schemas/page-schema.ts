@@ -32,15 +32,6 @@ export default defineType({
       initialValue: 0,
     }),
     defineField({
-      name: 'image',
-      title: 'Image',
-      type: 'image',
-      validation: (Rule) => Rule.required(),
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
       name: 'body',
       title: 'Body',
       type: 'blockContent',

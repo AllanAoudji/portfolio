@@ -1,11 +1,15 @@
 import { getSocials } from '@/sanity/sanity.queries';
 import SocialMediaCard from './SocialMediaCard';
 
-async function SocialMedias() {
+type Props = {
+  className?: string;
+};
+
+async function SocialMedias({ className = '' }: Props) {
   const socialMedias = await getSocials();
 
   return (
-    <div className="flex justify-end gap-5">
+    <div className={`flex gap-3 ${className}`}>
       {socialMedias.map((socialMedia) => (
         <SocialMediaCard key={socialMedia._id} socialMedia={socialMedia} />
       ))}

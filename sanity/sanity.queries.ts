@@ -62,7 +62,6 @@ export const pagesQuery = groq`*[_type == "page"] | order(order asc, name asc) [
     _createdAt,
     name,
     "slug": slug.current,
-    "image": image.asset->url,
     body,
 }`;
 export const getPages = () => getCachedClient()<Page[]>(pagesQuery);
@@ -73,7 +72,6 @@ export const pageQuery = groq`*[_type == "page" && slug.current == $slug][0] {
     _createdAt,
     name,
     "slug": slug.current,
-    "image": image.asset->url,
     body,
 }`;
 export const getPage = (slug: string) =>

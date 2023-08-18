@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import SocialMedias from './SocialMedias';
 import Pages from './Pages';
 import DrawerCloseLink from './DrawerCloseLink';
 import Logo from './Logo';
+import Copyright from './Copyright';
 
 type Props = {
   open: boolean;
@@ -11,30 +11,17 @@ type Props = {
 function Drawer({ open }: Props) {
   return (
     <div
-      className={`absolute flex h-full top-0 w-11/12 ${
+      className={`absolute bg-dark duration-700 ease-in-out flex flex-col h-full p-5 transition-all top-0 w-1/2 ${
         open ? 'left-0 opacity-100' : '-left-full opacity-0'
-      } transition-all duration-700 ease-in-out`}
+      }`}
     >
-      <div className="bg-dark flex flex-col grow h-full p-5">
-        <div className="flex items-center justify-between">
-          <Logo />
-          <DrawerCloseLink />
-        </div>
-        <Pages
-          align="items-start"
-          itemSize="h-16"
-          className="grow pt-20"
-          direction="flex-col"
-        />
-        <SocialMedias />
+      <div className="flex items-center justify-between">
+        <Logo />
+        <DrawerCloseLink />
       </div>
-      <Image
-        src="/background-right-dark.png"
-        alt="background right"
-        width={200}
-        height={200}
-        className="h-full -ml-px w-auto"
-      />
+      <Pages className="flex-col grow items-start pt-20" />
+      <SocialMedias className="pb-5" />
+      <Copyright />
     </div>
   );
 }

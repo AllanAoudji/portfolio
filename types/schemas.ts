@@ -22,7 +22,6 @@ declare global {
     _id: string;
     _createdAt: Date;
     body: PortableTextBlock[] | null;
-    image: string;
     name: string;
     slug: string;
   };
