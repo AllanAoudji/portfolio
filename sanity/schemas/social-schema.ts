@@ -35,7 +35,7 @@ export default defineType({
     defineField({
       name: 'url',
       title: 'URL',
-      type: 'string',
+      type: 'url',
       validation: (Rule) => Rule.required(),
     }),
   ],
