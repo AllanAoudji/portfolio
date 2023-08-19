@@ -47,6 +47,14 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'year',
+      title: 'Year',
+      type: 'date',
+      options: {
+        dateFormat: 'YYYY',
+      },
+    }),
+    defineField({
       name: 'categories',
       title: 'Categories',
       type: 'array',

@@ -8,8 +8,14 @@ export default defineType({
   icon: BiCategory,
   fields: [
     defineField({
+      name: 'name',
+      title: 'Name',
+      type: 'string',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'title',
-      title: 'Title',
+      title: 'Display title',
       type: 'string',
       validation: (Rule) => Rule.required(),
     }),
@@ -18,7 +24,7 @@ export default defineType({
       title: 'Slug',
       type: 'slug',
       options: {
-        source: 'name',
+        source: 'title',
         maxLength: 96,
       },
       validation: (Rule) => Rule.required(),

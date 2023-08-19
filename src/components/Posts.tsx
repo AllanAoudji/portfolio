@@ -3,14 +3,20 @@
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import useScrollPosition from '@src/hooks/useScrollPosition';
-import { getPosts } from '@/sanity/sanity.queries';
+import { getPosts, getPostsByCategory } from '@/sanity/sanity.queries';
 import PostCard from './PostCard';
 
 type Props = {
+  categorySlug?: string | null;
   posts: Post[];
+  showHeaderText?: boolean;
 };
 
-function Posts({ posts: initialPost }: Props) {
+function Posts({
+  posts: initialPost,
+  categorySlug = null,
+  showHeaderText = true,
+}: Props) {
   const [lastPublishedAt, setLastPublishedAt] = useState<string>('');
   const [lastSlug, setLastSlug] = useState<string | null>('');
   const [loading, setLoading] = useState<boolean>(false);
@@ -21,12 +27,22 @@ function Posts({ posts: initialPost }: Props) {
 
   const scrollPosition = useScrollPosition();
 
-  const postGetter = useCallback(async () => {
+  const postsGetter = useCallback(async () => {
     if (lastSlug == null) return;
 
     setLoading(true);
 
-    const result = await getPosts(lastPublishedAt, lastSlug);
+    let result: Post[];
+
+    if (categorySlug) {
+      result = await getPostsByCategory(
+        lastPublishedAt,
+        lastSlug,
+        categorySlug
+      );
+    } else {
+      result = await getPosts(lastPublishedAt, lastSlug);
+    }
 
     if (!mountedRef.current) return;
 
@@ -37,8 +53,9 @@ function Posts({ posts: initialPost }: Props) {
     } else {
       setLastSlug(null);
     }
+
     setLoading(false);
-  }, [lastPublishedAt, lastSlug]);
+  }, [categorySlug, lastPublishedAt, lastSlug]);
 
   // initial post fetching
   // only trigger on mount
@@ -58,9 +75,9 @@ function Posts({ posts: initialPost }: Props) {
   // fetch next post if scroll to bottom
   useEffect(() => {
     if (scrollPosition && scrollPosition > 80 && !loading) {
-      postGetter();
+      postsGetter();
     }
-  }, [loading, scrollPosition, postGetter]);
+  }, [loading, scrollPosition, postsGetter]);
 
   // dismount before async call finished
   useEffect(
@@ -72,13 +89,15 @@ function Posts({ posts: initialPost }: Props) {
 
   return (
     <section className="grid grid-cols-1 gap-0">
-      <Image
-        alt="home-text"
-        className="px-2 py-24"
-        src="/header-text.png"
-        width="2415"
-        height="1564"
-      />
+      {showHeaderText && (
+        <Image
+          alt="home-text"
+          className="px-2 py-24"
+          src="/header-text.png"
+          width="2415"
+          height="1564"
+        />
+      )}
       {posts.map((post) => (
         <PostCard post={post} key={post._id} />
       ))}

@@ -14,9 +14,11 @@ const rubik = Rubik({ subsets: ['latin'] });
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <body className={`bg-dark ${rubik.className} relative`}>
+    <body
+      className={`bg-dark flex flex-col min-h-screen relative ${rubik.className}`}
+    >
       <Header />
-      <main>{children}</main>
+      <main className="grow">{children}</main>
       <Footer />
     </body>
   );

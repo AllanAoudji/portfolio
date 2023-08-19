@@ -14,6 +14,8 @@ declare global {
     _id: string;
     _createdAt: Date;
     description: string | null;
+    name: string;
+    posts: Post[];
     slug: string;
     title: string;
   };
@@ -37,6 +39,7 @@ declare global {
     body: PortableTextBlock[] | null;
     categories:
       | {
+          name: string;
           title: string;
           slug: string;
         }[]
@@ -48,6 +51,7 @@ declare global {
     publishedAt: string;
     slug: string;
     title: string;
+    year?: string;
   };
 
   type Social = {
