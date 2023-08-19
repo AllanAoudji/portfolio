@@ -1,5 +1,6 @@
 import { getPost } from '@/sanity/sanity.queries';
 import DrawerContainer from '@src/components/DrawerContainer';
+import Title from '@src/components/Title';
 import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
@@ -30,14 +31,14 @@ async function Post({ params, searchParams: { drawer } }: Props) {
           src={post.mainImage.url}
           width="1200"
         />
-        <h1 className=" text-light text-4xl">
+        <Title>
           {post.title + ' '}
           {post.year && (
             <span className="font-light italic">
               {new Date(post.year).getFullYear()}
             </span>
           )}
-        </h1>
+        </Title>
         {post.categories && (
           <div className="flex gap-2 mt-5 flex-wrap">
             {post.categories.map((category) => (

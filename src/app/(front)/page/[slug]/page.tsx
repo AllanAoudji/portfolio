@@ -1,5 +1,6 @@
 import { getPage } from '@/sanity/sanity.queries';
 import DrawerContainer from '@src/components/DrawerContainer';
+import Title from '@src/components/Title';
 import { redirect } from 'next/navigation';
 
 type Props = {
@@ -22,7 +23,7 @@ export default async function Page({
   return (
     <>
       <DrawerContainer open={drawer === 'true' ? true : false} />
-      <h1>{page.name}</h1>
+      <Title className="p-4">{page.name}</Title>
     </>
   );
 }
