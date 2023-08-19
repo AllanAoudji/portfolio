@@ -8,13 +8,15 @@ import PostCard from './PostCard';
 
 type Props = {
   categorySlug?: string | null;
+  className?: string;
   posts: Post[];
   showHeaderText?: boolean;
 };
 
 function Posts({
-  posts: initialPost,
   categorySlug = null,
+  className = '',
+  posts: initialPost,
   showHeaderText = true,
 }: Props) {
   const [lastPublishedAt, setLastPublishedAt] = useState<string>('');
@@ -88,7 +90,7 @@ function Posts({
   );
 
   return (
-    <section className="grid grid-cols-1 gap-0">
+    <section className={`grid grid-cols-1 gap-0 ${className}`}>
       {showHeaderText && (
         <Image
           alt="home-text"

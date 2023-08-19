@@ -1,4 +1,5 @@
 const currentYear = new Date().getFullYear();
+
 function Copyright() {
   return (
     <span className="text-light">

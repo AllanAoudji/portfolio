@@ -20,10 +20,11 @@ async function Categorypage({ params, searchParams: { drawer } }: Props) {
   return (
     <>
       <DrawerContainer open={drawer === 'true' ? true : false} />
-      <h1 className="p-4 text-xl text-light">{slug.title}</h1>
+      <h1 className="p-4 text-4xl text-light">{slug.title}</h1>
       <Posts
-        posts={slug.posts}
         categorySlug={params.slug}
+        className="pt-4"
+        posts={slug.posts}
         showHeaderText={false}
       />
     </>
