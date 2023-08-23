@@ -1,5 +1,6 @@
 import { getPage } from '@/sanity/sanity.queries';
 import DrawerContainer from '@src/components/DrawerContainer';
+import RichPortableText from '@src/components/RichPortableText';
 import Title from '@src/components/Title';
 import { redirect } from 'next/navigation';
 
@@ -23,7 +24,10 @@ export default async function Page({
   return (
     <>
       <DrawerContainer open={drawer === 'true' ? true : false} />
-      <Title className="p-4">{page.name}</Title>
+      <div className="px-6 md:max-w-5xl mx-auto">
+        <Title className="text-5xl pt-28 pb-14">{page.name}</Title>
+        {page.body && <RichPortableText value={page.body} />}
+      </div>
     </>
   );
 }

@@ -1,10 +1,16 @@
 const currentYear = new Date().getFullYear();
 
-function Copyright() {
+type Props = {
+  className?: string;
+};
+
+function Copyright({ className = '' }: Props) {
   return (
-    <span className="text-light">
-      © Allan Aoudji, {currentYear != 2023 && '2023 - '} {currentYear}
-    </span>
+    <div className={`text-sm ${className}`}>
+      <span>
+        © Allan Aoudji, {currentYear != 2023 && '2023 - '} {currentYear}
+      </span>
+    </div>
   );
 }
 

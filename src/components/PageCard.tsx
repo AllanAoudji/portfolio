@@ -5,7 +5,9 @@ type Props = {
 };
 
 function PageCard({ page }: Props) {
-  return <Link href={`/page/${page.slug}`}>{page.name}</Link>;
+  return (
+    <Link href={`/page/${page.slug}`}>{page.name.toLocaleUpperCase()}</Link>
+  );
 }
 
 export default PageCard;

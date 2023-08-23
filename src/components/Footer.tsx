@@ -4,12 +4,12 @@ import SocialMedias from './SocialMedias';
 
 function Footer() {
   return (
-    <footer className="p-4 pt-20">
-      <div className="flex items-center justify-between pb-4">
-        <Pages />
-        <SocialMedias />
+    <footer className="text-light px-5 pb-5 pt-48 flex flex-col gap-20">
+      <div className="flex flex-col gap-8">
+        <Pages className="text-2xl gap-8 justify-center" />
+        <SocialMedias className="justify-center gap-8" />
       </div>
-      <Copyright />
+      <Copyright className="text-center" />
     </footer>
   );
 }

@@ -8,7 +8,7 @@ type Props = {
 function DrawerContainer({ open }: Props) {
   return (
     <div
-      className={`fixed h-screen left-0 top-0 w-screen z-50 ${
+      className={`fixed h-screen left-0 top-0 w-screen z-40 ${
         open ? 'pointer-events-auto' : 'pointer-events-none'
       }`}
     >

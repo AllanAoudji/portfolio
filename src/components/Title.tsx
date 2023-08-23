@@ -4,7 +4,9 @@ type Props = {
 };
 
 function Title({ children, className = '' }: Props) {
-  return <h1 className={`text-light text-4xl ${className}`}>{children}</h1>;
+  return (
+    <h1 className={`font-bold text-light text-4xl ${className}`}>{children}</h1>
+  );
 }
 
 export default Title;

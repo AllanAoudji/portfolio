@@ -2,17 +2,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 type Props = {
-  size?: 'h-12' | 'h-8';
+  className?: string;
+  color?: 'dark' | 'light';
 };
 
-function Logo({ size = 'h-12' }: Props) {
+function Logo({ className, color = 'light' }: Props) {
   return (
     <Link href="/">
       <Image
         alt="main logo"
-        className={`w-auto ${size}`}
+        className={`w-auto ${className}`}
         height="911"
-        src="/logo-fixe-light.png"
+        src={color === 'light' ? '/logo-fixe-light.png' : '/logo-fixe-dark.png'}
         width="1706"
       />
     </Link>

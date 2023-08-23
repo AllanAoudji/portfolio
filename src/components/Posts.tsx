@@ -94,8 +94,8 @@ function Posts({
       {showHeaderText && (
         <Image
           alt="home-text"
-          className="px-2 py-24"
-          src="/header-text.png"
+          className="mb-48 border-b-4 border-light"
+          src="/hello-world.png"
           width="2415"
           height="1564"
         />

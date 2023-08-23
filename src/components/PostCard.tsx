@@ -7,8 +7,8 @@ type Props = {
 
 function PostCard({ post }: Props) {
   return (
-    <div className="overflow-hidden col-span-1" key={post._id}>
-      <div className="relative pb-5/12 bg-light">
+    <div className="overflow-hidden col-span-1 px-6" key={post._id}>
+      <div className="relative pb-5/12 bg-dark">
         {post.mainImage && post.mainImage.url && (
           <Link href={`/work/${post.slug}`}>
             <Image

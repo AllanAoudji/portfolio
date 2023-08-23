@@ -1,4 +1,5 @@
 import Footer from '@src/components/Footer';
+import FullScreenImage from '@src/components/FullScreenImage';
 import Header from '@src/components/Header';
 import { Rubik } from 'next/font/google';
 
@@ -17,6 +18,7 @@ const RootLayout = ({ children }: Props) => {
     <body
       className={`bg-dark flex flex-col min-h-screen relative ${rubik.className}`}
     >
+      <FullScreenImage />
       <Header />
       <main className="grow">{children}</main>
       <Footer />

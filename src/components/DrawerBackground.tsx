@@ -17,7 +17,7 @@ function DrawerBackground({ open }: Props) {
       replace={true}
       className={`bg-black h-full w-full transition-all duration-500 block ${
         open
-          ? 'opacity-50 pointer-events-auto'
+          ? 'opacity-90 pointer-events-auto'
           : 'opacity-0 pointer-events-none'
       }`}
     />

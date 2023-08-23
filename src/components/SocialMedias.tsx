@@ -9,7 +9,7 @@ async function SocialMedias({ className = '' }: Props) {
   const socialMedias = await getSocials();
 
   return (
-    <div className={`flex gap-3 ${className}`}>
+    <div className={`flex ${className}`}>
       {socialMedias.map((socialMedia) => (
         <SocialMediaCard key={socialMedia._id} socialMedia={socialMedia} />
       ))}
