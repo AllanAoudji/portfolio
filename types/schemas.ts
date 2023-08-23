@@ -48,6 +48,14 @@ declare global {
       url: string;
       alt: string;
     };
+    nextPost: {
+      title: string;
+      slug: string;
+      mainImage: {
+        url: string;
+        alt: string;
+      };
+    } | null;
     publishedAt: string;
     slug: string;
     title: string;

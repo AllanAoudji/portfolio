@@ -173,6 +173,18 @@ const postsQuery = groq`*[
     title,
     year,
     publishedAt,
+    "nextPost": *[
+      _type == "post" &&
+      _id != ^.id &&
+      (publishedAt > ^.publishedAt || slug.current > ^.slug.current || publishedAt <= $now)
+    ] | order(publishedAt)[0]{
+      "mainImage": {
+        "alt": mainImage.alt,
+        "url": mainImage.asset->url,
+      },
+      slug,
+      title
+    },
     "slug": slug.current,
     "author": {
         "name": author->name,
@@ -213,6 +225,18 @@ const postsByCategoryQuery = groq`*[
     year,
     publishedAt,
     "slug": slug.current,
+    "nextPost": *[
+      _type == "post" &&
+      _id != ^.id &&
+      (publishedAt > ^.publishedAt || slug.current > ^.slug.current || publishedAt <= $now)
+    ] | order(publishedAt)[0]{
+      slug,
+      "mainImage": {
+        "alt": mainImage.alt,
+        "url": mainImage.asset->url,
+      },
+      title
+    },
     "author": {
         "name": author->name,
         "profilePicture": author->profilePicture.asset->url,
@@ -250,6 +274,18 @@ const postQuery = groq`*[_type == "post" && slug.current == $slug && publishedAt
     body,
     title,
     publishedAt,
+    "nextPost": *[
+      _type == "post" &&
+      _id != ^._id &&
+      (publishedAt > ^.publishedAt || slug.current > ^.slug.current)
+    ] | order(publishedAt)[0]{
+      slug,
+      "mainImage": {
+        "alt": mainImage.alt,
+        "url": mainImage.asset->url,
+      },
+      title
+    },
     year,
     "slug": slug.current,
     "author": {

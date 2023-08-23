@@ -1,6 +1,7 @@
 import { getPost } from '@/sanity/sanity.queries';
 import Categories from '@src/components/Categories';
 import LinkImage from '@src/components/LinkImage';
+import NextPostCard from '@src/components/NextPostCard';
 import PageContainer from '@src/components/PageContainer';
 import RichPortableText from '@src/components/RichPortableText';
 import Title from '@src/components/Title';
@@ -15,6 +16,8 @@ type Props = {
 
 async function Post({ params, searchParams: { drawer } }: Props) {
   const post = await getPost(params.slug);
+
+  console.log(post);
 
   if (post == null) {
     redirect('/');
@@ -44,6 +47,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
       <div className="px-8 pt-28">
         {post.body && <RichPortableText value={post.body} />}
       </div>
+      <NextPostCard nextPost={post.nextPost} />
     </PageContainer>
   );
 }
