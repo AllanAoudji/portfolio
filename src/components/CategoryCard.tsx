@@ -12,7 +12,7 @@ function CategoryCard({ category }: Props) {
   return (
     <Link
       href={`/category/${category.slug}`}
-      className="bg-light block py-px px-3 rounded-full text-dark text-lg"
+      className="border-2 border-light block py-px px-3 rounded-full text-light text-lg"
       key={category.slug}
     >
       {category.name.toLowerCase()}

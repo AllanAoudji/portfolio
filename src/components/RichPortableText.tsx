@@ -21,7 +21,7 @@ function ImageComponent(
   return (
     <LinkImage
       alt="image"
-      className="py-2"
+      className="my-4"
       height={imageProps.height}
       src={imageProps.src}
       width={imageProps.width}
@@ -47,11 +47,19 @@ const components: Partial<PortableTextReactComponents> = {
       <h5 className="text-xl font-bold text-light pt-1">{children}</h5>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="text-light pl-2 border-l-4 border-light">
+      <blockquote className="text-light text-lg pl-2 border-l-4 border-light">
         {children}
       </blockquote>
     ),
-    normal: ({ children }) => <span className="text-light">{children}</span>,
+    normal: ({ children }) => {
+      if (
+        children === null ||
+        (Array.isArray(children) && children.length === 1 && children[0] === '')
+      ) {
+        return <p className="pt-8 first:pt-0 last:pt-0" />;
+      }
+      return <span className="text-light text-lg">{children}</span>;
+    },
   },
   list: {
     bullet: ({ children }) => (

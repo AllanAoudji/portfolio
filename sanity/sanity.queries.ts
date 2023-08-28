@@ -6,26 +6,26 @@ import { getCachedClient } from './lib/getClient';
 // ---------------------------------
 // Get all authors
 const authorsQuery = groq`*[_type == "author" && slug.current > $lastSlug] | order(slug.current) [0...30] {
-    _id,
-    _createdAt,
-    name,
-    "slug": slug.current,
-    "profilePicture": profilePicture.asset->url,
-    email,
-    bio
+  _id,
+  _createdAt,
+  bio,
+  email,
+  name,
+  "profilePicture": profilePicture.asset->url,
+  "slug": slug.current,
 }`;
 export const getAuthors = (lastSlug: string) =>
   getCachedClient()<Author[]>(authorsQuery, { lastSlug });
 
 // Get a single author by its slug
 const authorQuery = groq`*[_type == "author" && slug.current == $slug][0] {
-    _id,
-    _createdAt,
-    name,
-    "slug": slug.current,
-    "profilePicture": profilePicture.asset->url,
-    email,
-    bio
+  _id,
+  _createdAt,
+  bio,
+  email,
+  name,
+  "profilePicture": profilePicture.asset->url,
+  "slug": slug.current,
 }`;
 export const getAuthor = (slug: string) =>
   getCachedClient()<Author>(authorQuery, { slug });
@@ -35,40 +35,40 @@ export const getAuthor = (slug: string) =>
 // ---------------------------------
 // Get all categories
 const categoriesQuery = groq`*[_type == "category" && slug.current > $lastSlug] | order(slug.current) [0...30] {
+  _id,
+  _createdAt,
+  description,
+  name,
+  title,
+  "posts": *[
+    _type == "post" &&
+    ^.slug.current in categories[]->slug.current &&
+    publishedAt <= $now &&
+    (publishedAt > $lastPostPublishedAt || slug.current > $lastPostSlug)
+  ] | order(publishedAt) [0...30]{
     _id,
     _createdAt,
-    description,
+    body,
+    publishedAt,
     title,
-    name,
-    "slug": slug.current,
-    "posts": *[
-        _type == "post" &&
-        ^.slug.current in categories[]->slug.current &&
-        publishedAt <= $now &&
-        (publishedAt > $lastPostPublishedAt || slug.current > $lastPostSlug)
-    ] | order(publishedAt) [0...30]{
-        _id,
-        _createdAt,
-        body,
-        title,
-        year,
-        publishedAt,
-        "slug": slug.current,
-        "author": {
-            "name": author->name,
-            "profilePicture": author->profilePicture.asset->url,
-            "slug": author->slug.current,
-        },
-        "categories": categories[]->{
-            "slug": slug.current,
-            title,
-        },
-        "mainImage" : {
-            "alt": mainImage.alt,
-            "profilePicture": author->image.asset->url,
-            "url": mainImage.asset->url,
-        },
+    year,
+    "author": {
+      "name": author->name,
+      "profilePicture": author->profilePicture.asset->url,
+      "slug": author->slug.current,
     },
+    "categories": categories[]->{
+      "slug": slug.current,
+      title,
+    },
+    "mainImage" : {
+      "alt": mainImage.alt,
+      "profilePicture": author->image.asset->url,
+      "url": mainImage.asset->url,
+    },
+    "slug": slug.current,
+  },
+  "slug": slug.current,
 }`;
 export const getCategories = (
   lastSlug: string,
@@ -77,49 +77,49 @@ export const getCategories = (
 ) => {
   const now = new Date().toISOString();
   return getCachedClient()<Category[]>(categoriesQuery, {
-    lastSlug,
-    now,
     lastPostPublishedAt,
     lastPostSlug,
+    lastSlug,
+    now,
   });
 };
 
 // Get a single category by its slug
 const categoryQuery = groq`*[_type == "category" && slug.current == $slug][0] {
+  _id,
+  _createdAt,
+  description,
+  name,
+  title,
+  "posts": *[
+    _type == "post" &&
+    ^.slug.current in categories[]->slug.current &&
+    publishedAt <= $now &&
+    (publishedAt > $lasPosttPublishedAt || slug.current > $lastPostSlug)
+  ] | order(publishedAt) [0...30]{
     _id,
     _createdAt,
-    description,
-    name,
+    body,
+    publishedAt,
     title,
-    "slug": slug.current,
-    "posts": *[
-        _type == "post" &&
-        ^.slug.current in categories[]->slug.current &&
-        publishedAt <= $now &&
-        (publishedAt > $lasPosttPublishedAt || slug.current > $lastPostSlug)
-    ] | order(publishedAt) [0...30]{
-        _id,
-        _createdAt,
-        body,
-        title,
-        year,
-        publishedAt,
-        "slug": slug.current,
-        "author": {
-            "name": author->name,
-            "profilePicture": author->profilePicture.asset->url,
-            "slug": author->slug.current,
-        },
-        "categories": categories[]->{
-            "slug": slug.current,
-            title,
-        },
-        "mainImage" : {
-            "alt": mainImage.alt,
-            "profilePicture": author->image.asset->url,
-            "url": mainImage.asset->url,
-        },
+    year,
+    "author": {
+      "name": author->name,
+      "profilePicture": author->profilePicture.asset->url,
+      "slug": author->slug.current,
     },
+    "categories": categories[]->{
+      title,
+      "slug": slug.current,
+    },
+    "slug": slug.current,
+    "mainImage" : {
+      "alt": mainImage.alt,
+      "profilePicture": author->image.asset->url,
+      "url": mainImage.asset->url,
+    },
+  },
+  "slug": slug.current,
 }`;
 export const getCategory = (
   slug: string,
@@ -128,10 +128,10 @@ export const getCategory = (
 ) => {
   const now = new Date().toISOString();
   return getCachedClient()<Category>(categoryQuery, {
-    slug,
-    now,
     lasPosttPublishedAt,
     lastPostSlug,
+    now,
+    slug,
   });
 };
 
@@ -140,21 +140,21 @@ export const getCategory = (
 // ---------------------------------
 // Get all pages
 const pagesQuery = groq`*[_type == "page"] | order(order asc, name asc) [0...30] {
-    _id,
-    _createdAt,
-    name,
-    "slug": slug.current,
-    body,
+  _id,
+  _createdAt,
+  body,
+  name,
+  "slug": slug.current,
 }`;
 export const getPages = () => getCachedClient()<Page[]>(pagesQuery);
 
 // Get a page by its slug
 const pageQuery = groq`*[_type == "page" && slug.current == $slug][0] {
-    _id,
-    _createdAt,
-    name,
-    "slug": slug.current,
-    body,
+  _id,
+  _createdAt,
+  body,
+  name,
+  "slug": slug.current,
 }`;
 export const getPage = (slug: string) =>
   getCachedClient()<Page>(pageQuery, { slug });
@@ -164,43 +164,45 @@ export const getPage = (slug: string) =>
 // ---------------------------------
 // Get all posts
 const postsQuery = groq`*[
-        _type == "post" &&
-        publishedAt <= $now &&
-        (publishedAt > $lastPublishedAt || slug.current > $lastSlug)] | order(publishedAt) [0...30] {
-    _id,
-    _createdAt,
-    body,
+  _type == "post" &&
+  publishedAt <= $now &&
+  (publishedAt > $lastPublishedAt ||
+  (publishedAt == $lastPublishedAt && slug.current > $lastSlug))
+] | order(publishedAt) [0...30] {
+  _id,
+  _createdAt,
+  body,
+  publishedAt,
+  title,
+  year,
+  "nextPost": *[
+    _type == "post" &&
+    (publishedAt > ^.publishedAt ||
+    (publishedAt > ^.publishedAt && slug.current > ^.slug.current))
+  ] | order(publishedAt) [0]{
     title,
-    year,
-    publishedAt,
-    "nextPost": *[
-      _type == "post" &&
-      _id != ^.id &&
-      (publishedAt > ^.publishedAt || slug.current > ^.slug.current || publishedAt <= $now)
-    ] | order(publishedAt)[0]{
-      "mainImage": {
-        "alt": mainImage.alt,
-        "url": mainImage.asset->url,
-      },
-      slug,
-      title
+    "mainImage": {
+      "alt": mainImage.alt,
+      "url": mainImage.asset->url,
     },
     "slug": slug.current,
-    "author": {
-        "name": author->name,
-        "profilePicture": author->profilePicture.asset->url,
-        "slug": author->slug.current,
-    },
-    "categories": categories[]->{
-        "slug": slug.current,
-        name,
-        title,
-    },
-    "mainImage" : {
-        "alt": mainImage.alt,
-        "profilePicture": author->image.asset->url,
-        "url": mainImage.asset->url,
-    },
+  },
+  "author": {
+    "name": author->name,
+    "profilePicture": author->profilePicture.asset->url,
+    "slug": author->slug.current,
+  },
+  "categories": categories[]->{
+    name,
+    title,
+    "slug": slug.current,
+  },
+  "mainImage" : {
+    "alt": mainImage.alt,
+    "profilePicture": author->image.asset->url,
+    "url": mainImage.asset->url,
+  },
+  "slug": slug.current,
 }`;
 export const getPosts = (lastPublishedAt: string, lastSlug: string) => {
   const now = new Date().toISOString();
@@ -213,45 +215,46 @@ export const getPosts = (lastPublishedAt: string, lastSlug: string) => {
 
 // Get all posts filtered by category
 const postsByCategoryQuery = groq`*[
-    _type == "post" &&
-    $categorySlug in categories[]->slug.current &&
-    publishedAt <= $now &&
-    (publishedAt > $lastPublishedAt || slug.current > $lastSlug)
+  _type == "post" &&
+  $categorySlug in categories[]->slug.current &&
+  publishedAt <= $now &&
+  (publishedAt > $lastPublishedAt ||
+  (publishedAt == $lastPublishedAt && slug.current > $lastSlug))
 ] | order(publishedAt) [0...30] {
-    _id,
-    _createdAt,
-    body,
+  _id,
+  _createdAt,
+  body,
+  title,
+  year,
+  publishedAt,
+  "slug": slug.current,
+  "nextPost": *[
+    _type == "post" &&
+    (publishedAt > ^.publishedAt ||
+    (publishedAt > ^.publishedAt && slug.current > ^.slug.current))
+  ] | order(publishedAt) [0] {
     title,
-    year,
-    publishedAt,
+    "mainImage": {
+      "alt": mainImage.alt,
+      "url": mainImage.asset->url,
+    },
     "slug": slug.current,
-    "nextPost": *[
-      _type == "post" &&
-      _id != ^.id &&
-      (publishedAt > ^.publishedAt || slug.current > ^.slug.current || publishedAt <= $now)
-    ] | order(publishedAt)[0]{
-      slug,
-      "mainImage": {
-        "alt": mainImage.alt,
-        "url": mainImage.asset->url,
-      },
-      title
-    },
-    "author": {
-        "name": author->name,
-        "profilePicture": author->profilePicture.asset->url,
-        "slug": author->slug.current,
-    },
-    "categories": categories[]->{
-        "slug": slug.current,
-        name,
-        title,
-    },
-    "mainImage" : {
-        "alt": mainImage.alt,
-        "profilePicture": author->image.asset->url,
-        "url": mainImage.asset->url,
-    },
+  },
+  "author": {
+      "name": author->name,
+      "profilePicture": author->profilePicture.asset->url,
+      "slug": author->slug.current,
+  },
+  "categories": categories[]->{
+      "slug": slug.current,
+      name,
+      title,
+  },
+  "mainImage" : {
+      "alt": mainImage.alt,
+      "profilePicture": author->image.asset->url,
+      "url": mainImage.asset->url,
+  },
 }`;
 export const getPostsByCategory = (
   categorySlug: string,
@@ -276,15 +279,15 @@ const postQuery = groq`*[_type == "post" && slug.current == $slug && publishedAt
     publishedAt,
     "nextPost": *[
       _type == "post" &&
-      _id != ^._id &&
-      (publishedAt > ^.publishedAt || slug.current > ^.slug.current)
-    ] | order(publishedAt)[0]{
-      slug,
+      (publishedAt > ^.publishedAt ||
+      (publishedAt == ^.publishedAt && slug.current > ^.slug.current))
+    ] | order(publishedAt) [0]{
+      title,
       "mainImage": {
         "alt": mainImage.alt,
         "url": mainImage.asset->url,
       },
-      title
+      "slug": slug.current,
     },
     year,
     "slug": slug.current,
@@ -305,6 +308,19 @@ const postQuery = groq`*[_type == "post" && slug.current == $slug && publishedAt
 export const getPost = (slug: string) => {
   const now = new Date().toISOString();
   return getCachedClient()<Post>(postQuery, { slug, now });
+};
+
+const firstPostQuery = groq`*[_type == "post" && publishedAt <= $now] | order(publishedAt, slug.current)[0]{
+  "slug": slug.current,
+  "mainImage": {
+    "alt": mainImage.alt,
+    "url": mainImage.asset->url,
+  },
+  title
+}`;
+export const getFirstPost = () => {
+  const now = new Date().toISOString();
+  return getCachedClient()<NextPost>(firstPostQuery, { now });
 };
 
 // ---------------------------------

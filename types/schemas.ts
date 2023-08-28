@@ -20,6 +20,15 @@ declare global {
     title: string;
   };
 
+  type NextPost = {
+    mainImage: {
+      alt: string;
+      url: string;
+    };
+    slug: string;
+    title: string;
+  };
+
   type Page = {
     _id: string;
     _createdAt: Date;
@@ -48,14 +57,7 @@ declare global {
       url: string;
       alt: string;
     };
-    nextPost: {
-      title: string;
-      slug: string;
-      mainImage: {
-        url: string;
-        alt: string;
-      };
-    } | null;
+    nextPost: NextPost | null;
     publishedAt: string;
     slug: string;
     title: string;

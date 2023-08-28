@@ -13,7 +13,8 @@ function Logo({ className, color = 'light' }: Props) {
         alt="main logo"
         className={`w-auto ${className}`}
         height="911"
-        src={color === 'light' ? '/logo-fixe-light.png' : '/logo-fixe-dark.png'}
+        priority={true}
+        src={`/logo-fixe-${color}.png`}
         width="1706"
       />
     </Link>

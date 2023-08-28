@@ -5,7 +5,11 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
-function DrawerOpenLink() {
+type Props = {
+  color?: 'dark' | 'light';
+};
+
+function DrawerOpenLink({ color = 'light' }: Props) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -27,7 +31,7 @@ function DrawerOpenLink() {
         alt="hamburger menu"
         className="h-9 w-auto"
         height="1943"
-        src="/hamburger.png"
+        src={`/hamburger-${color}.png`}
         width="1962"
       />
     </Link>

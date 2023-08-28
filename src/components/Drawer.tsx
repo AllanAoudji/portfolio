@@ -16,12 +16,12 @@ function Drawer({ open }: Props) {
       }`}
     >
       <div className="flex items-center justify-between">
-        <Logo className="h-7" color="dark" />
+        <Logo className="h-10" />
         <DrawerCloseLink />
       </div>
-      <Pages className="flex-col items-center text-4xl grow justify-center gap-8 text-dark" />
+      <Pages className="flex-col items-center text-4xl grow justify-center gap-8 text-light" />
       <SocialMedias className="pb-10 gap-4" />
-      <Copyright className="text-dark" />
+      <Copyright className="text-light" />
     </div>
   );
 }

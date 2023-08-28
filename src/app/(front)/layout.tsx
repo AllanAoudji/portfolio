@@ -20,7 +20,7 @@ const RootLayout = ({ children }: Props) => {
     >
       <FullScreenImage />
       <Header />
-      <main className="grow">{children}</main>
+      <main className="grow overflow-hidden">{children}</main>
       <Footer />
     </body>
   );
