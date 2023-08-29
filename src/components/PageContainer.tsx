@@ -17,10 +17,16 @@ function PageContainer({
 }: Props) {
   return (
     <>
-      {header}
       <DrawerContainer open={drawer === 'true' ? true : false} />
-      <div className={`mx-auto md:max-w-5xl ${className}`}>{children}</div>
-      {footer}
+      <div>
+        {header}
+        <section
+          className={`duration-300 px-6 mx-auto transition-all sm:px-12 sm:pt-4 md:max-w-5xl ${className}`}
+        >
+          {children}
+        </section>
+        {footer}
+      </div>
     </>
   );
 }

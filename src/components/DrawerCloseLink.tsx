@@ -15,7 +15,7 @@ function DrawerCloseLink({ className = '' }: Props) {
     <Link href={{ pathname }} scroll={false} replace={true}>
       <Image
         className={`h-10 w-auto ${className}`}
-        src="/cross-dark.png"
+        src="/cross-light.png"
         alt="cross dark"
         width="33"
         height="33"

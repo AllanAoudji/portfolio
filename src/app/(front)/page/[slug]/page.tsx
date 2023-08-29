@@ -24,7 +24,7 @@ export default async function Page({
   return (
     <>
       <DrawerContainer open={drawer === 'true' ? true : false} />
-      <div className="px-6 md:max-w-5xl mx-auto">
+      <div className="px-6 sm:max-w-5xl mx-auto">
         <Title className="text-5xl pt-28 pb-14">{page.name}</Title>
         {page.body && <RichPortableText value={page.body} />}
       </div>

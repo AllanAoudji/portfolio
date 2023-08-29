@@ -6,7 +6,12 @@ type Props = {
 
 function PageCard({ page }: Props) {
   return (
-    <Link href={`/page/${page.slug}`}>{page.name.toLocaleUpperCase()}</Link>
+    <Link
+      className="transition hover:opacity-60 duration-1000"
+      href={`/page/${page.slug}`}
+    >
+      {page.name.toLocaleUpperCase()}
+    </Link>
   );
 }
 

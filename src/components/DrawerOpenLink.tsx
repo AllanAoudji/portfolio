@@ -6,10 +6,11 @@ import { useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 
 type Props = {
+  className?: string;
   color?: 'dark' | 'light';
 };
 
-function DrawerOpenLink({ color = 'light' }: Props) {
+function DrawerOpenLink({ className = '', color = 'light' }: Props) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -25,11 +26,11 @@ function DrawerOpenLink({ color = 'light' }: Props) {
       href={{ query: { drawer: true } }}
       replace={true}
       scroll={false}
-      className="absolute top-0 left-0 mx-6 my-5"
+      className={`absolute top-0 left-0 mx-6 my-5 ${className}`}
     >
       <Image
         alt="hamburger menu"
-        className="h-9 w-auto"
+        className="h-8 w-auto"
         height="1943"
         src={`/hamburger-${color}.png`}
         width="1962"

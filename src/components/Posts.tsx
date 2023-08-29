@@ -8,14 +8,12 @@ import PostCard from './PostCard';
 
 type Props = {
   categorySlug?: string | null;
-  className?: string;
   posts: Post[];
   showHeaderText?: boolean;
 };
 
 function Posts({
   categorySlug = null,
-  className = '',
   posts: initialPost,
   showHeaderText = true,
 }: Props) {
@@ -90,12 +88,12 @@ function Posts({
   );
 
   return (
-    <section className={`grid grid-cols-1 gap-0 ${className}`}>
+    <>
       {showHeaderText && (
         <Image
           alt="home-text"
-          className="mb-48"
-          src="/hello-world-dark.png"
+          className="my-24 sm:col-span-2 sm:my-0 sm:pr-28"
+          src="/hello-world-light.png"
           width="2415"
           height="1564"
         />
@@ -103,7 +101,7 @@ function Posts({
       {posts.map((post) => (
         <PostCard post={post} key={post._id} />
       ))}
-    </section>
+    </>
   );
 }
 
