@@ -1,10 +1,13 @@
+import { Metadata } from 'next';
+import { Rubik } from 'next/font/google';
+
 import Footer from '@src/components/Footer';
 import FullScreenImage from '@src/components/FullScreenImage';
 import Header from '@src/components/Header';
-import { Rubik } from 'next/font/google';
 
-export const metadata = {
-  title: 'Default frontend NextJs/sanity v3 app',
+export const metadata: Metadata = {
+  title: 'Allan Aoudji | Web & graphic designer',
+  description: 'Home page',
 };
 
 type Props = {
@@ -16,7 +19,7 @@ const rubik = Rubik({ subsets: ['latin'] });
 const RootLayout = ({ children }: Props) => {
   return (
     <body
-      className={`flex flex-col min-h-screen overscroll-none relative bg-gradient-to-b from-dark from-50% to-darker ${rubik.className}`}
+      className={`bg-gradient-to-b flex flex-col from-dark from-50% min-h-screen overscroll-none relative to-darker ${rubik.className}`}
     >
       <FullScreenImage />
       <Header />

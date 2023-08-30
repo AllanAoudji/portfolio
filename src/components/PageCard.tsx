@@ -7,7 +7,7 @@ type Props = {
 function PageCard({ page }: Props) {
   return (
     <Link
-      className="transition hover:opacity-60 duration-1000"
+      className="duration-1000 transition hover:opacity-60"
       href={`/page/${page.slug}`}
     >
       {page.name.toLocaleUpperCase()}

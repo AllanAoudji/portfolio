@@ -6,10 +6,10 @@ type Props = {
 
 function SocialMediaCard({ socialMedia }: Props) {
   return (
-    <a href={socialMedia.url} key={socialMedia._id} target="_blank">
+    <a href={socialMedia.url} target="_blank">
       <Image
-        className="h-11 w-auto"
         alt={socialMedia.title}
+        className="h-11 w-auto"
         height={30}
         src={socialMedia.logo}
         width={30}

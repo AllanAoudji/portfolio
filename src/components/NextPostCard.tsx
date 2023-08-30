@@ -13,32 +13,25 @@ type LinkImageProps = {
 
 function LinkImage({ post }: LinkImageProps) {
   return (
-    <Link
-      className="block relative pb-7/12 bg-dark"
-      href={`/work/${post.slug}`}
-    >
-      {post.mainImage && post.mainImage.url && (
-        <Image
-          alt={post.mainImage.alt || post.title}
-          className="absolute top-0 h-full w-full object-cover brightness-50"
-          height={300}
-          src={post.mainImage.url}
-          width={200}
-        />
-      )}
-      <div className="absolute w-full h-full p-3">
-        <div className="h-full border-4 border-light p-2">
-          <div className="h-full border-4 border-light">
-            <h3 className="absolute z-10 top-[51%] left-[51%] transform -translate-x-1/2 -translate-y-1/2 w-full text-dark text-6xl text-center font-black">
-              Next post
-            </h3>
-            <h3 className="absolute z-10 top-[49%] left-[49%] transform -translate-x-1/2 -translate-y-1/2 w-full text-light text-6xl text-center font-black">
-              Next post
-            </h3>
-          </div>
-        </div>
-      </div>
-    </Link>
+    <div className="mx-auto overflow-hidden sm:max-w-lg">
+      <Link
+        className="block pb-7/12 relative w-full [&_h3]:hover:scale-105 [&_img]:hover:brightness-50 [&_img]:hover:scale-100"
+        href={`/work/${post.slug}`}
+      >
+        {post.mainImage && post.mainImage.url && (
+          <Image
+            alt={post.mainImage.alt || post.title}
+            className="absolute brightness-[.3] duration-1000 h-full object-cover scale-105 top-0 transition w-full"
+            height={300}
+            src={post.mainImage.url}
+            width={200}
+          />
+        )}
+        <h3 className="absolute duration-1000 font-black left-1/2 text-6xl text-center text-light top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full">
+          Next post
+        </h3>
+      </Link>
+    </div>
   );
 }
 

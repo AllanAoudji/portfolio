@@ -21,7 +21,7 @@ function ImageComponent(
   return (
     <LinkImage
       alt="image"
-      className="my-4"
+      className="my-4 first:mt-0 last:mb-0"
       height={imageProps.height}
       src={imageProps.src}
       width={imageProps.width}
@@ -32,22 +32,22 @@ function ImageComponent(
 const components: Partial<PortableTextReactComponents> = {
   block: {
     h1: ({ children }) => (
-      <h1 className="text-5xl font-bold text-light pt-4">{children}</h1>
+      <h1 className="font-black pt-4 text-5xl text-light">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-4xl font-bold text-light pt-3">{children}</h2>
+      <h2 className="font-black pt-3 text-4xl text-light">{children}</h2>
     ),
     h3: ({ children }) => (
-      <h3 className="text-3xl font-bold text-light pt-2">{children}</h3>
+      <h3 className="font-bold pt-2 text-3xl text-light">{children}</h3>
     ),
     h4: ({ children }) => (
-      <h4 className="text-2xl font-bold text-light pt-1">{children}</h4>
+      <h4 className="font-bold pt-1 text-2xl text-light">{children}</h4>
     ),
     h5: ({ children }) => (
-      <h5 className="text-xl font-bold text-light pt-1">{children}</h5>
+      <h5 className="font-bold pt-1 text-xl text-light">{children}</h5>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="text-light text-lg pl-2 border-l-4 border-light">
+      <blockquote className="border border-light  pl-2text-lg text-light">
         {children}
       </blockquote>
     ),
@@ -58,15 +58,15 @@ const components: Partial<PortableTextReactComponents> = {
       ) {
         return <p className="pt-8 first:pt-0 last:pt-0" />;
       }
-      return <span className="text-light text-lg">{children}</span>;
+      return <span className="text-lg text-light">{children}</span>;
     },
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="pl-10 text-light list-disc">{children}</ul>
+      <ul className="list-disc pl-10 text-light">{children}</ul>
     ),
     number: ({ children }) => (
-      <ol className="pl-10 text-light list-decimal">{children}</ol>
+      <ol className="list-decimal pl-10 text-light">{children}</ol>
     ),
   },
   types: {
@@ -74,15 +74,13 @@ const components: Partial<PortableTextReactComponents> = {
   },
   marks: {
     center: (props) => <div className="text-center">{props.children}</div>,
-    highlight: (props) => (
-      <span className="font-bold text-brand-primary">{props.children}</span>
-    ),
+    highlight: (props) => <span className="font-bold">{props.children}</span>,
     link: (props) => (
       <a
+        className="bg-light px-2 rounded-full text-dark"
         href={props?.value?.href}
-        target="_blank"
         rel="noopener"
-        className="px-2 rounded-full text-dark bg-light"
+        target="_blank"
       >
         {props.children}
       </a>

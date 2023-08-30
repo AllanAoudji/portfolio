@@ -4,8 +4,8 @@ type Props = {
   categories:
     | {
         name: string;
-        title: string;
         slug: string;
+        title: string;
       }[]
     | null;
   className?: string;
@@ -17,7 +17,7 @@ function Categories({ categories, className }: Props) {
   }
 
   return (
-    <div className={`flex flex-wrap gap-2 pt-4 border-light ${className}`}>
+    <div className={`border-light flex flex-wrap gap-2 pt-4 ${className}`}>
       {categories.map((category) => (
         <CategoryCard category={category} key={category.slug} />
       ))}

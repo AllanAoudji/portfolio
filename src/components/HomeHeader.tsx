@@ -3,19 +3,19 @@ import { BsArrowDown } from 'react-icons/bs';
 
 function HomeHeader() {
   return (
-    <div className="relative bg-darker h-screen overflow-hidden mb-48 flex justify-center items-end">
-      <div className="absolute w-screen h-screen flex items-center justify-center pointer-events-none">
+    <div className="bg-darker flex h-screen items-end justify-center mb-36 overflow-hidden relative transition-all sm:mb-52">
+      <div className="absolute flex h-screen items-center justify-center pointer-events-none w-screen">
         <Image
           alt="animated log"
-          className="w-full h-auto px-2 max-w-2xl"
+          className="h-auto max-w-5xl px-2 w-full sm:px-56"
           height="1080"
-          src="/Composition 1.gif"
+          src="/logo-light.gif"
           width="1920"
         />
       </div>
-      <div className={`pb-6 flex flex-col items-center gap-2`}>
-        <p className="text-light uppercase font-light">scroll</p>
-        <BsArrowDown size={40} className="fill-light" />
+      <div className={`flex flex-col gap-2 items-center pb-6`}>
+        <p className="font-light text-light uppercase">scroll</p>
+        <BsArrowDown className="fill-light" size={40} />
       </div>
     </div>
   );

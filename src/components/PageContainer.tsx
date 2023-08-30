@@ -1,11 +1,11 @@
 import DrawerContainer from './DrawerContainer';
 
 type Props = {
-  header?: JSX.Element;
-  footer?: JSX.Element;
   children?: React.ReactNode;
   className?: string;
   drawer: string | undefined;
+  footer?: JSX.Element;
+  header?: JSX.Element;
 };
 
 function PageContainer({
@@ -21,7 +21,7 @@ function PageContainer({
       <div>
         {header}
         <section
-          className={`duration-300 px-6 mx-auto transition-all sm:px-12 sm:pt-4 md:max-w-5xl ${className}`}
+          className={`duration-300 mx-auto px-6 transition-all sm:px-12 md:max-w-5xl ${className}`}
         >
           {children}
         </section>

@@ -1,6 +1,5 @@
 import Categories from './Categories';
 import LinkImage from './LinkImage';
-import Title from './Title';
 
 type Props = {
   post: Post;
@@ -8,19 +7,10 @@ type Props = {
 
 function WorkHeader({ post }: Props) {
   return (
-    <div className="px-6">
-      <Title className="pt-28 text-2xl">
-        {post.title + ' '}
-        {post.year && (
-          <span className="font-light">
-            {new Date(post.year).getFullYear()}
-          </span>
-        )}
-      </Title>
-
+    <div className="col-span-1 top-0 sm:col-span-3 sm:sticky">
       <LinkImage
         alt={post.title}
-        className="rounded-2xl w-full overflow-hidden mt-4"
+        className="overflow-hidden rounded-2xl w-full"
         height="1200"
         src={post.mainImage.url}
         width="1200"

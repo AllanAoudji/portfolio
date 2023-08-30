@@ -2,8 +2,10 @@
 
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import useScrollPosition from '@src/hooks/useScrollPosition';
+
 import { getPosts, getPostsByCategory } from '@/sanity/sanity.queries';
+import useScrollPosition from '@src/hooks/useScrollPosition';
+
 import PostCard from './PostCard';
 
 type Props = {
@@ -92,10 +94,10 @@ function Posts({
       {showHeaderText && (
         <Image
           alt="home-text"
-          className="my-24 sm:col-span-2 sm:my-0 sm:pr-28"
+          className="mb-36 sm:col-span-2 sm:mb-0 sm:pr-28"
+          height="1564"
           src="/hello-world-light.png"
           width="2415"
-          height="1564"
         />
       )}
       {posts.map((post) => (

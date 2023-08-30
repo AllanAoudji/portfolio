@@ -9,7 +9,7 @@ async function Pages({ className = '' }: Props) {
   const pages = await getPages();
 
   return (
-    <div className={`font-bold flex flex-wrap ${className}`}>
+    <div className={`flex flex-wrap font-bold ${className}`}>
       {pages.map((page) => (
         <PageCard key={page._id} page={page} />
       ))}

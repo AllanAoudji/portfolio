@@ -5,14 +5,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import {} from 'next/router';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 
 function FullScreenImage() {
-  const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const image = searchParams.get('image');
+  const image = useMemo(() => searchParams.get('image'), [searchParams]);
 
   const escFunction = useCallback(
     (event: KeyboardEvent) => {
@@ -36,17 +36,17 @@ function FullScreenImage() {
   }
 
   return (
-    <div className="fixed t-0 l-0 w-screen h-screen z-50 flex justify-center items-center">
+    <div className="fixed flex h-screen items-center justify-center t-0 w-screen z-50">
       <Link
         href={{ pathname }}
-        className="absolute w-full h-full bg-black opacity-95 top-0 -z-20"
+        className="absolute bg-black h-full opacity-95 top-0 w-full -z-20"
       />
       <Image
-        className="h-auto w-10/12 rounded-xl m-20"
-        src={image}
         alt="image"
-        width={1920}
+        className="h-auto m-20 rounded-xl w-10/12"
         height={1080}
+        src={image}
+        width={1920}
       />
     </div>
   );

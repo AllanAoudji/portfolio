@@ -1,8 +1,8 @@
-import SocialMedias from './SocialMedias';
-import Pages from './Pages';
+import Copyright from './Copyright';
 import DrawerCloseLink from './DrawerCloseLink';
 import Logo from './Logo';
-import Copyright from './Copyright';
+import Pages from './Pages';
+import SocialMedias from './SocialMedias';
 
 type Props = {
   open: boolean;
@@ -11,7 +11,7 @@ type Props = {
 function Drawer({ open }: Props) {
   return (
     <div
-      className={`absolute bg-pink-200 duration-700 ease-in-out flex flex-col h-full transition-all top-0 w-3/4 p-6 ${
+      className={`absolute bg-pink-200 duration-700 ease-in-out flex flex-col h-full p-6 top-0 transition-all w-3/4 ${
         open ? 'left-0 opacity-100' : '-left-full opacity-0'
       }`}
     >
@@ -19,8 +19,8 @@ function Drawer({ open }: Props) {
         <Logo className="h-10" />
         <DrawerCloseLink />
       </div>
-      <Pages className="flex-col items-center text-4xl grow justify-center gap-8 text-light" />
-      <SocialMedias className="pb-10 gap-4" />
+      <Pages className="flex-col gap-8 grow items-center justify-center text-4xl text-light" />
+      <SocialMedias className="gap-4 pb-10" />
       <Copyright className="text-light" />
     </div>
   );

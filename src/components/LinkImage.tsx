@@ -7,7 +7,7 @@ function LinkImage({ className, ...props }: ImageProps) {
       className={`block ${className}`}
       href={{ query: { image: props.src.toString() } }}
     >
-      <Image {...props} className="w-full h-auto" alt={props.alt} />
+      <Image {...props} alt={props.alt} className="h-auto w-full" />
     </Link>
   );
 }
