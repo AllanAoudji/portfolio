@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import { BsArrowDown } from 'react-icons/bs';
 
 function HomeHeader() {
