@@ -43,7 +43,7 @@ function FullScreenImage() {
       />
       <Image
         alt="image"
-        className="h-auto m-20 rounded-xl w-10/12"
+        className="h-auto m-20 rounded-xl w-10/12 sm:h-10/12 sm:w-auto"
         height={1080}
         src={image}
         width={1920}
