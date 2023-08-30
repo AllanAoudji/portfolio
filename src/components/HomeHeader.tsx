@@ -8,7 +8,7 @@ function HomeHeader() {
       <div className="absolute flex h-screen items-center justify-center pointer-events-none w-screen">
         <Image
           alt="animated log"
-          className="h-auto max-w-5xl px-2 transition-all w-full sm:px-20"
+          className="h-auto max-w-3xl px-2 transition-all w-full sm:px-20"
           src="https://res.cloudinary.com/dy85d5ei6/image/upload/v1693423217/logo-animated-light.gif"
           width="1024"
           height="675"

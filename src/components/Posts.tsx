@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+import helloWorld from '@/public/hello-world-light.png';
 import { getPosts, getPostsByCategory } from '@/sanity/sanity.queries';
 import useScrollPosition from '@src/hooks/useScrollPosition';
 
@@ -95,7 +96,7 @@ function Posts({
         <Image
           alt="home-text"
           className="mb-36 sm:col-span-2 sm:mb-0 sm:pr-28"
-          src="/hello-world-light.png"
+          src={helloWorld}
         />
       )}
       {posts.map((post) => (

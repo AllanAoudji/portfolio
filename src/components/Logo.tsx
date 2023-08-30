@@ -1,6 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import logoDark from '@/public/logo-fixe-dark.png';
+import logoLight from '@/public/logo-fixe-light.png';
+
 type Props = {
   className?: string;
   color?: 'dark' | 'light';
@@ -12,7 +15,7 @@ function Logo({ className, color = 'light' }: Props) {
       <Image
         alt="main logo"
         className={`w-auto ${className}`}
-        src={`/logo-fixe-${color}.png`}
+        src={color === 'dark' ? logoDark : logoLight}
       />
     </Link>
   );
