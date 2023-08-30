@@ -12,10 +12,7 @@ function Logo({ className, color = 'light' }: Props) {
       <Image
         alt="main logo"
         className={`w-auto ${className}`}
-        height="911"
-        priority={true}
         src={`/logo-fixe-${color}.png`}
-        width="1706"
       />
     </Link>
   );

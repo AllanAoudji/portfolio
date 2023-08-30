@@ -9,10 +9,7 @@ function HomeHeader() {
         <Image
           alt="animated log"
           className="h-auto max-w-5xl px-2 transition-all w-full sm:px-20"
-          height="1080"
           src="/logo-animated.gif"
-          unoptimized={true}
-          width="1920"
         />
       </div>
       <div className={`flex flex-col gap-2 items-center pb-6`}>

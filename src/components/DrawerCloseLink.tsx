@@ -16,9 +16,7 @@ function DrawerCloseLink({ className = '' }: Props) {
       <Image
         alt="cross dark"
         className={`h-10 w-auto ${className}`}
-        height="33"
         src="/cross-light.png"
-        width="33"
       />
     </Link>
   );

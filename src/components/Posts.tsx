@@ -95,9 +95,7 @@ function Posts({
         <Image
           alt="home-text"
           className="mb-36 sm:col-span-2 sm:mb-0 sm:pr-28"
-          height="1564"
           src="/hello-world-light.png"
-          width="2415"
         />
       )}
       {posts.map((post) => (
