@@ -9,7 +9,7 @@ function HomeHeader() {
           alt="animated log"
           className="h-auto max-w-5xl px-2 transition-all w-full sm:px-20"
           height="1080"
-          src="/logo-animated.gif"
+          src="/logo-animated-light.gif"
           width="1920"
         />
       </div>
