@@ -4,6 +4,7 @@ const nextConfig = {
     typedRoutes: true,
   },
   images: {
+    domains: ['res.cloudinary.com'],
     remotePatterns: [
       {
         protocol: 'https',
