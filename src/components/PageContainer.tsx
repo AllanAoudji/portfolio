@@ -1,4 +1,5 @@
 import DrawerContainer from './DrawerContainer';
+import ScrollUp from './ScrollUp';
 
 type Props = {
   children?: React.ReactNode;
@@ -27,6 +28,7 @@ function PageContainer({
         </section>
         {footer}
       </div>
+      <ScrollUp />
     </>
   );
 }
