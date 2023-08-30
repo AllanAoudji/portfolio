@@ -32,7 +32,7 @@ function DrawerOpenLink({ className = '', color = 'light' }: Props) {
         alt="hamburger menu"
         className="h-8 w-auto"
         height="1943"
-        src={`/hamburger-${color}.png`}
+        src={`/hamburger-menu-${color}.png`}
         width="1962"
       />
     </Link>
