@@ -1,5 +1,4 @@
 import DrawerContainer from './DrawerContainer';
-import ScrollUp from './ScrollUp';
 
 type Props = {
   children?: React.ReactNode;
@@ -17,17 +16,18 @@ function PageContainer({
   header,
 }: Props) {
   return (
-    <>
+    <div>
       <DrawerContainer open={drawer === 'true' ? true : false} />
-      {header}
-      <section
-        className={`duration-300 mx-auto px-6 transition-all sm:px-12 md:max-w-5xl ${className}`}
-      >
-        {children}
-      </section>
-      {footer}
-      <ScrollUp />
-    </>
+      <div>
+        {header}
+        <section
+          className={`duration-300 mx-auto px-6 transition-all sm:px-12 md:max-w-5xl ${className}`}
+        >
+          {children}
+        </section>
+        {footer}
+      </div>
+    </div>
   );
 }
 
