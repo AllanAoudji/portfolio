@@ -18,6 +18,8 @@ function ImageComponent(
 ) {
   const imageProps = useNextSanityImage(client, props.value);
 
+  if (!imageProps) return null;
+
   return (
     <LinkImage
       alt="image"

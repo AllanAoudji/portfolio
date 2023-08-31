@@ -18,7 +18,7 @@ const rubik = Rubik({ subsets: ['latin'] });
 const RootLayout = ({ children }: Props) => {
   return (
     <body
-      className={`bg-gradient-to-b flex flex-col from-dark from-50% min-h-screen overscroll-none relative to-darker ${rubik.className}`}
+      className={`bg-gradient-to-b flex flex-col from-dark from-50% min-h-screen relative to-darker ${rubik.className}`}
     >
       <FullScreenImage />
       <Header />

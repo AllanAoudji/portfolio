@@ -6,11 +6,7 @@ export const metadata: Metadata = {
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <html className="overflow-none" lang="fr">
-      {children}
-    </html>
-  );
+  return <html lang="fr">{children}</html>;
 };
 
 export default RootLayout;
