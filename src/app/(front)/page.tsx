@@ -11,6 +11,7 @@ type Props = {
 
 export default async function Home({ searchParams: { drawer } }: Props) {
   const posts = await getPosts('', '');
+  console.log(posts.map((post) => post.mainImage.metadata.dimensions));
 
   return (
     <>

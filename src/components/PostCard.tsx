@@ -13,10 +13,12 @@ function PostCard({ post }: Props) {
           <Link href={`/work/${post.slug}`}>
             <Image
               alt={post.mainImage.alt || post.title}
+              blurDataURL={post.mainImage.metadata.lqip}
               className="absolute duration-1000 h-full object-cover top-0 transition w-full hover:scale-150"
-              height={300}
+              height={post.mainImage.metadata.dimensions.height}
+              placeholder="blur"
               src={post.mainImage.url}
-              width={200}
+              width={post.mainImage.metadata.dimensions.width}
             />
           </Link>
         )}

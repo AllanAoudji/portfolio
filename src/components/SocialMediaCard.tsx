@@ -9,10 +9,12 @@ function SocialMediaCard({ socialMedia }: Props) {
     <a href={socialMedia.url} target="_blank">
       <Image
         alt={socialMedia.title}
+        blurDataURL={socialMedia.metadata.lqip}
         className="h-11 w-auto"
-        height={30}
+        height={socialMedia.metadata.dimensions.height}
+        placeholder="blur"
         src={socialMedia.logo}
-        width={30}
+        width={socialMedia.metadata.dimensions.width}
       />
     </a>
   );

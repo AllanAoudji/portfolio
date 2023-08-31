@@ -10,10 +10,12 @@ function WorkHeader({ post }: Props) {
     <div className="col-span-1 top-0 sm:col-span-3 sm:sticky">
       <LinkImage
         alt={post.title}
+        blurDataURL={post.mainImage.metadata.lqip}
         className="overflow-hidden rounded-2xl w-full"
-        height="1200"
+        height={post.mainImage.metadata.dimensions.height}
+        placeholder="blur"
         src={post.mainImage.url}
-        width="1200"
+        width={post.mainImage.metadata.dimensions.width}
       />
 
       <Categories categories={post.categories} />

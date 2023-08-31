@@ -63,7 +63,7 @@ const categoriesQuery = groq`*[_type == "category" && slug.current > $lastSlug] 
     },
     "mainImage" : {
       "alt": mainImage.alt,
-      "profilePicture": author->image.asset->url,
+      "metadata": mainImage.asset->metadata,
       "url": mainImage.asset->url,
     },
     "slug": slug.current,
@@ -115,7 +115,7 @@ const categoryQuery = groq`*[_type == "category" && slug.current == $slug][0] {
     "slug": slug.current,
     "mainImage" : {
       "alt": mainImage.alt,
-      "profilePicture": author->image.asset->url,
+      "metadata": mainImage.asset->metadata,
       "url": mainImage.asset->url,
     },
   },
@@ -183,6 +183,7 @@ const postsQuery = groq`*[
     title,
     "mainImage": {
       "alt": mainImage.alt,
+      "metadata": mainImage.asset->metadata,
       "url": mainImage.asset->url,
     },
     "slug": slug.current,
@@ -199,7 +200,7 @@ const postsQuery = groq`*[
   },
   "mainImage" : {
     "alt": mainImage.alt,
-    "profilePicture": author->image.asset->url,
+    "metadata": mainImage.asset->metadata,
     "url": mainImage.asset->url,
   },
   "slug": slug.current,
@@ -236,6 +237,7 @@ const postsByCategoryQuery = groq`*[
     title,
     "mainImage": {
       "alt": mainImage.alt,
+      "metadata": mainImage.asset->metadata,
       "url": mainImage.asset->url,
     },
     "slug": slug.current,
@@ -252,7 +254,7 @@ const postsByCategoryQuery = groq`*[
   },
   "mainImage" : {
       "alt": mainImage.alt,
-      "profilePicture": author->image.asset->url,
+      "metadata": mainImage.asset->metadata,
       "url": mainImage.asset->url,
   },
 }`;
@@ -285,6 +287,7 @@ const postQuery = groq`*[_type == "post" && slug.current == $slug && publishedAt
       title,
       "mainImage": {
         "alt": mainImage.alt,
+        "metadata": mainImage.asset->metadata,
         "url": mainImage.asset->url,
       },
       "slug": slug.current,
@@ -301,8 +304,9 @@ const postQuery = groq`*[_type == "post" && slug.current == $slug && publishedAt
         title,
     },
     "mainImage" : {
-        "alt": mainImage.alt,
-        "url": mainImage.asset->url,
+      "alt": mainImage.alt,
+      "metadata": mainImage.asset->metadata,
+      "url": mainImage.asset->url,
     },
 }`;
 export const getPost = (slug: string) => {
@@ -314,6 +318,7 @@ const firstPostQuery = groq`*[_type == "post" && publishedAt <= $now] | order(pu
   "slug": slug.current,
   "mainImage": {
     "alt": mainImage.alt,
+    "metadata": mainImage.asset->metadata,
     "url": mainImage.asset->url,
   },
   title
@@ -331,9 +336,10 @@ const socialsQuery = groq`*[_type == "social"] | order(slug.current) [0...10] {
     _id,
     _createdAt,
     title,
+    url,
+    "metadata": logo.asset->metadata,
     "slug": slug.current,
     "logo": logo.asset->url,
-    url,
 }`;
 export const getSocials = () => getCachedClient()<Social[]>(socialsQuery);
 
@@ -342,9 +348,10 @@ const socialQuery = groq`*[type == "social" && slug.current == $slug][0] {
     _id,
     _createdAt,
     title,
+    url,
+    "metadata": logo.asset->metadata,
     "slug": slug.current,
     "logo": logo.asset->url,
-    url,
 }`;
 export const getSocial = (slug: string) =>
   getCachedClient()<Social>(socialQuery, { slug });

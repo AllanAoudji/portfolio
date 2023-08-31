@@ -21,10 +21,12 @@ function LinkImage({ post }: LinkImageProps) {
         {post.mainImage && post.mainImage.url && (
           <Image
             alt={post.mainImage.alt || post.title}
+            blurDataURL={post.mainImage.metadata.lqip}
             className="absolute brightness-[.3] duration-1000 h-full object-cover scale-105 top-0 transition w-full"
-            height={300}
+            height={post.mainImage.metadata.dimensions.height}
+            placeholder="blur"
             src={post.mainImage.url}
-            width={200}
+            width={post.mainImage.metadata.dimensions.width}
           />
         )}
         <h3 className="absolute duration-1000 font-black left-1/2 text-6xl text-center text-light top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 w-full">

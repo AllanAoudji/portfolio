@@ -19,15 +19,13 @@ function PageContainer({
   return (
     <>
       <DrawerContainer open={drawer === 'true' ? true : false} />
-      <div>
-        {header}
-        <section
-          className={`duration-300 mx-auto px-6 transition-all sm:px-12 md:max-w-5xl ${className}`}
-        >
-          {children}
-        </section>
-        {footer}
-      </div>
+      {header}
+      <section
+        className={`duration-300 mx-auto px-6 transition-all sm:px-12 md:max-w-5xl ${className}`}
+      >
+        {children}
+      </section>
+      {footer}
       <ScrollUp />
     </>
   );

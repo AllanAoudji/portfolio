@@ -20,9 +20,25 @@ declare global {
     title: string;
   };
 
+  type ImageMetadata = {
+    hasAlpha: boolean;
+    lqip: string;
+    dimensions: {
+      aspectRatio: number;
+      height: number;
+      width: number;
+      _type: string;
+    };
+    isOpaque: boolean;
+    blurHash: string;
+    _type: string;
+    palette: string;
+  };
+
   type NextPost = {
     mainImage: {
       alt: string;
+      metadata: ImageMetadata;
       url: string;
     };
     slug: string;
@@ -55,6 +71,7 @@ declare global {
       | null;
     mainImage: {
       url: string;
+      metadata: ImageMetadata;
       alt: string;
     };
     nextPost: NextPost | null;
@@ -68,6 +85,7 @@ declare global {
     _id: string;
     _createdAt: Date;
     logo: string;
+    metadata: ImageMetadata;
     title: string;
     slug: string;
     url: string;
