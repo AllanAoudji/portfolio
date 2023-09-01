@@ -49,10 +49,9 @@ export default defineType({
     defineField({
       name: 'year',
       title: 'Year',
-      type: 'date',
-      options: {
-        dateFormat: 'YYYY',
-      },
+      type: 'number',
+      validation: (Rule) =>
+        Rule.max(new Date().getFullYear()).min(1900).integer().required(),
     }),
     defineField({
       name: 'categories',

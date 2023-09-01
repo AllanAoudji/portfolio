@@ -16,13 +16,15 @@ type Props = {
   showHeaderText?: boolean;
 };
 
+const NUM_OF_POST_BY_BATCH = 15;
+
 function Posts({
   categorySlug = null,
   posts: initialPost,
   showCategories = true,
   showHeaderText = true,
 }: Props) {
-  const [lastPublishedAt, setLastPublishedAt] = useState<string>('');
+  const [lastYear, setLastYear] = useState<number>(Number.MAX_SAFE_INTEGER);
   const [lastSlug, setLastSlug] = useState<string | null>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [posts, setPosts] = useState<Post[]>(initialPost);
@@ -40,27 +42,23 @@ function Posts({
     let result: Post[];
 
     if (categorySlug) {
-      result = await getPostsByCategory(
-        lastPublishedAt,
-        lastSlug,
-        categorySlug
-      );
+      result = await getPostsByCategory(lastYear, lastSlug, categorySlug);
     } else {
-      result = await getPosts(lastPublishedAt, lastSlug);
+      result = await getPosts(lastYear, lastSlug);
     }
 
     if (!mountedRef.current) return;
 
     setPosts((prevState) => [...prevState, ...result]);
-    if (result.length > 20) {
-      setLastSlug(result[result.length - 1].slug);
-      setLastPublishedAt(result[result.length - 1].publishedAt);
-    } else {
+    if (result.length < NUM_OF_POST_BY_BATCH) {
       setLastSlug(null);
+    } else {
+      setLastSlug(result[result.length - 1].slug);
+      setLastYear(result[result.length - 1].year);
     }
 
     setLoading(false);
-  }, [categorySlug, lastPublishedAt, lastSlug]);
+  }, [categorySlug, lastYear, lastSlug]);
 
   // initial post fetching
   // only trigger on mount
@@ -68,11 +66,11 @@ function Posts({
     if (!initaleFetchingRef.current) {
       return;
     }
-    if (posts.length > 20) {
-      setLastSlug(posts[posts.length - 1].slug);
-      setLastPublishedAt(posts[posts.length - 1].publishedAt);
-    } else {
+    if (posts.length < NUM_OF_POST_BY_BATCH) {
       setLastSlug(null);
+    } else {
+      setLastSlug(posts[posts.length - 1].slug);
+      setLastYear(posts[posts.length - 1].year);
     }
     initaleFetchingRef.current = false;
   }, [posts]);
@@ -102,12 +100,7 @@ function Posts({
         />
       )}
       {posts.map((post) => (
-        <PostCard
-          showHeaderText={showHeaderText}
-          showCategories={showCategories}
-          post={post}
-          key={post._id}
-        />
+        <PostCard showCategories={showCategories} post={post} key={post._id} />
       ))}
     </>
   );

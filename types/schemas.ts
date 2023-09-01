@@ -78,7 +78,7 @@ declare global {
     publishedAt: string;
     slug: string;
     title: string;
-    year?: string;
+    year: number;
   };
 
   type Social = {

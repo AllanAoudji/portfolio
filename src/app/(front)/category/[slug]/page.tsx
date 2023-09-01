@@ -14,7 +14,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const category = await getCategory(params.slug, '', '');
+  const category = await getCategory(params.slug, Number.MAX_SAFE_INTEGER, '');
 
   if (!category) {
     return {};
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 async function Categorypage({ params, searchParams: { drawer } }: Props) {
-  const slug = await getCategory(params.slug, '', '');
+  const slug = await getCategory(params.slug, Number.MAX_SAFE_INTEGER, '');
 
   if (!slug || slug.posts.length == 0) {
     notFound();

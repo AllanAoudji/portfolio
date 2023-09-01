@@ -5,15 +5,9 @@ import Link from 'next/link';
 type Props = {
   post: Post;
   showCategories?: boolean;
-  showHeaderText?: boolean;
 };
 
-function PostCard({
-  post,
-  showCategories = true,
-  showHeaderText = true,
-}: Props) {
-  console.log(showHeaderText);
+function PostCard({ post, showCategories = true }: Props) {
   return (
     <Link
       className="flex flex-col col-span-1 [&_img]:hover:scale-150"
@@ -51,7 +45,7 @@ function PostCard({
       )}
       <div className=" pt-3 grow">
         <h3 className={`font-bold text-light text-3xl ${bodoniModa.className}`}>
-          {post.title}
+          {post.title} <span className="font-light text-2xl">{post.year}</span>
         </h3>
       </div>
     </Link>
