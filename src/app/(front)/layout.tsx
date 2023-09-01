@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
 import { Rubik } from 'next/font/google';
 import Footer from '@src/components/Footer';
@@ -24,6 +25,7 @@ const RootLayout = ({ children }: Props) => {
       <Header />
       <main className="grow">{children}</main>
       <Footer />
+      <Analytics />
     </body>
   );
 };
