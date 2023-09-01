@@ -7,7 +7,7 @@ type Props = {
 
 function WorkTitle({ title, year }: Props) {
   return (
-    <div className="gap-8 grid grid-cols-1 mx-auto pt-36 px-6 transition-all sm:pt-48 sm:px-12 md:grid-cols-5 md:max-w-5xl">
+    <div className="gap-8 grid grid-cols-1 mx-auto pt-36 px-6 transition-all sm:pt-48 sm:px-12 md:grid-cols-5 md:max-w-6xl">
       <Title className="md:col-span-4 lg:col-span-3">
         {title + ' '}
         {year && (

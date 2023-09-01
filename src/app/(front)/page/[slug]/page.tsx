@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 import PageContainer from '@src/components/PageContainer';
 import RichPortableText from '@src/components/RichPortableText';
@@ -33,7 +33,7 @@ export default async function Page({
   const page = await getPage(params.slug);
 
   if (page == null) {
-    redirect('/');
+    notFound();
   }
 
   return (

@@ -15,7 +15,7 @@ export default async function Home({ searchParams: { drawer } }: Props) {
   return (
     <>
       <PageContainer
-        className="gap-3 grid grid-cols-1 items-end sm:grid-cols-3"
+        className="gap-x-8 gap-y-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
         drawer={drawer}
         header={<HomeHeader />}
       >

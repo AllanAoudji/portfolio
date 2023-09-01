@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 import { getCategory } from '@/sanity/sanity.queries';
 import PageContainer from '@src/components/PageContainer';
@@ -30,15 +30,15 @@ async function Categorypage({ params, searchParams: { drawer } }: Props) {
   const slug = await getCategory(params.slug, '', '');
 
   if (!slug || slug.posts.length == 0) {
-    redirect('/');
+    notFound();
   }
 
   return (
     <PageContainer
-      className="gap-3 grid grid-cols-1 items-end transition-all sm:grid-cols-3"
+      className="gap-x-6 gap-y-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
       drawer={drawer}
       header={
-        <Title className="duration-300 mx-auto pb-16 pt-36 px-6 transition-all uppercase sm:pb-24 sm:pt-48 sm:px-12 md:max-w-5xl">
+        <Title className="duration-300 mx-auto pb-16 pt-36 px-6 transition-all uppercase sm:pb-24 sm:pt-48 sm:px-12 md:max-w-6xl">
           {slug.title}
         </Title>
       }
@@ -46,6 +46,7 @@ async function Categorypage({ params, searchParams: { drawer } }: Props) {
       <Posts
         categorySlug={params.slug}
         posts={slug.posts}
+        showCategories={false}
         showHeaderText={false}
       />
     </PageContainer>

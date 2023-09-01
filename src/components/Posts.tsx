@@ -12,12 +12,14 @@ import PostCard from './PostCard';
 type Props = {
   categorySlug?: string | null;
   posts: Post[];
+  showCategories?: boolean;
   showHeaderText?: boolean;
 };
 
 function Posts({
   categorySlug = null,
   posts: initialPost,
+  showCategories = true,
   showHeaderText = true,
 }: Props) {
   const [lastPublishedAt, setLastPublishedAt] = useState<string>('');
@@ -95,12 +97,17 @@ function Posts({
       {showHeaderText && (
         <Image
           alt="home-text"
-          className="mb-36 sm:col-span-2 sm:mb-0 sm:pr-28"
+          className="self-end mb-36 sm:col-span-2 lg:mb-0 sm:pr-28 transition-all"
           src={helloWorld}
         />
       )}
       {posts.map((post) => (
-        <PostCard post={post} key={post._id} />
+        <PostCard
+          showHeaderText={showHeaderText}
+          showCategories={showCategories}
+          post={post}
+          key={post._id}
+        />
       ))}
     </>
   );

@@ -21,7 +21,7 @@ function PageContainer({
       <div>
         {header}
         <section
-          className={`duration-300 mx-auto px-6 transition-all sm:px-12 md:max-w-5xl ${className}`}
+          className={`duration-300 mx-auto px-6 transition-all sm:px-12 md:max-w-6xl ${className}`}
         >
           {children}
         </section>

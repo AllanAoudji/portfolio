@@ -1,4 +1,4 @@
-import { redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 import NextPostCard from '@src/components/NextPostCard';
 import PageContainer from '@src/components/PageContainer';
@@ -32,7 +32,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
   const post = await getPost(params.slug);
 
   if (post == null) {
-    redirect('/');
+    notFound();
   }
 
   return (
