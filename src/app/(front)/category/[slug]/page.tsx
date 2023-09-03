@@ -5,6 +5,7 @@ import PageContainer from '@src/components/PageContainer';
 import Posts from '@src/components/Posts';
 import Title from '@src/components/Title';
 import { Metadata } from 'next';
+import Wrapper from '@src/components/Wrapper';
 
 type Props = {
   params: { slug: string };
@@ -38,9 +39,9 @@ async function Categorypage({ params, searchParams: { drawer } }: Props) {
       className="gap-x-6 gap-y-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
       drawer={drawer}
       header={
-        <Title className="duration-300 mx-auto pb-16 pt-36 px-6 transition-all uppercase sm:pb-24 sm:pt-48 sm:px-12 md:max-w-6xl">
-          {slug.title}
-        </Title>
+        <Wrapper className="pb-16 uppercase sm:pb-24">
+          <Title>{slug.title}</Title>
+        </Wrapper>
       }
     >
       <Posts
