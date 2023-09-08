@@ -17,7 +17,7 @@ function FullScreenImage() {
   const escFunction = useCallback(
     (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        router.replace(pathname as Route);
+        router.replace(pathname as Route, { scroll: false });
       }
     },
     [router, pathname]
@@ -40,6 +40,8 @@ function FullScreenImage() {
       <Link
         href={{ pathname }}
         className="absolute bg-black h-full opacity-95 top-0 w-full -z-20"
+        replace={true}
+        scroll={false}
       />
       <Image
         alt="image"
