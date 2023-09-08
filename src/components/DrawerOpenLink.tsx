@@ -26,7 +26,7 @@ function DrawerOpenLink({ className = '', color = 'light' }: Props) {
 
   return (
     <Link
-      className={`absolute left-0 mx-6 my-5 top-0 ${className}`}
+      className={className}
       href={{ query: { drawer: true } }}
       replace={true}
       scroll={false}
