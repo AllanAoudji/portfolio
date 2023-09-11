@@ -1,24 +1,19 @@
 import Image from 'next/image';
-
-import { BsArrowDown } from 'react-icons/bs';
+import Wrapper from './Wrapper';
 
 function HomeHeader() {
   return (
-    <div className="bg-darker flex h-screen items-end justify-center mb-36 overflow-hidden relative transition-all sm:mb-52">
-      <div className="absolute flex h-screen items-center justify-center pointer-events-none w-screen">
+    <Wrapper background="darker">
+      <div className="grid grid-cols-1 h-screen mb-36 transition-all min-h-[calc(105vw+7rem)] md:min-h-[calc(57.5vw+12rem)] md:grid-cols-12 lg:min-h-[calc(40vw+10rem)]">
         <Image
           alt="animated log"
-          className="h-auto max-w-3xl px-2 transition-all w-full sm:px-20"
+          className="my-auto md:col-span-10 md:col-start-2 lg:col-span-8 lg:col-start-3"
           src="https://res.cloudinary.com/dy85d5ei6/image/upload/v1693423217/logo-animated-light.gif"
           width="1024"
           height="675"
         />
       </div>
-      <div className={`flex flex-col gap-2 items-center pb-6`}>
-        <p className="font-light text-light uppercase">scroll</p>
-        <BsArrowDown className="fill-light" size={40} />
-      </div>
-    </div>
+    </Wrapper>
   );
 }
 
