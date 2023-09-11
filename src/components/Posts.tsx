@@ -95,7 +95,7 @@ function Posts({
       {showHeaderText && (
         <Image
           alt="home-text"
-          className="self-end mb-36 sm:col-span-2 lg:mb-0 sm:pr-28 transition-all"
+          className="mb-36 sm:col-span-2 md:pr-10 md:mb-0 transition-all"
           src={helloWorld}
         />
       )}
