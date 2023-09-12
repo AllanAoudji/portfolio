@@ -9,9 +9,9 @@ function HomeHeader() {
           <Image
             alt="animated log"
             className="my-auto md:col-span-10 md:col-start-2 lg:col-span-6 lg:col-start-4"
+            height="675"
             src="https://res.cloudinary.com/dy85d5ei6/image/upload/v1693423217/logo-animated-light.gif"
             width="1024"
-            height="675"
           />
         </div>
       </Wrapper>
