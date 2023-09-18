@@ -38,7 +38,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
 
   return (
     <PageContainer
-      className="grid pt-8 relative sm:gap-8 sm:grid-cols-7"
+      className="grid pt-8 relative md:gap-8 md:grid-cols-7"
       drawer={drawer}
       footer={
         <NextPostCard className="pt-52 sm:pt-72" nextPost={post.nextPost} />
@@ -53,7 +53,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
       }
     >
       <WorkHeader post={post} />
-      <div className="col-span-1 pt-8 px-8 sm:col-span-4 sm:pt-0 sm:px-0">
+      <div className="col-span-1 pt-8 px-8 md:col-span-4 md:pt-0 md:px-0">
         {post.body && <RichPortableText value={post.body} />}
       </div>
     </PageContainer>
