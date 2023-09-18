@@ -53,7 +53,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
       }
     >
       <WorkHeader post={post} />
-      <div className="col-span-1 pt-8 px-8 md:px-16 lg:col-span-4 lg:pt-0 lg:px-0">
+      <div className="col-span-1 pt-8 md:px-16 lg:col-span-4 lg:pt-0 lg:px-0">
         {post.body && <RichPortableText value={post.body} />}
       </div>
     </PageContainer>
