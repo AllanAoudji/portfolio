@@ -22,7 +22,7 @@ function DrawerOpenLink({ className = '', color = 'light' }: Props) {
       document.body.style.overflow !== 'hidden'
     ) {
       document.body.style.overflow = 'hidden';
-    } else if (document.body.style.overflow !== 'hidden') {
+    } else if (document.body.style.overflow === 'hidden') {
       document.body.style.overflow = '';
     }
   }, [searchParams]);
