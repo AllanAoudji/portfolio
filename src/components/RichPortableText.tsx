@@ -60,7 +60,11 @@ const components: Partial<PortableTextReactComponents> = {
       ) {
         return <p className="pt-8 first:pt-0 last:pt-0" />;
       }
-      return <span className="text-lg text-light">{children}</span>;
+      return (
+        <div>
+          <span className="text-lg text-light">{children}</span>
+        </div>
+      );
     },
   },
   list: {
