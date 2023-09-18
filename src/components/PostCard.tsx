@@ -10,7 +10,7 @@ type Props = {
 function PostCard({ post, showCategories = true }: Props) {
   return (
     <Link
-      className="flex flex-col col-span-1 [&_img]:hover:scale-105"
+      className="flex flex-col col-span-1 [&_img]:hover:scale-110"
       href={`/work/${post.slug}`}
     >
       {post.mainImage && post.mainImage.url && (
