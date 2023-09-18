@@ -43,7 +43,7 @@ function PostCard({ post, showCategories = true }: Props) {
           )}
         </div>
       )}
-      <div className=" pt-3 grow">
+      <div className=" pt-1 grow">
         <h3 className={`font-bold text-light text-3xl ${bodoniModa.className}`}>
           {post.title} <span className="font-light text-2xl">{post.year}</span>
         </h3>
