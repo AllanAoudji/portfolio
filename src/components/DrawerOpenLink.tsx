@@ -17,9 +17,12 @@ function DrawerOpenLink({ className = '', color = 'light' }: Props) {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    if (searchParams.get('image') || searchParams.get('drawer') == 'true') {
+    if (
+      (searchParams.get('image') || searchParams.get('drawer') == 'true') &&
+      document.body.style.overflow !== 'hidden'
+    ) {
       document.body.style.overflow = 'hidden';
-    } else {
+    } else if (document.body.style.overflow !== 'hidden') {
       document.body.style.overflow = '';
     }
   }, [searchParams]);
