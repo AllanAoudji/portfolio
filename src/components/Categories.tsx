@@ -17,9 +17,12 @@ function Categories({ categories, className }: Props) {
   }
 
   return (
-    <div className={`border-light flex flex-wrap gap-2 pt-4 ${className}`}>
-      {categories.map((category) => (
-        <CategoryCard category={category} key={category.slug} />
+    <div className={className}>
+      {categories.map((category, index) => (
+        <>
+          <CategoryCard category={category} key={category.slug} />
+          {index !== categories.length - 1 && <span>{', '}</span>}
+        </>
       ))}
     </div>
   );

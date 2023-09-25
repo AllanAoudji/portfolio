@@ -7,18 +7,18 @@ type Props = {
 
 function WorkHeader({ post }: Props) {
   return (
-    <div className="col-span-1 top-0 lg:col-span-3">
+    <div className="col-span-6 top-0 sm:col-span-12 md:col-span-5">
       <LinkImage
         alt={post.title}
         blurDataURL={post.mainImage.metadata.lqip}
-        className="overflow-hidden rounded-2xl w-full"
+        className="w-full"
         height={post.mainImage.metadata.dimensions.height}
         placeholder="blur"
         src={post.mainImage.url}
         width={post.mainImage.metadata.dimensions.width}
       />
 
-      <Categories categories={post.categories} />
+      <Categories categories={post.categories} className="py-4 font-bold" />
     </div>
   );
 }

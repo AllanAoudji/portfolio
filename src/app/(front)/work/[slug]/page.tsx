@@ -8,6 +8,7 @@ import { getPost } from '@/sanity/sanity.queries';
 import { Metadata } from 'next';
 import Wrapper from '@src/components/Wrapper';
 import Title from '@src/components/Title';
+import Grid from '@src/components/Grid';
 
 type Props = {
   params: { slug: string };
@@ -38,24 +39,32 @@ async function Post({ params, searchParams: { drawer } }: Props) {
 
   return (
     <PageContainer
-      className="grid pt-8 relative md:gap-8 lg:grid-cols-7"
       drawer={drawer}
-      footer={
-        <NextPostCard className="pt-52 sm:pt-72" nextPost={post.nextPost} />
-      }
       header={
-        <Wrapper className="gap-8 grid grid-cols-1 md:grid-cols-5">
-          <Title className="md:col-span-4 lg:col-span-3">
-            {post.title + ' '}
-            <span className="font-light text-3xl sm:text-4xl">{post.year}</span>
-          </Title>
+        <Wrapper>
+          <Grid className="border-b-2 border-dark pb-8 mb-8">
+            <Title className="col-span-6 sm:col-span-12 lg:col-span-10">
+              {post.title + ' '}
+              <span className="font-light text-3xl sm:text-4xl">
+                {post.year}
+              </span>
+            </Title>
+          </Grid>
         </Wrapper>
       }
     >
-      <WorkHeader post={post} />
-      <div className="col-span-1 pt-8 md:px-16 lg:col-span-4 lg:pt-0 lg:px-0">
-        {post.body && <RichPortableText value={post.body} />}
-      </div>
+      <Grid className="gap-y-16">
+        <WorkHeader post={post} />
+        <div className="grid grid-cols-12 col-span-6 sm:col-span-12 md:col-span-7">
+          <div className="col-span-10 col-start-2 md:col-span-12">
+            {post.body && <RichPortableText value={post.body} />}
+          </div>
+          <NextPostCard
+            className="col-span-12 pt-20"
+            nextPost={post.nextPost}
+          />
+        </div>
+      </Grid>
     </PageContainer>
   );
 }

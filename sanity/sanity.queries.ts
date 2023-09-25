@@ -49,7 +49,15 @@ const categoriesQuery = groq`*[_type == "category" && slug.current > $lastSlug] 
   ] | order(year desc, slug.current) [0...15]{
     _id,
     _createdAt,
-    body,
+    body[]{
+      ...,
+      _type == "image" => {
+        ...,
+        "url": asset->url,
+        "metadata": asset->metadata,
+        alt,
+      }
+    },
     publishedAt,
     title,
     year,
@@ -101,7 +109,15 @@ const categoryQuery = groq`*[_type == "category" && slug.current == $slug][0] {
   ] | order(year desc, slug.current) [0...15]{
     _id,
     _createdAt,
-    body,
+    body[]{
+      ...,
+      _type == "image" => {
+        ...,
+        "url": asset->url,
+        "metadata": asset->metadata,
+        alt,
+      }
+    },
     publishedAt,
     title,
     year,
@@ -144,7 +160,15 @@ export const getCategory = (
 const pagesQuery = groq`*[_type == "page"] | order(order asc, name asc) [0...15] {
   _id,
   _createdAt,
-  body,
+  body[]{
+    ...,
+    _type == "image" => {
+      ...,
+      "url": asset->url,
+      "metadata": asset->metadata,
+      alt,
+    }
+  },
   name,
   "slug": slug.current,
 }`;
@@ -154,7 +178,15 @@ export const getPages = () => getCachedClient()<Page[]>(pagesQuery);
 const pageQuery = groq`*[_type == "page" && slug.current == $slug][0] {
   _id,
   _createdAt,
-  body,
+  body[]{
+    ...,
+    _type == "image" => {
+      ...,
+      "url": asset->url,
+      "metadata": asset->metadata,
+      alt,
+    }
+  },
   name,
   "slug": slug.current,
 }`;
@@ -173,7 +205,15 @@ const postsQuery = groq`*[
 ] | order(year desc, slug.current asc) [0...15] {
   _id,
   _createdAt,
-  body,
+  body[]{
+    ...,
+    _type == "image" => {
+      ...,
+      "url": asset->url,
+      "metadata": asset->metadata,
+      alt,
+    }
+  },
   publishedAt,
   title,
   year,
@@ -226,7 +266,15 @@ const postsByCategoryQuery = groq`*[
 ] | order(year deas, slug.current) [0...15] {
   _id,
   _createdAt,
-  body,
+  body[]{
+    ...,
+    _type == "image" => {
+      ...,
+      "url": asset->url,
+      "metadata": asset->metadata,
+      alt,
+    }
+  },
   title,
   year,
   publishedAt,
@@ -278,7 +326,15 @@ export const getPostsByCategory = (
 const postQuery = groq`*[_type == "post" && slug.current == $slug && publishedAt <= $now][0] { 
     _id,
     _createdAt,
-    body,
+    body[]{
+      ...,
+      _type == "image" => {
+        ...,
+        "url": asset->url,
+        "metadata": asset->metadata,
+        alt,
+      }
+    },
     title,
     publishedAt,
     "nextPost": *[

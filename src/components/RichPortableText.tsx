@@ -1,55 +1,30 @@
-import { client } from '@/sanity/lib/client';
-import {
-  PortableText,
-  PortableTextReactComponents,
-  PortableTextTypeComponentProps,
-} from '@portabletext/react';
-import { SanityImageSource } from '@sanity/image-url/lib/types/types';
-import { useNextSanityImage } from 'next-sanity-image';
+import { PortableText, PortableTextReactComponents } from '@portabletext/react';
 import { PortableTextBlock } from 'sanity';
-import LinkImage from './LinkImage';
+import PortableImage from './PortableImage';
 
 type Props = {
   value: PortableTextBlock[];
 };
 
-function ImageComponent(
-  props: PortableTextTypeComponentProps<SanityImageSource>
-) {
-  const imageProps = useNextSanityImage(client, props.value);
-
-  if (!imageProps) return null;
-
-  return (
-    <LinkImage
-      alt="image"
-      className="my-4 first:mt-0 last:mb-0"
-      height={imageProps.height}
-      src={imageProps.src}
-      width={imageProps.width}
-    />
-  );
-}
-
 const components: Partial<PortableTextReactComponents> = {
   block: {
     h1: ({ children }) => (
-      <h1 className="font-black pt-4 text-5xl text-light">{children}</h1>
+      <h1 className="font-black pt-4 text-5xl text-darker">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="font-black pt-3 text-4xl text-light">{children}</h2>
+      <h2 className="font-black pt-3 text-4xl text-darker">{children}</h2>
     ),
     h3: ({ children }) => (
-      <h3 className="font-bold pt-2 text-3xl text-light">{children}</h3>
+      <h3 className="font-bold pt-2 text-3xl text-darker">{children}</h3>
     ),
     h4: ({ children }) => (
-      <h4 className="font-bold pt-1 text-2xl text-light">{children}</h4>
+      <h4 className="font-bold pt-1 text-2xl text-darker">{children}</h4>
     ),
     h5: ({ children }) => (
-      <h5 className="font-bold pt-1 text-xl text-light">{children}</h5>
+      <h5 className="font-bold pt-1 text-xl text-darker">{children}</h5>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border border-light  pl-2text-lg text-light">
+      <blockquote className="border border-darker pl-2text-lg text-darker">
         {children}
       </blockquote>
     ),
@@ -62,28 +37,28 @@ const components: Partial<PortableTextReactComponents> = {
       }
       return (
         <div>
-          <span className="text-lg text-light">{children}</span>
+          <span className="text-lg text-dark">{children}</span>
         </div>
       );
     },
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc pl-10 text-light">{children}</ul>
+      <ul className="list-disc pl-10 text-dark">{children}</ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal pl-10 text-light">{children}</ol>
+      <ol className="list-decimal pl-10 text-dark">{children}</ol>
     ),
   },
   types: {
-    image: ImageComponent,
+    image: PortableImage,
   },
   marks: {
     center: (props) => <div className="text-center">{props.children}</div>,
     highlight: (props) => <span className="font-bold">{props.children}</span>,
     link: (props) => (
       <a
-        className="bg-light px-2 rounded-full text-dark"
+        className="text-dark border-b-2 border-darker"
         href={props?.value?.href}
         rel="noopener"
         target="_blank"

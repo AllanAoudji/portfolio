@@ -8,7 +8,7 @@ type Props = {
 function Title({ children, className = '' }: Props) {
   return (
     <h1
-      className={`font-black pt-36 text-4xl text-light transition-all sm:pt-48 sm:text-5xl ${className} ${bodoniModa.className}`}
+      className={`font-black pt-36 text-5xl text-dark transition-all uppercase sm:pt-48 ${className} ${bodoniModa.className}`}
     >
       {children}
     </h1>
