@@ -9,19 +9,19 @@ type Props = {
 const components: Partial<PortableTextReactComponents> = {
   block: {
     h1: ({ children }) => (
-      <h1 className="font-black pt-4 text-5xl text-darker">{children}</h1>
+      <h1 className="font-black pt-4 text-5xl text-dark">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="font-black pt-3 text-4xl text-darker">{children}</h2>
+      <h2 className="font-black pt-3 text-4xl text-dark">{children}</h2>
     ),
     h3: ({ children }) => (
-      <h3 className="font-bold pt-2 text-3xl text-darker">{children}</h3>
+      <h3 className="font-bold pt-2 text-3xl text-dark">{children}</h3>
     ),
     h4: ({ children }) => (
-      <h4 className="font-bold pt-1 text-2xl text-darker">{children}</h4>
+      <h4 className="font-bold pt-1 text-2xl text-dark">{children}</h4>
     ),
     h5: ({ children }) => (
-      <h5 className="font-bold pt-1 text-xl text-darker">{children}</h5>
+      <h5 className="font-bold pt-1 text-xl text-dark">{children}</h5>
     ),
     blockquote: ({ children }) => (
       <blockquote className="border border-darker pl-2text-lg text-darker">
