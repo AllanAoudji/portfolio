@@ -11,7 +11,6 @@ type Props = {
   categorySlug?: string | null;
   posts: Post[];
   showCategories?: boolean;
-  showHeaderText?: boolean;
 };
 
 const NUM_OF_POST_BY_BATCH = 15;

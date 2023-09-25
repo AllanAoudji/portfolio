@@ -6,6 +6,7 @@ import Posts from '@src/components/Posts';
 import Title from '@src/components/Title';
 import { Metadata } from 'next';
 import Wrapper from '@src/components/Wrapper';
+import Grid from '@src/components/Grid';
 
 type Props = {
   params: { slug: string };
@@ -36,7 +37,6 @@ async function Categorypage({ params, searchParams: { drawer } }: Props) {
 
   return (
     <PageContainer
-      className="gap-x-6 gap-y-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
       drawer={drawer}
       header={
         <Wrapper className="pb-16 uppercase sm:pb-24">
@@ -44,12 +44,13 @@ async function Categorypage({ params, searchParams: { drawer } }: Props) {
         </Wrapper>
       }
     >
-      <Posts
-        categorySlug={params.slug}
-        posts={slug.posts}
-        showCategories={false}
-        showHeaderText={false}
-      />
+      <Grid className="gap-y-14 sm:gap-y-14 lg:gap-y-14">
+        <Posts
+          categorySlug={params.slug}
+          posts={slug.posts}
+          showCategories={false}
+        />
+      </Grid>
     </PageContainer>
   );
 }
