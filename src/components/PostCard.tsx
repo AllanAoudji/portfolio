@@ -10,7 +10,7 @@ type Props = {
 function PostCard({ post, showCategories = true }: Props) {
   return (
     <Link
-      className="flex flex-col col-span-1 [&_img]:hover:scale-110"
+      className="col-span-6 flex flex-col md:col-span-4 [&_img]:hover:scale-110 lg:col-span-3"
       href={`/work/${post.slug}`}
     >
       {post.mainImage && post.mainImage.url && (
@@ -26,26 +26,26 @@ function PostCard({ post, showCategories = true }: Props) {
           />
         </div>
       )}
-      {post.categories && showCategories && (
-        <div className="flex gap-2 py-3 flex-wrap">
-          {post.categories.slice(0, 2).map((category) => (
-            <div
-              className="flex items-center text-dark bg-light rounded-full px-2 text-sm"
-              key={category.slug}
-            >
+      {!!post.categories && showCategories && (
+        <div className="text-dark text-sm border-b-2 border-darker py-2">
+          {post.categories.slice(0, 2).map((category, index) => (
+            <span key={category.slug}>
               {category.name}
-            </div>
+              {!!post.categories && index === post.categories.length - 1
+                ? ''
+                : ', '}
+            </span>
           ))}
           {post.categories.length > 2 && (
-            <div className="text-dark bg-light rounded-full px-2 text-sm flex items-center">
-              +{post.categories.length - 2}
-            </div>
+            <span>+{post.categories.length - 2}</span>
           )}
         </div>
       )}
-      <div className=" pt-1 grow">
-        <h3 className={`font-bold text-light text-3xl ${bodoniModa.className}`}>
-          {post.title} <span className="font-light text-2xl">{post.year}</span>
+      <div className="pt-3 grow">
+        <h3
+          className={`font-bold text-dark text-3xl sm:text-2xl ${bodoniModa.className}`}
+        >
+          {post.title} <span className="text-xl">{post.year}</span>
         </h3>
       </div>
     </Link>

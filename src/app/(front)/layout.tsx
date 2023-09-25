@@ -17,14 +17,12 @@ type Props = {
 const RootLayout = ({ children }: Props) => {
   return (
     <body
-      className={`bg-pink-200 flex flex-col min-h-screen relative ${rubik.className}`}
+      className={`bg-light flex flex-col min-h-screen relative ${rubik.className}`}
     >
       <FullScreenImage />
-      <div className="bg-gradient-to-b from-dark from-50% to-darker">
-        <Header />
-        <main className="grow">{children}</main>
-        <Footer />
-      </div>
+      <Header />
+      <main className="grow">{children}</main>
+      <Footer />
       <Analytics />
     </body>
   );

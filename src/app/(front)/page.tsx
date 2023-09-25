@@ -2,6 +2,11 @@ import HomeHeader from '@src/components/HomeHeader';
 import PageContainer from '@src/components/PageContainer';
 import Posts from '@src/components/Posts';
 import { getPosts } from '@/sanity/sanity.queries';
+import Grid from '@src/components/Grid';
+import Image from 'next/image';
+
+import helloWorld from '@/public/hello-world-light.png';
+import Wrapper from '@src/components/Wrapper';
 
 type Props = {
   searchParams: {
@@ -15,11 +20,25 @@ export default async function Home({ searchParams: { drawer } }: Props) {
   return (
     <>
       <PageContainer
-        className="gap-x-6 gap-y-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
         drawer={drawer}
-        header={<HomeHeader />}
+        header={
+          <>
+            <HomeHeader />{' '}
+            <Wrapper backgroundColor="dark">
+              <Grid>
+                <Image
+                  alt="home-text"
+                  className="col-span-6 py-20 sm:col-span-10 sm:col-start-2 lg:col-span-6 lg:col-start-4"
+                  src={helloWorld}
+                />
+              </Grid>
+            </Wrapper>
+          </>
+        }
       >
-        <Posts posts={posts} />
+        <Grid className="pt-36 gap-y-14 sm:gap-y-14 lg:gap-y-14">
+          <Posts posts={posts} />
+        </Grid>
       </PageContainer>
     </>
   );
