@@ -24,11 +24,11 @@ export default async function Home({ searchParams: { drawer } }: Props) {
         header={
           <>
             <HomeHeader />{' '}
-            <Wrapper backgroundColor="dark">
+            <Wrapper backgroundColor="dark" border="top" borderColor="light">
               <Grid>
                 <Image
                   alt="home-text"
-                  className="col-span-6 py-20 sm:col-span-10 sm:col-start-2 lg:col-span-6 lg:col-start-4"
+                  className="col-span-6 py-28 sm:py-32 sm:col-span-10 sm:col-start-2"
                   src={helloWorld}
                 />
               </Grid>
