@@ -12,7 +12,7 @@ function WorkHeader({ post }: Props) {
       <LinkImage
         alt={post.title}
         blurDataURL={post.mainImage.metadata.lqip}
-        className="w-full"
+        className="w-full border-4 border-darker"
         height={post.mainImage.metadata.dimensions.height}
         placeholder="blur"
         src={post.mainImage.url}
