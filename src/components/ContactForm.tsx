@@ -310,7 +310,6 @@ function ContactForm() {
           });
         }
       } catch (e) {
-        console.log(e);
         setResponseMessage({
           message:
             "oups, quelque chose s'est mal passé, essayez de me renvoyer votre message dans quelques minutes",

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import Joi from 'joi';
-// import nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer';
 
 type Body = {
   firstName: string;
@@ -40,6 +40,39 @@ export async function POST(req: Request) {
   }
 
   if (errors.length) {
+    return NextResponse.json(
+      {
+        errors,
+      },
+      {
+        status: 400,
+      }
+    );
+  }
+
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.GOOGLE_MAIL_USER,
+      pass: process.env.GOOGLE_MAIL_PASSWORD,
+    },
+  });
+
+  try {
+    await transporter.sendMail({
+      from: process.env.GOOGLE_MAIL_USER,
+      to: process.env.GOOGLE_MAIL_USER,
+      replyTo: result.value.email,
+      subject: `Contact depuis le formulaire du portfolio de ${result.value.firstName} ${result.value.lastName}`,
+      html: `
+        <p>Nom : ${result.value.lastName}</p>
+        <p>Prénom : ${result.value.firstName}</p>
+        <p>Email : ${result.value.email}</p>
+        <p>Companie/Société : ${result.value.companie ?? 'non renseigné'}</p>
+        <p>Message : ${result.value.message}</p>
+      `,
+    });
+  } catch (error) {
     return NextResponse.json(
       {
         errors,

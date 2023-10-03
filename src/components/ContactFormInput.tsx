@@ -29,7 +29,6 @@ function ContactFormInput({
   type = 'text',
   value,
 }: Props) {
-  console.log({ error, firstTouch, label });
   return (
     <div className="col-span-6 flex flex-col">
       <label htmlFor={htmlFor} className="mt-8 text-dark uppercase">
