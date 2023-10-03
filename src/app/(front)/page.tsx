@@ -5,6 +5,7 @@ import { getPosts } from '@/sanity/sanity.queries';
 import Grid from '@src/components/Grid';
 import Prestations from '@src/components/Prestations';
 import Title from '@src/components/Title';
+import ContactForm from '@src/components/ContactForm';
 
 type Props = {
   searchParams: {
@@ -30,6 +31,7 @@ export default async function Home({ searchParams: { drawer } }: Props) {
         <Grid className="pt-36 gap-y-14 sm:gap-y-14 lg:gap-y-14">
           <Posts posts={posts} />
         </Grid>
+        <ContactForm />
       </PageContainer>
     </>
   );
