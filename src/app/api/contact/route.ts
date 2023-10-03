@@ -3,6 +3,7 @@ import Joi from 'joi';
 import nodemailer from 'nodemailer';
 
 type Body = {
+  captcha?: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -29,7 +30,7 @@ const schema = Joi.object({
 });
 
 export async function POST(req: Request) {
-  const body: Body = await req.json();
+  const { captcha, ...body }: Body = await req.json();
   const result = schema.validate(body, { abortEarly: false });
   const errors: string[] = [];
 
@@ -47,6 +48,15 @@ export async function POST(req: Request) {
       {
         status: 400,
       }
+    );
+  }
+
+  if (!captcha) {
+    return NextResponse.json(
+      {
+        error: 'Unproccesable request, please provide the required fields',
+      },
+      { status: 422 }
     );
   }
 

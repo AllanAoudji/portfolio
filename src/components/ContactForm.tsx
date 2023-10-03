@@ -5,8 +5,11 @@ import {
   FocusEventHandler,
   FormEventHandler,
   useCallback,
+  useRef,
   useState,
 } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
+
 import Title from './Title';
 import ContactFormInput from './ContactFormInput';
 import ContactFormTextArea from './ContactFormTextArea';
@@ -54,6 +57,8 @@ function ContactForm() {
     message: string;
     state: ResponseMessageState;
   }>({ message: '', state: 'PENDING' });
+
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const resetResponseMessage = useCallback(() => {
     if (responseMessage.state === 'PENDING' && responseMessage.message === '') {
@@ -223,6 +228,22 @@ function ContactForm() {
   const handleSubmit: FormEventHandler<HTMLFormElement> = useCallback(
     async (e) => {
       e.preventDefault();
+
+      if (recaptchaRef.current) {
+        recaptchaRef.current.execute();
+      }
+    },
+    []
+  );
+
+  const onReCAPTCHAChange = useCallback(
+    async (captchaCode: string | null) => {
+      // If the reCAPTCHA code is null or undefined indicating that
+      // the reCAPTCHA was expired then return early
+      if (!captchaCode) {
+        return;
+      }
+
       resetResponseMessage();
       validateFirstName();
       validateLastName();
@@ -245,6 +266,7 @@ function ContactForm() {
         email: String(email.value).trim(),
         company: String(company.value).trim(),
         message: String(message.value).trim(),
+        captcha: captchaCode,
       };
 
       setLoading(true);
@@ -347,6 +369,12 @@ function ContactForm() {
     <>
       <Title className="text-center">Contact</Title>
       <form onSubmit={handleSubmit} className="max-w-2xl mx-auto pt-14">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          size="invisible"
+          sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
+          onChange={onReCAPTCHAChange}
+        />
         <div className="gap-2 grid grid-cols-12">
           <ContactFormInput
             error={firstName.error}
@@ -428,6 +456,25 @@ function ContactForm() {
               </span>
             </div>
           )}
+        <div className="col-span-6 pt-8 text-center text-dark text-sm sm:col-span-10 sm:col-start-2">
+          This site is protected by reCAPTCHA and the Google{' '}
+          <a
+            className="italic"
+            href="https://policies.google.com/privacy"
+            target="_blank"
+          >
+            Privacy Policy
+          </a>{' '}
+          and{' '}
+          <a
+            className="italic"
+            href="https://policies.google.com/terms"
+            target="_blank"
+          >
+            Terms of Service
+          </a>{' '}
+          apply.
+        </div>
       </form>
     </>
   );
