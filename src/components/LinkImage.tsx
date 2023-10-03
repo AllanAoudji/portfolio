@@ -4,7 +4,7 @@ import Link from 'next/link';
 function LinkImage({ className, ...props }: ImageProps) {
   return (
     <Link
-      className={`block bg-pink-200 ${className}`}
+      className={`block ${className}`}
       href={{ query: { image: props.src.toString() } }}
       replace={true}
       scroll={false}
