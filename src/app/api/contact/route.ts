@@ -60,6 +60,35 @@ export async function POST(req: Request) {
     );
   }
 
+  try {
+    const response = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captcha}`,
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8',
+        },
+        method: 'POST',
+      }
+    );
+    const captchaValidation = await response.json();
+
+    if (!captchaValidation.success) {
+      return NextResponse.json(
+        {
+          error: 'Unproccesable request, Invalid captcha code',
+        },
+        { status: 422 }
+      );
+    }
+  } catch (err) {
+    return NextResponse.json(
+      {
+        error: 'Unproccesable request, Invalid captcha code',
+      },
+      { status: 422 }
+    );
+  }
+
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
