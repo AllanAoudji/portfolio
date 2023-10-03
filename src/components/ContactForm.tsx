@@ -373,7 +373,10 @@ function ContactForm() {
   return (
     <>
       <Title className="text-center">Contact</Title>
-      <form onSubmit={handleSubmit} className="max-w-2xl mx-auto pt-14">
+      <form
+        onSubmit={handleSubmit}
+        className="px-4 max-w-xl mx-auto pt-14 sm:px-0"
+      >
         <ReCAPTCHA
           ref={recaptchaRef}
           size="invisible"
@@ -436,7 +439,7 @@ function ContactForm() {
             showCharLimit={true}
           />
         </div>
-        <div className="flex justify-center pt-10">
+        <div className="flex justify-end pt-10">
           <button className="uppercase border-4 border-dark text-dark py-2 px-8 font-bold text-lg hover:text-light hover:bg-dark transition duration-500">
             {loading ? 'loading' : 'envoyer'}
           </button>
@@ -461,7 +464,7 @@ function ContactForm() {
               </span>
             </div>
           )}
-        <div className="col-span-6 pt-8 text-center text-dark text-sm sm:col-span-10 sm:col-start-2">
+        <div className="col-span-6 pt-8 text-right text-dark text-sm sm:col-span-10 sm:col-start-2">
           This site is protected by reCAPTCHA and the Google{' '}
           <a
             className="italic"

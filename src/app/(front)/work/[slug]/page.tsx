@@ -49,7 +49,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
         </Wrapper>
       }
     >
-      <Grid className="gap-y-6">
+      <Grid className="gap-y-12 sm:gap-y-12">
         <WorkHeader post={post} />
         <div className="col-span-6 sm:col-span-12 md:col-span-6 lg:col-span-7">
           {!!post.gallery &&

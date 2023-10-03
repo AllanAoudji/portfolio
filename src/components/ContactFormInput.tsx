@@ -31,7 +31,7 @@ function ContactFormInput({
 }: Props) {
   return (
     <div className="col-span-12 sm:col-span-6 flex flex-col">
-      <label htmlFor={htmlFor} className="mt-8 text-dark uppercase">
+      <label htmlFor={htmlFor} className="mt-4 text-dark uppercase sm:mt-8">
         {label} : {required && <span className="text-red-500">*</span>}
       </label>
       <input

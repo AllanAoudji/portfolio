@@ -29,7 +29,7 @@ function ContactFormTextArea({
 }: Props) {
   return (
     <div className="flex flex-col col-span-12">
-      <label htmlFor={htmlFor} className="text-dark mt-8 uppercase">
+      <label htmlFor={htmlFor} className="mt-4 text-dark uppercase sm:mt-8">
         {label}
         {required && <span className="text-red-500"> *</span>}
       </label>
