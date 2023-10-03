@@ -7,7 +7,6 @@ import {
   useCallback,
   useState,
 } from 'react';
-import Grid from './Grid';
 import Title from './Title';
 import ContactFormInput from './ContactFormInput';
 import ContactFormTextArea from './ContactFormTextArea';
@@ -347,91 +346,89 @@ function ContactForm() {
   return (
     <>
       <Title className="text-center">Contact</Title>
-      <Grid>
-        <form onSubmit={handleSubmit} className="col-span-8 col-start-3 pt-20">
-          <Grid>
-            <ContactFormInput
-              error={firstName.error}
-              firstTouch={firstName.firstTouch}
-              handleBlur={handleFirstNameBlur}
-              handleChange={handleFirstNameChange}
-              htmlFor="prenom"
-              label="votre prénom"
-              value={firstName.value}
-              maxLength={30}
-              required={true}
-            />
-            <ContactFormInput
-              error={lastName.error}
-              firstTouch={lastName.firstTouch}
-              handleBlur={handleLastNameBlur}
-              handleChange={handleLastNameChange}
-              htmlFor="nom"
-              label="votre nom"
-              value={lastName.value}
-              maxLength={30}
-              required={true}
-            />
-            <ContactFormInput
-              error={email.error}
-              firstTouch={email.firstTouch}
-              handleBlur={handleEmailBlur}
-              handleChange={handleEmailChange}
-              htmlFor="email"
-              label="votre email"
-              value={email.value}
-              required={true}
-              type="email"
-            />
-            <ContactFormInput
-              error={company.error}
-              firstTouch={company.firstTouch}
-              handleBlur={handleCompanyBlur}
-              handleChange={handleCompanyChange}
-              htmlFor="company"
-              label="société/entreprise"
-              maxLength={50}
-              value={company.value}
-            />
-            <ContactFormTextArea
-              error={message.error}
-              firstTouch={message.firstTouch}
-              htmlFor="message"
-              label="laissez-moi un message"
-              onBlur={handleMessageBlur}
-              onChange={handleMessageChange}
-              value={message.value}
-              required={true}
-              showCharLimit={true}
-            />
-          </Grid>
-          <div className="flex justify-center pt-10">
-            <button className="uppercase border-4 border-dark text-dark py-2 px-8 font-bold text-lg hover:text-light hover:bg-dark transition duration-500">
-              {loading ? 'loading' : 'envoyer'}
-            </button>
-          </div>
-          {responseMessage.state !== 'PENDING' &&
-            responseMessage.message.length && (
-              <div
-                className={`text-center uppercase border-4 py-6 px-10 mt-10 text-xl ${
+      <form onSubmit={handleSubmit} className="max-w-2xl mx-auto pt-14">
+        <div className="gap-2 grid grid-cols-12">
+          <ContactFormInput
+            error={firstName.error}
+            firstTouch={firstName.firstTouch}
+            handleBlur={handleFirstNameBlur}
+            handleChange={handleFirstNameChange}
+            htmlFor="prenom"
+            label="votre prénom"
+            value={firstName.value}
+            maxLength={30}
+            required={true}
+          />
+          <ContactFormInput
+            error={lastName.error}
+            firstTouch={lastName.firstTouch}
+            handleBlur={handleLastNameBlur}
+            handleChange={handleLastNameChange}
+            htmlFor="nom"
+            label="votre nom"
+            value={lastName.value}
+            maxLength={30}
+            required={true}
+          />
+          <ContactFormInput
+            error={email.error}
+            firstTouch={email.firstTouch}
+            handleBlur={handleEmailBlur}
+            handleChange={handleEmailChange}
+            htmlFor="email"
+            label="votre email"
+            value={email.value}
+            required={true}
+            type="email"
+          />
+          <ContactFormInput
+            error={company.error}
+            firstTouch={company.firstTouch}
+            handleBlur={handleCompanyBlur}
+            handleChange={handleCompanyChange}
+            htmlFor="company"
+            label="société/entreprise"
+            maxLength={50}
+            value={company.value}
+          />
+          <ContactFormTextArea
+            error={message.error}
+            firstTouch={message.firstTouch}
+            htmlFor="message"
+            label="laissez-moi un message"
+            onBlur={handleMessageBlur}
+            onChange={handleMessageChange}
+            value={message.value}
+            required={true}
+            showCharLimit={true}
+          />
+        </div>
+        <div className="flex justify-center pt-10">
+          <button className="uppercase border-4 border-dark text-dark py-2 px-8 font-bold text-lg hover:text-light hover:bg-dark transition duration-500">
+            {loading ? 'loading' : 'envoyer'}
+          </button>
+        </div>
+        {responseMessage.state !== 'PENDING' &&
+          responseMessage.message.length && (
+            <div
+              className={`text-center uppercase border-4 py-6 px-10 mt-10 text-xl ${
+                responseMessage.state === 'ERROR'
+                  ? 'border-red-500'
+                  : 'border-green-500'
+              }`}
+            >
+              <span
+                className={`${
                   responseMessage.state === 'ERROR'
-                    ? 'border-red-500'
-                    : 'border-green-500'
+                    ? 'text-red-500'
+                    : 'text-green-500'
                 }`}
               >
-                <span
-                  className={`${
-                    responseMessage.state === 'ERROR'
-                      ? 'text-red-500'
-                      : 'text-green-500'
-                  }`}
-                >
-                  {responseMessage.message}
-                </span>
-              </div>
-            )}
-        </form>
-      </Grid>
+                {responseMessage.message}
+              </span>
+            </div>
+          )}
+      </form>
     </>
   );
 }
