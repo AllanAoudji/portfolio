@@ -439,7 +439,7 @@ function ContactForm() {
             showCharLimit={true}
           />
         </div>
-        <div className="flex justify-end pt-10">
+        <div className="flex pt-6">
           <button className="uppercase border-4 border-dark text-dark py-2 px-8 font-bold text-lg hover:text-light hover:bg-dark transition duration-500">
             {loading ? 'loading' : 'envoyer'}
           </button>
@@ -464,7 +464,7 @@ function ContactForm() {
               </span>
             </div>
           )}
-        <div className="col-span-6 pt-8 text-right text-dark text-sm sm:col-span-10 sm:col-start-2">
+        <div className="col-span-6 pt-8 text-dark text-center text-sm sm:col-span-10 sm:col-start-2">
           This site is protected by reCAPTCHA and the Google{' '}
           <a
             className="italic"
