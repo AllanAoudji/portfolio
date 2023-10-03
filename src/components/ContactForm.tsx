@@ -5,6 +5,7 @@ import {
   FocusEventHandler,
   FormEventHandler,
   useCallback,
+  useEffect,
   useRef,
   useState,
 } from 'react';
@@ -364,6 +365,10 @@ function ContactForm() {
       validateMessage,
     ]
   );
+
+  useEffect(() => {
+    process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  }, []);
 
   return (
     <>
