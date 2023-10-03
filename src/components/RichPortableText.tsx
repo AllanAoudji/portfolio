@@ -24,7 +24,7 @@ const components: Partial<PortableTextReactComponents> = {
       <h5 className="font-bold pt-1 text-xl text-dark">{children}</h5>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border border-darker pl-2text-lg text-darker">
+      <blockquote className="border border-darker pl-2 text-darker">
         {children}
       </blockquote>
     ),
@@ -33,11 +33,11 @@ const components: Partial<PortableTextReactComponents> = {
         children === null ||
         (Array.isArray(children) && children.length === 1 && children[0] === '')
       ) {
-        return <p className="pt-8 first:pt-0 last:pt-0" />;
+        return <p className="pt-4" />;
       }
       return (
         <div>
-          <span className="text-lg text-dark">{children}</span>
+          <span className="text-dark">{children}</span>
         </div>
       );
     },

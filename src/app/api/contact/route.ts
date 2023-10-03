@@ -46,7 +46,7 @@ export async function POST(req: Request) {
         errors,
       },
       {
-        status: 400,
+        status: 422,
       }
     );
   }
@@ -88,7 +88,7 @@ export async function POST(req: Request) {
         error: 'something went wrong',
       },
       {
-        status: 400,
+        status: 422,
       }
     );
   }

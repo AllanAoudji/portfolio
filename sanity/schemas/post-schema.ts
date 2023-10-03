@@ -68,7 +68,32 @@ export default defineType({
     defineField({
       name: 'body',
       title: 'Body',
-      type: 'blockContent',
+      type: 'blockContentPage',
+    }),
+    defineField({
+      name: 'gallery',
+      title: 'Galerie',
+      type: 'array',
+      of: [
+        {
+          name: 'image',
+          type: 'image',
+          title: 'Image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+            },
+          ],
+        },
+      ],
+      options: {
+        layout: 'grid',
+      },
     }),
   ],
   preview: {

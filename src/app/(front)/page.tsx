@@ -6,6 +6,7 @@ import Grid from '@src/components/Grid';
 import Prestations from '@src/components/Prestations';
 import Title from '@src/components/Title';
 import ContactForm from '@src/components/ContactForm';
+import Wrapper from '@src/components/Wrapper';
 
 type Props = {
   searchParams: {
@@ -26,12 +27,16 @@ export default async function Home({ searchParams: { drawer } }: Props) {
             <Prestations />
           </>
         }
+        footer={
+          <Wrapper>
+            <ContactForm />
+          </Wrapper>
+        }
       >
         <Title className="text-center">Portfolio</Title>
         <Grid className="pt-36 gap-y-14 sm:gap-y-14 lg:gap-y-14">
           <Posts posts={posts} />
         </Grid>
-        <ContactForm />
       </PageContainer>
     </>
   );

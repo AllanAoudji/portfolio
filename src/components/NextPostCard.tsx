@@ -1,5 +1,4 @@
 import { getFirstPost } from '@/sanity/sanity.queries';
-import { bodoniModa } from '@src/utils/fonts';
 import Link from 'next/link';
 
 type Props = {
@@ -14,16 +13,11 @@ type LinkImageProps = {
 function LinkImage({ post }: LinkImageProps) {
   return (
     <Link
-      className="block text-dark border-t-2 border-dark pt-20 text-3xl"
+      className="block text-dark text-xl text-right uppercase pt-6"
       href={`/work/${post.slug}`}
     >
       <div>
-        <span>Prochain post :</span>
-      </div>
-      <div>
-        <span className={`${bodoniModa.className} uppercase font-bold`}>
-          {post.title}
-        </span>
+        <span>Projet suivant {'>'}</span>
       </div>
     </Link>
   );

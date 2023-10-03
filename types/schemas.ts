@@ -61,6 +61,11 @@ declare global {
       slug: string;
       profilePicture: string | null;
     };
+    gallery: {
+      url: string;
+      metadata: ImageMetadata;
+      alt: string;
+    }[];
     body: PortableTextBlock[] | null;
     categories:
       | {
