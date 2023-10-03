@@ -259,7 +259,10 @@ function ContactForm() {
           body: JSON.stringify(data),
         });
 
-        const { errors } = (await response.json()) as { errors?: string[] };
+        const { errors, error } = (await response.json()) as {
+          errors?: string[];
+          error?: string;
+        };
 
         if (!!errors && errors.length) {
           if (errors.includes('firstName')) {
@@ -297,6 +300,12 @@ function ContactForm() {
               firstTouch: true,
             }));
           }
+        } else if (!!error) {
+          setResponseMessage({
+            message:
+              "oups, quelque chose s'est mal passé, essayez de me renvoyer votre message dans quelques minutes",
+            state: 'ERROR',
+          });
         } else {
           setFirstName({ error: false, firstTouch: false, value: '' });
           setLastName({ error: false, firstTouch: false, value: '' });
