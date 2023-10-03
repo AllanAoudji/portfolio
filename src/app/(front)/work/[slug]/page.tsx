@@ -41,15 +41,12 @@ async function Post({ params, searchParams: { drawer } }: Props) {
     <PageContainer
       drawer={drawer}
       header={
-        <Wrapper className="pb-24">
-          <Title>
-            {post.title + ' '}
-            <span className="font-light text-4xl">{post.year}</span>
-          </Title>
+        <Wrapper className="pb-4">
+          <Title>{post.title}</Title>
         </Wrapper>
       }
     >
-      <Grid className="gap-y-16 sm:gap-y-12">
+      <Grid className="gap-y-20 sm:gap-y-12">
         <WorkHeader post={post} />
         <div className="col-span-6 sm:col-span-12 md:col-span-6 lg:col-span-7">
           {!!post.gallery &&
