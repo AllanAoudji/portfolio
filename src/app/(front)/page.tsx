@@ -29,7 +29,7 @@ export default async function Home({ searchParams: { drawer } }: Props) {
         }
         footer={
           <Wrapper>
-            <ContactForm />
+            <ContactForm title="contact" className="pt-14 mx-auto" />
           </Wrapper>
         }
       >

@@ -16,6 +16,10 @@ import ContactFormInput from './ContactFormInput';
 import ContactFormTextArea from './ContactFormTextArea';
 
 type ResponseMessageState = 'PENDING' | 'SUCCESS' | 'ERROR';
+type Props = {
+  className?: string;
+  title?: string;
+};
 
 const validateEmailRegex = (email: string) => {
   return String(email)
@@ -25,7 +29,7 @@ const validateEmailRegex = (email: string) => {
     );
 };
 
-function ContactForm() {
+function ContactForm({ className = '', title }: Props) {
   const [firstName, setFirstName] = useState<{
     error: boolean;
     firstTouch: boolean;
@@ -372,10 +376,10 @@ function ContactForm() {
 
   return (
     <>
-      <Title className="text-center">Contact</Title>
+      {!!title && <Title className="text-center">{title}</Title>}
       <form
+        className={`px-4 max-w-xl sm:px-0 ${className}`}
         onSubmit={handleSubmit}
-        className="px-4 max-w-xl mx-auto pt-14 sm:px-0"
       >
         <ReCAPTCHA
           ref={recaptchaRef}

@@ -6,6 +6,7 @@ import Title from '@src/components/Title';
 import { getPage } from '@/sanity/sanity.queries';
 import { Metadata } from 'next';
 import Wrapper from '@src/components/Wrapper';
+import ContactForm from '@src/components/ContactForm';
 
 type Props = {
   params: { slug: string };
@@ -46,6 +47,7 @@ export default async function Page({
         </Wrapper>
       }
     >
+      {page.slug === 'contact' && <ContactForm className="pb-48" />}
       {page.body && <RichPortableText value={page.body} />}
     </PageContainer>
   );
