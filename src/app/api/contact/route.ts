@@ -102,7 +102,7 @@ export async function POST(req: Request) {
       from: process.env.GOOGLE_MAIL_USER,
       to: process.env.GOOGLE_MAIL_USER,
       replyTo: result.value.email,
-      subject: `Contact depuis le formulaire du portfolio de ${result.value.firstName} ${result.value.lastName}`,
+      subject: `Contact de ${result.value.firstName} ${result.value.lastName} depuis le formulaire du portfolio`,
       html: `
         <p>Nom : ${result.value.lastName}</p>
         <p>Prénom : ${result.value.firstName}</p>

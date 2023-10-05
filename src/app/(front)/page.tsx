@@ -29,7 +29,10 @@ export default async function Home({ searchParams: { drawer } }: Props) {
         }
         footer={
           <Wrapper>
-            <ContactForm title="contact" className="pt-14 mx-auto" />
+            <ContactForm
+              title="contact"
+              className="px-16 py-16 rounded-xl mx-auto bg-light border-4 border-darker mt-10"
+            />
           </Wrapper>
         }
       >

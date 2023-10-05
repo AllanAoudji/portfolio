@@ -1,3 +1,7 @@
+'use client';
+
+import { motion, useScroll, useTransform } from 'framer-motion';
+
 import Image, { StaticImageData } from 'next/image';
 
 import conseil from '@/public/conseil.png';
@@ -11,6 +15,7 @@ import supportsImprimes from '@/public/supportsImprimes.png';
 import Grid from './Grid';
 import Wrapper from './Wrapper';
 import PrestationCard from './PrestationCard';
+import useWindowSize from '@src/hooks/useWindowSize';
 
 type Prestation = {
   image: StaticImageData;
@@ -52,26 +57,53 @@ const PRESTATIONS: Prestation[] = [
 ];
 
 function Prestations() {
+  const { width } = useWindowSize();
+  const { scrollY } = useScroll();
+  const presentation = useTransform(scrollY, (latest) =>
+    !!width && width >= 640 ? latest / -8 : 0
+  );
+  const text = useTransform(scrollY, (latest) =>
+    !!width && width >= 640 ? latest / -4 : 0
+  );
+
   return (
     <Wrapper backgroundColor="darker">
-      <Grid>
-        <Image
-          alt="home-text"
-          className="col-span-6 py-28 sm:py-36 sm:col-span-10 sm:col-start-2"
-          src={helloWorld}
-        />
-      </Grid>
-      <Grid className="gap-y-20 pb-32 sm:gap-y-16 lg:gap-y-16">
-        {PRESTATIONS.map((prestation) => (
-          <PrestationCard
-            className="col-span-4 col-start-2 sm:col-span-6 sm:col-start-auto lg:col-span-4"
-            key={prestation.title}
-            image={prestation.image}
-            text={prestation.text}
-            title={prestation.title}
-          />
-        ))}
-      </Grid>
+      <motion.div
+        style={{ translateY: text }}
+        transition={{ type: 'spring' }}
+        className="pt-16"
+      >
+        <Grid>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            className="col-span-6 sm:col-span-10 sm:col-start-2"
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <Image alt="home-text" src={helloWorld} />
+          </motion.div>
+        </Grid>
+      </motion.div>
+      <div>
+        <motion.div
+          style={{ translateY: presentation }}
+          transition={{ type: 'spring' }}
+          className="pt-16"
+        >
+          <Grid className="gap-y-20 pb-16 sm:gap-y-16 lg:gap-y-16">
+            {PRESTATIONS.map((prestation) => (
+              <PrestationCard
+                className="col-span-4 col-start-2 sm:col-span-6 sm:col-start-auto lg:col-span-4"
+                key={prestation.title}
+                image={prestation.image}
+                text={prestation.text}
+                title={prestation.title}
+              />
+            ))}
+          </Grid>
+        </motion.div>
+      </div>
     </Wrapper>
   );
 }
