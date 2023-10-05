@@ -372,7 +372,7 @@ function ContactForm({ className = '', title }: Props) {
   return (
     <>
       {!!title && <Title className="text-center">{title}</Title>}
-      <form className={`max-w-xl ${className}`} onSubmit={handleSubmit}>
+      <form className={`max-w-xl sm:px-0 ${className}`} onSubmit={handleSubmit}>
         <ReCAPTCHA
           ref={recaptchaRef}
           size="invisible"

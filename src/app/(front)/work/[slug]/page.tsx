@@ -56,7 +56,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
                 placeholder="blur"
               />
             ))}
-          <div className="flex justify-between text-2xl pt-12">
+          <div className="text-lg pt-6 flex justify-between sm:text-xl sm:pt-12">
             <PreviousPostCard
               className="col-span-12 pt-6"
               previousPost={post.previousPost}
