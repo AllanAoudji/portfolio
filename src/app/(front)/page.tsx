@@ -5,8 +5,9 @@ import { getPosts } from '@/sanity/sanity.queries';
 import Grid from '@src/components/Grid';
 import Prestations from '@src/components/Prestations';
 import Title from '@src/components/Title';
-import ContactForm from '@src/components/ContactForm';
 import Wrapper from '@src/components/Wrapper';
+import HomeContactForm from '@src/components/HomeContactForm';
+import Footer from '@src/components/Footer';
 
 type Props = {
   searchParams: {
@@ -28,12 +29,12 @@ export default async function Home({ searchParams: { drawer } }: Props) {
           </>
         }
         footer={
-          <Wrapper>
-            <ContactForm
-              title="contact"
-              className="px-16 py-16 rounded-xl mx-auto bg-light border-4 border-darker mt-10"
-            />
-          </Wrapper>
+          <>
+            <Wrapper>
+              <HomeContactForm />
+            </Wrapper>
+            <Footer />
+          </>
         }
       >
         <Title className="text-center">Portfolio</Title>

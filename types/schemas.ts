@@ -79,6 +79,7 @@ declare global {
       metadata: ImageMetadata;
       alt: string;
     };
+    previousPost: NextPost | null;
     nextPost: NextPost | null;
     publishedAt: string;
     slug: string;

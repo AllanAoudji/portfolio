@@ -1,4 +1,4 @@
-import { bodoniModa } from '@src/utils/fonts';
+import { vollkorn } from '@src/utils/fonts';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -43,7 +43,7 @@ function PostCard({ post, showCategories = true }: Props) {
       )}
       <div className="pt-3 grow">
         <h3
-          className={`font-bold text-dark text-3xl uppercase sm:text-2xl ${bodoniModa.className}`}
+          className={`font-bold text-dark text-3xl uppercase sm:text-2xl ${vollkorn.className}`}
         >
           {post.title} <span className="text-xl">{post.year}</span>
         </h3>

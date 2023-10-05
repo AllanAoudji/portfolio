@@ -6,18 +6,18 @@ type Props = {
   nextPost: NextPost | null;
 };
 
-type LinkImageProps = {
+type LinkProps = {
   post: NextPost;
 };
 
-function LinkImage({ post }: LinkImageProps) {
+function LinkPost({ post }: LinkProps) {
   return (
     <Link
-      className="block text-dark text-xl text-right uppercase pt-6"
+      className="block text-light text-right uppercase pt-6"
       href={`/work/${post.slug}`}
     >
       <div>
-        <span>Projet suivant {'>'}</span>
+        <span>Projet suivant</span>
       </div>
     </Link>
   );
@@ -28,14 +28,14 @@ async function NextPostCard({ className = '', nextPost }: Props) {
     const firstPost = await getFirstPost();
     return (
       <div className={className}>
-        <LinkImage post={firstPost} />
+        <LinkPost post={firstPost} />
       </div>
     );
   }
 
   return (
     <div className={className}>
-      <LinkImage post={nextPost} />
+      <LinkPost post={nextPost} />
     </div>
   );
 }

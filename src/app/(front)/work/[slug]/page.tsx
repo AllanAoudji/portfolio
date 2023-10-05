@@ -5,10 +5,11 @@ import PageContainer from '@src/components/PageContainer';
 import WorkHeader from '@src/components/WorkHeader';
 import { getPost } from '@/sanity/sanity.queries';
 import { Metadata } from 'next';
-import Wrapper from '@src/components/Wrapper';
 import Title from '@src/components/Title';
 import Grid from '@src/components/Grid';
 import LinkImage from '@src/components/LinkImage';
+import PreviousPostCard from '@src/components/PreviousPostCard';
+import Footer from '@src/components/Footer';
 
 type Props = {
   params: { slug: string };
@@ -38,17 +39,11 @@ async function Post({ params, searchParams: { drawer } }: Props) {
   }
 
   return (
-    <PageContainer
-      drawer={drawer}
-      header={
-        <Wrapper className="pb-4">
-          <Title>{post.title}</Title>
-        </Wrapper>
-      }
-    >
-      <Grid className="gap-y-20 sm:gap-y-12">
+    <PageContainer drawer={drawer} footer={<Footer />}>
+      <Grid className="gap-y-12 sm:gap-y-12 lg:gap-y-12">
+        <Title className="col-span-6 sm:col-span-12">{post.title}</Title>
         <WorkHeader post={post} />
-        <div className="col-span-12">
+        <div className="col-span-6 sm:col-span-12">
           {!!post.gallery &&
             post.gallery.map((image, index) => (
               <LinkImage
@@ -61,7 +56,16 @@ async function Post({ params, searchParams: { drawer } }: Props) {
                 placeholder="blur"
               />
             ))}
-          <NextPostCard className="col-span-12 pt-6" nextPost={post.nextPost} />
+          <div className="flex justify-between text-2xl pt-12">
+            <PreviousPostCard
+              className="col-span-12 pt-6"
+              previousPost={post.previousPost}
+            />
+            <NextPostCard
+              className="col-span-12 pt-6"
+              nextPost={post.nextPost}
+            />
+          </div>
         </div>
       </Grid>
     </PageContainer>

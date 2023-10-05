@@ -1,4 +1,4 @@
-import { Rubik, Bodoni_Moda } from 'next/font/google';
+import { Rubik, Vollkorn } from 'next/font/google';
 
 export const rubik = Rubik({ subsets: ['latin'] });
-export const bodoniModa = Bodoni_Moda({ subsets: ['latin'] });
+export const vollkorn = Vollkorn({ subsets: ['latin'] });

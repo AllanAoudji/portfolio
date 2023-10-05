@@ -7,6 +7,7 @@ import Title from '@src/components/Title';
 import { Metadata } from 'next';
 import Wrapper from '@src/components/Wrapper';
 import Grid from '@src/components/Grid';
+import Footer from '@src/components/Footer';
 
 type Props = {
   params: { slug: string };
@@ -43,6 +44,7 @@ async function Categorypage({ params, searchParams: { drawer } }: Props) {
           <Title>{slug.title}</Title>
         </Wrapper>
       }
+      footer={<Footer darkBackground={false} />}
     >
       <Grid className="gap-y-14 sm:gap-y-14 lg:gap-y-14">
         <Posts

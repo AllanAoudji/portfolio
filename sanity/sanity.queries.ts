@@ -208,6 +208,19 @@ const postsQuery = groq`*[
   publishedAt,
   title,
   year,
+  "previousPost": *[
+    _type == "post" &&
+    (year > ^.year ||
+      (year == ^.year && slug.current < ^.slug.current))
+  ] | order(year, slug.current desc) [0] {
+    title,
+    "mainImage": {
+      "alt": mainImage.alt,
+      "metadata": mainImage.asset->metadata,
+      "url": mainImage.asset->url,
+    },
+    "slug": slug.current,
+  },
   "nextPost": *[
     _type == "post" &&
     (year < ^.year ||
@@ -267,6 +280,20 @@ const postsByCategoryQuery = groq`*[
   year,
   publishedAt,
   "slug": slug.current,
+
+  "previousPost": *[
+    _type == "post" &&
+    (year > ^.year ||
+      (year == ^.year && slug.current < ^.slug.current))
+  ] | order(year, slug.current desc) [0] {
+    title,
+    "mainImage": {
+      "alt": mainImage.alt,
+      "metadata": mainImage.asset->metadata,
+      "url": mainImage.asset->url,
+    },
+    "slug": slug.current,
+  },
   "nextPost": *[
     _type == "post" &&
     (year < ^.year ||
@@ -322,6 +349,19 @@ const postQuery = groq`*[_type == "post" && slug.current == $slug && publishedAt
     },
     title,
     publishedAt,
+    "previousPost": *[
+      _type == "post" &&
+      (year > ^.year ||
+        (year == ^.year && slug.current < ^.slug.current))
+    ] | order(year, slug.current desc) [0] {
+      title,
+      "mainImage": {
+        "alt": mainImage.alt,
+        "metadata": mainImage.asset->metadata,
+        "url": mainImage.asset->url,
+      },
+      "slug": slug.current,
+    },
     "nextPost": *[
       _type == "post" &&
       (year < ^.year ||
@@ -369,6 +409,19 @@ const firstPostQuery = groq`*[_type == "post" && publishedAt <= $now] | order(ye
 export const getFirstPost = () => {
   const now = new Date().toISOString();
   return getCachedClient()<NextPost>(firstPostQuery, { now });
+};
+const lastPostQuery = groq`*[_type == "post" && publishedAt <= $now] | order(year, slug.current desc)[0]{
+  "slug": slug.current,
+  "mainImage": {
+    "alt": mainImage.alt,
+    "metadata": mainImage.asset->metadata,
+    "url": mainImage.asset->url,
+  },
+  title
+}`;
+export const getLastPost = () => {
+  const now = new Date().toISOString();
+  return getCachedClient()<NextPost>(lastPostQuery, { now });
 };
 
 // ---------------------------------

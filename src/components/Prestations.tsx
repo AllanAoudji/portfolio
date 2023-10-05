@@ -16,6 +16,7 @@ import Grid from './Grid';
 import Wrapper from './Wrapper';
 import PrestationCard from './PrestationCard';
 import useWindowSize from '@src/hooks/useWindowSize';
+import { useRef } from 'react';
 
 type Prestation = {
   image: StaticImageData;
@@ -57,44 +58,58 @@ const PRESTATIONS: Prestation[] = [
 ];
 
 function Prestations() {
+  const presentationRef = useRef<HTMLDivElement | null>(null);
+  const textRef = useRef<HTMLDivElement | null>(null);
+
   const { width } = useWindowSize();
   const { scrollY } = useScroll();
-  const presentation = useTransform(scrollY, (latest) =>
-    !!width && width >= 640 ? latest / -8 : 0
-  );
-  const text = useTransform(scrollY, (latest) =>
-    !!width && width >= 640 ? latest / -4 : 0
-  );
+  const presentationTranslateY = useTransform(scrollY, (latest) => {
+    if (presentationRef.current == null || !width || width < 640) {
+      return 0;
+    }
+    return (
+      latest / -8 +
+      presentationRef.current.offsetHeight / 8 +
+      presentationRef.current.getBoundingClientRect().height / 18
+    );
+  });
+  const textTranslateY = useTransform(scrollY, (latest) => {
+    if (textRef.current == null || !width || width < 640) {
+      return 0;
+    }
+    return (
+      latest / -4 +
+      textRef.current.offsetTop / 4 +
+      textRef.current.getBoundingClientRect().height / 8
+    );
+  });
 
   return (
     <Wrapper backgroundColor="darker">
-      <motion.div
-        style={{ translateY: text }}
-        transition={{ type: 'spring' }}
-        className="pt-16"
-      >
-        <Grid>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="col-span-6 sm:col-span-10 sm:col-start-2"
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <Image alt="home-text" src={helloWorld} />
-          </motion.div>
-        </Grid>
-      </motion.div>
-      <div>
+      <div ref={textRef}>
         <motion.div
-          style={{ translateY: presentation }}
+          style={{ translateY: textTranslateY }}
           transition={{ type: 'spring' }}
-          className="pt-16"
+          className="pt-12 pb-24"
         >
-          <Grid className="gap-y-20 pb-16 sm:gap-y-16 lg:gap-y-16">
+          <Grid>
+            <Image
+              alt="home-text"
+              src={helloWorld}
+              className="col-span-6 sm:col-span-10 sm:col-start-2"
+            />
+          </Grid>
+        </motion.div>
+      </div>
+      <div ref={presentationRef}>
+        <motion.div
+          style={{ translateY: presentationTranslateY }}
+          transition={{ type: 'spring' }}
+        >
+          <Grid className="gap-y-20 pb-48 sm:gap-y-16 lg:gap-y-16">
             {PRESTATIONS.map((prestation) => (
               <PrestationCard
-                className="col-span-4 col-start-2 sm:col-span-6 sm:col-start-auto lg:col-span-4"
+                className="col-span-6 sm:col-span-6 sm:col-start-auto lg:col-span-4"
                 key={prestation.title}
                 image={prestation.image}
                 text={prestation.text}

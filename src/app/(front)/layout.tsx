@@ -1,6 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
-import Footer from '@src/components/Footer';
 import FullScreenImage from '@src/components/FullScreenImage';
 import Header from '@src/components/Header';
 import { rubik } from '@src/utils/fonts';
@@ -22,7 +21,6 @@ const RootLayout = ({ children }: Props) => {
       <FullScreenImage />
       <Header />
       <main className="grow">{children}</main>
-      <Footer />
       <Analytics />
     </body>
   );

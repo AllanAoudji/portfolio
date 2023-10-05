@@ -1,10 +1,10 @@
-import { bodoniModa } from '@src/utils/fonts';
+import { vollkorn } from '@src/utils/fonts';
 import Link from 'next/link';
 
 function NotFound() {
   return (
     <div className="bg-dark flex flex-col h-screen justify-center p-12 text-light lg:p-48 transition-all">
-      <h2 className={`text-5xl font-black ${bodoniModa.className}`}>
+      <h2 className={`text-5xl font-black ${vollkorn.className}`}>
         404 - Not Found
       </h2>
       <p>Could not find requested resource</p>

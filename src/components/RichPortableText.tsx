@@ -37,17 +37,17 @@ const components: Partial<PortableTextReactComponents> = {
       }
       return (
         <div>
-          <span className="text-dark">{children}</span>
+          <span className="text-dark text-lg">{children}</span>
         </div>
       );
     },
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc pl-10 text-dark">{children}</ul>
+      <ul className="list-disc pl-10 text-dark text-lg">{children}</ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal pl-10 text-dark">{children}</ol>
+      <ol className="list-decimal pl-10 text-dark text-lg">{children}</ol>
     ),
   },
   types: {

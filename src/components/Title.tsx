@@ -1,4 +1,4 @@
-import { bodoniModa } from '@src/utils/fonts';
+import { vollkorn } from '@src/utils/fonts';
 
 type Props = {
   children: React.ReactNode;
@@ -8,7 +8,7 @@ type Props = {
 function Title({ children, className = '' }: Props) {
   return (
     <h1
-      className={`font-black pt-36 text-5xl text-dark transition-all uppercase sm:pt-48 ${className} ${bodoniModa.className}`}
+      className={`font-black pt-36 text-5xl text-dark transition-all sm:pt-48 ${className} ${vollkorn.className}`}
     >
       {children}
     </h1>

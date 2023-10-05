@@ -11,7 +11,7 @@ type Props = {
 function CategoryCard({ category }: Props) {
   return (
     <Link
-      className="duration-1000 text-dark transition-all hover:text-darker"
+      className="transition-all"
       href={`/category/${category.slug}`}
       key={category.slug}
     >
