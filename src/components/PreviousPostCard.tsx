@@ -12,10 +12,7 @@ type LinkImageProps = {
 
 function LinkPost({ post }: LinkImageProps) {
   return (
-    <Link
-      className="block text-light text-right uppercase pt-6"
-      href={`/work/${post.slug}`}
-    >
+    <Link className="block uppercase" href={`/work/${post.slug}`}>
       <div>
         <span>Projet précédent</span>
       </div>

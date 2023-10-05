@@ -10,7 +10,7 @@ type Props = {
 function PostCard({ post, showCategories = true }: Props) {
   return (
     <Link
-      className="col-span-6 flex flex-col md:col-span-4 [&_img]:hover:scale-125 lg:col-span-3 [&>*:first-child]:hover:scale-90 [&>*:first-child]:hover:rounded-lg"
+      className="col-span-6 flex flex-col md:col-span-4 [&_img]:hover:scale-110 lg:col-span-3 [&>*:first-child]:hover:rounded-lg"
       href={`/work/${post.slug}`}
     >
       {post.mainImage && post.mainImage.url && (
@@ -45,7 +45,7 @@ function PostCard({ post, showCategories = true }: Props) {
         <h3
           className={`font-bold text-dark text-3xl uppercase sm:text-2xl ${vollkorn.className}`}
         >
-          {post.title} <span className="text-xl">{post.year}</span>
+          {post.title}
         </h3>
       </div>
     </Link>

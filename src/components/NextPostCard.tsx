@@ -12,10 +12,7 @@ type LinkProps = {
 
 function LinkPost({ post }: LinkProps) {
   return (
-    <Link
-      className="block text-light text-right uppercase pt-6"
-      href={`/work/${post.slug}`}
-    >
+    <Link className="block text-right uppercase" href={`/work/${post.slug}`}>
       <div>
         <span>Projet suivant</span>
       </div>

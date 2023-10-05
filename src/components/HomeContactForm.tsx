@@ -24,8 +24,8 @@ function HomeContactForm() {
     <div ref={ref}>
       <motion.div style={{ translateY }} transition={{ type: 'spring' }}>
         <ContactForm
-          title="contact"
-          className="px-10 py-10 sm:px-16 sm:py-16 rounded-xl mx-auto bg-light border-4 border-darker mt-10"
+          title="Contact"
+          className="px-6 py-6 sm:px-16 sm:py-16 rounded-xl mx-auto bg-light border-4 border-darker mt-14"
         />
       </motion.div>
     </div>

@@ -23,13 +23,16 @@ function ContactFormTextArea({
   onBlur,
   onChange,
   required = false,
-  rows = 5,
+  rows = 4,
   showCharLimit = false,
   value,
 }: Props) {
   return (
     <div className="flex flex-col col-span-12">
-      <label htmlFor={htmlFor} className="mt-4 text-dark uppercase sm:mt-8">
+      <label
+        htmlFor={htmlFor}
+        className="mt-3 text-lg text-dark uppercase sm:mt-8"
+      >
         {label}
         {required && <span className="text-red-500"> *</span>}
       </label>
@@ -40,7 +43,7 @@ function ContactFormTextArea({
         value={value}
         onChange={onChange}
         rows={rows}
-        className={`resize-none border-opacity-50 focus:border-opacity-100 bg-transparent border-b-4 py-2 focus:outline-none font-light text-dark focus:text-darker ${
+        className={`resize-none border-opacity-50 focus:border-opacity-100 bg-transparent border-b-4 py-1 sm:py-2 focus:outline-none font-light text-dark focus:text-darker ${
           error && firstTouch ? 'border-red-500' : 'border-darker'
         }`}
       />

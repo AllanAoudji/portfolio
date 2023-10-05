@@ -31,11 +31,14 @@ function ContactFormInput({
 }: Props) {
   return (
     <div className="col-span-12 sm:col-span-6 flex flex-col">
-      <label htmlFor={htmlFor} className="mt-4 text-dark uppercase sm:mt-8">
+      <label
+        htmlFor={htmlFor}
+        className="mt-3 text-dark uppercase sm:mt-8 text-lg"
+      >
         {label} : {required && <span className="text-red-500">*</span>}
       </label>
       <input
-        className={`bg-transparent border-b-4 border-opacity-50 font-light outline-none py-2 text-dark focus:border-opacity-100 focus:text-darker ${
+        className={`bg-transparent border-b-2 border-opacity-50 font-light outline-none text-dark focus:border-opacity-100 focus:text-darker py-1 sm:py-2 ${
           error && firstTouch ? 'border-red-500' : 'border-darker'
         }`}
         maxLength={maxLength}

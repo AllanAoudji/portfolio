@@ -14,14 +14,14 @@ function PrestationCard({ className = '', image, text, title }: Props) {
       <Image
         src={image}
         alt={title}
-        className="h-32 w-auto mx-auto mb-6 transition-all duration-700"
+        className="h-32 w-auto mx-auto mb-2 transition-all duration-700 sm:mb-6"
       />
       <h5
-        className={`font-bold text-light text-2xl text-center pb-6 ${vollkorn.className}`}
+        className={`text-lg font-bold text-light sm:text-xl text-center pb-6 uppercase ${vollkorn.className}`}
       >
         {title}
       </h5>
-      <p className="text-center text-light">{text}</p>
+      <p className="text-sm text-center text-light sm:text-base">{text}</p>
     </section>
   );
 }

@@ -1,6 +1,7 @@
 import { PortableText, PortableTextReactComponents } from '@portabletext/react';
 import { PortableTextBlock } from 'sanity';
 import PortableImage from './PortableImage';
+import { vollkorn } from '@src/utils/fonts';
 
 type Props = {
   value: PortableTextBlock[];
@@ -37,17 +38,29 @@ const components: Partial<PortableTextReactComponents> = {
       }
       return (
         <div>
-          <span className="text-dark text-lg">{children}</span>
+          <span
+            className={`text-sm text-dark sm:text-lg ${vollkorn.className}`}
+          >
+            {children}
+          </span>
         </div>
       );
     },
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc pl-10 text-dark text-lg">{children}</ul>
+      <ul
+        className={`list-disc pl-4 sm:pl-10 text-dark text-sm sm:text-lg ${vollkorn.className}`}
+      >
+        {children}
+      </ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal pl-10 text-dark text-lg">{children}</ol>
+      <ol
+        className={`list-decimal pl-4 sm:pl-10 text-dark text-sm sm:text-lg ${vollkorn.className}`}
+      >
+        {children}
+      </ol>
     ),
   },
   types: {
@@ -58,7 +71,7 @@ const components: Partial<PortableTextReactComponents> = {
     highlight: (props) => <span className="font-bold">{props.children}</span>,
     link: (props) => (
       <a
-        className="text-dark border-b-2 border-darker"
+        className="text-dark border-b-[1px] border-darker"
         href={props?.value?.href}
         rel="noopener"
         target="_blank"

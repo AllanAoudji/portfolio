@@ -5,11 +5,11 @@ import PageContainer from '@src/components/PageContainer';
 import WorkHeader from '@src/components/WorkHeader';
 import { getPost } from '@/sanity/sanity.queries';
 import { Metadata } from 'next';
-import Title from '@src/components/Title';
 import Grid from '@src/components/Grid';
 import LinkImage from '@src/components/LinkImage';
 import PreviousPostCard from '@src/components/PreviousPostCard';
 import Footer from '@src/components/Footer';
+import Wrapper from '@src/components/Wrapper';
 
 type Props = {
   params: { slug: string };
@@ -39,11 +39,22 @@ async function Post({ params, searchParams: { drawer } }: Props) {
   }
 
   return (
-    <PageContainer drawer={drawer} footer={<Footer />}>
-      <Grid className="gap-y-12 sm:gap-y-12 lg:gap-y-12">
-        <Title className="col-span-6 sm:col-span-12">{post.title}</Title>
-        <WorkHeader post={post} />
-        <div className="col-span-6 sm:col-span-12">
+    <PageContainer
+      drawer={drawer}
+      header={
+        <LinkImage
+          alt={post.mainImage.alt ?? `${post.title}`}
+          key={post.mainImage.metadata.lqip}
+          src={post.mainImage.url}
+          width={post.mainImage.metadata.dimensions.width}
+          height={post.mainImage.metadata.dimensions.height}
+          blurDataURL={post.mainImage.metadata.lqip}
+          placeholder="blur"
+          className="pt-20"
+        />
+      }
+      footer={
+        <>
           {!!post.gallery &&
             post.gallery.map((image, index) => (
               <LinkImage
@@ -56,17 +67,16 @@ async function Post({ params, searchParams: { drawer } }: Props) {
                 placeholder="blur"
               />
             ))}
-          <div className="text-lg pt-6 flex justify-between sm:text-xl sm:pt-12">
-            <PreviousPostCard
-              className="col-span-12 pt-6"
-              previousPost={post.previousPost}
-            />
-            <NextPostCard
-              className="col-span-12 pt-6"
-              nextPost={post.nextPost}
-            />
-          </div>
-        </div>
+          <Wrapper className="text-lg text-darker pt-12 flex justify-between">
+            <PreviousPostCard previousPost={post.previousPost} />
+            <NextPostCard nextPost={post.nextPost} />
+          </Wrapper>
+          <Footer darkBackground={false} />
+        </>
+      }
+    >
+      <Grid className="gap-y-12 sm:gap-y-12 lg:gap-y-12">
+        <WorkHeader post={post} />
       </Grid>
     </PageContainer>
   );

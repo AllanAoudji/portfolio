@@ -38,7 +38,7 @@ export default async function Home({ searchParams: { drawer } }: Props) {
         }
       >
         <Title className="text-center">Portfolio</Title>
-        <Grid className="pt-36 gap-y-14 sm:gap-y-14 lg:gap-y-14">
+        <Grid className="pt-14 sm:pt-36 gap-y-14 sm:gap-y-14 lg:gap-y-14">
           <Posts posts={posts} />
         </Grid>
       </PageContainer>

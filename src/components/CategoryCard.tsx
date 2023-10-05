@@ -11,7 +11,7 @@ type Props = {
 function CategoryCard({ category }: Props) {
   return (
     <Link
-      className="transition-all"
+      className="transition-all first-letter:uppercase"
       href={`/category/${category.slug}`}
       key={category.slug}
     >

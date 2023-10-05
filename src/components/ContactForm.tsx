@@ -379,7 +379,7 @@ function ContactForm({ className = '', title }: Props) {
           sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
           onChange={onReCAPTCHAChange}
         />
-        <div className="gap-2 grid grid-cols-12">
+        <div className="gap-1 grid grid-cols-12">
           <ContactFormInput
             error={firstName.error}
             firstTouch={firstName.firstTouch}
@@ -435,8 +435,8 @@ function ContactForm({ className = '', title }: Props) {
             showCharLimit={true}
           />
         </div>
-        <div className="flex pt-6">
-          <button className="uppercase border-4 border-dark text-dark py-2 px-8 font-bold text-lg hover:text-light hover:bg-dark transition duration-500">
+        <div className="flex pt-8 justify-center">
+          <button className="uppercase border-2 border-dark text-dark py-1 px-10 text-lg hover:text-light hover:bg-dark transition duration-500">
             {loading ? 'loading' : 'envoyer'}
           </button>
         </div>

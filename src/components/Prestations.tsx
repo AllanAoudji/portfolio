@@ -90,7 +90,7 @@ function Prestations() {
         <motion.div
           style={{ translateY: textTranslateY }}
           transition={{ type: 'spring' }}
-          className="pt-12 pb-24"
+          className="flex items-center h-[80vh] pt-12 pb-24"
         >
           <Grid>
             <Image
@@ -106,10 +106,10 @@ function Prestations() {
           style={{ translateY: presentationTranslateY }}
           transition={{ type: 'spring' }}
         >
-          <Grid className="gap-y-20 pb-48 sm:gap-y-16 lg:gap-y-16">
+          <Grid className="gap-y-12 pb-48 sm:gap-y-16 lg:gap-y-16">
             {PRESTATIONS.map((prestation) => (
               <PrestationCard
-                className="col-span-6 sm:col-span-6 sm:col-start-auto lg:col-span-4"
+                className="col-span-4 col-start-2 sm:col-span-6 sm:col-start-auto lg:col-span-4"
                 key={prestation.title}
                 image={prestation.image}
                 text={prestation.text}
