@@ -40,7 +40,7 @@ async function Categorypage({ params, searchParams: { drawer } }: Props) {
     <PageContainer
       drawer={drawer}
       header={
-        <Wrapper className="pb-16 uppercase sm:pb-24">
+        <Wrapper className="pb-16 pt-48 uppercase sm:pb-24">
           <Title>{slug.title}</Title>
         </Wrapper>
       }
