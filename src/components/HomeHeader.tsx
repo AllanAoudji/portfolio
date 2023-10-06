@@ -17,7 +17,7 @@ function HomeHeader() {
   return (
     <div className="bg-darker">
       <Wrapper>
-        <Grid className="h-[50vh] min-h-[calc(105vw+7rem)] sm:min-h-[calc(57.5vw+12rem)] sm:grid-cols-12 lg:min-h-[calc(40vw+10rem)]">
+        <Grid className="h-[50vh] min-h-[calc(105vw+7rem)] sm:h-screen sm:min-h-[calc(57.5vw+12rem)] sm:grid-cols-12 lg:min-h-[calc(40vw+10rem)]">
           <motion.div
             style={{ translateY: presentation }}
             className="col-span-6 my-auto sm:col-span-6 sm:col-start-4"

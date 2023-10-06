@@ -9,7 +9,7 @@ type Props = {
 
 function WorkHeader({ post }: Props) {
   return (
-    <div className="col-span-6 px-4 py-14 text-dark sm:col-span-12 md:py-32">
+    <div className="col-span-6 px-4 py-14 text-dark sm:col-span-12 md:px-0 md:py-32">
       <Grid className="md:gap-y-2 lg:gap-y-2">
         <h1
           className={`font-black hidden text-4xl text-dark uppercase md:col-span-10 md:col-start-3 md:block md:pt-0 ${vollkorn.className}`}

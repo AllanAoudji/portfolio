@@ -45,7 +45,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
       header={<WorkMainImage mainImage={post.mainImage} title={post.title} />}
       footer={
         <>
-          <Wrapper className="px-0 sm:px-0 md:px-10">
+          <div className="duration-300 mx-auto px-0 transition-all sm:max-w-5xl sm:px-0 md:px-10">
             {!!post.gallery &&
               post.gallery.map((image, index) => (
                 <Image
@@ -59,7 +59,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
                   placeholder="blur"
                 />
               ))}
-          </Wrapper>
+          </div>
           <Wrapper className="flex justify-center pt-16 text-dark sm:pt-20 sm:text-xl md:text-2xl md:pt-36">
             <PreviousPostCard
               className="pr-3 border-r-2 border-dark"
@@ -71,7 +71,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
         </>
       }
     >
-      <Grid className="gap-y-12 sm:gap-y-12 lg:gap-y-12 mt-[100vw] md:mt-[100vh]">
+      <Grid className="gap-y-12 sm:gap-y-12 lg:gap-y-12 mt-[100vh]">
         <WorkHeader post={post} />
       </Grid>
     </PageContainer>
