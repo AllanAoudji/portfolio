@@ -372,7 +372,9 @@ function ContactForm({ className = '', title }: Props) {
   return (
     <>
       {!!title && (
-        <Title className="pb-6 pt-52 text-center sm:pt-30">{title}</Title>
+        <Title className="pb-6 pt-52 text-center sm:pt-30 md:pb-12">
+          {title}
+        </Title>
       )}
       <form className={`max-w-xl ${className}`} onSubmit={handleSubmit}>
         <ReCAPTCHA

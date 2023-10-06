@@ -6,11 +6,11 @@ import WorkHeader from '@src/components/WorkHeader';
 import { getPost } from '@/sanity/sanity.queries';
 import { Metadata } from 'next';
 import Grid from '@src/components/Grid';
-import LinkImage from '@src/components/LinkImage';
 import PreviousPostCard from '@src/components/PreviousPostCard';
 import Footer from '@src/components/Footer';
 import Wrapper from '@src/components/Wrapper';
 import WorkMainImage from '@src/components/WorkMainImage';
+import Image from 'next/image';
 
 type Props = {
   params: { slug: string };
@@ -45,19 +45,22 @@ async function Post({ params, searchParams: { drawer } }: Props) {
       header={<WorkMainImage mainImage={post.mainImage} title={post.title} />}
       footer={
         <>
-          {!!post.gallery &&
-            post.gallery.map((image, index) => (
-              <LinkImage
-                alt={image.alt ?? `${post.title} ${index}`}
-                key={image.metadata.lqip}
-                src={image.url}
-                width={image.metadata.dimensions.width}
-                height={image.metadata.dimensions.height}
-                blurDataURL={image.metadata.lqip}
-                placeholder="blur"
-              />
-            ))}
-          <Wrapper className="border-darker border-t-2 flex justify-center pt-16 text-dark sm:pt-24 sm:text-xl">
+          <Wrapper className="px-0 sm:px-0 md:px-10">
+            {!!post.gallery &&
+              post.gallery.map((image, index) => (
+                <Image
+                  alt={image.alt ?? `${post.title} ${index}`}
+                  className="w-screen h-auto"
+                  key={image.metadata.lqip}
+                  src={image.url}
+                  width={image.metadata.dimensions.width}
+                  height={image.metadata.dimensions.height}
+                  blurDataURL={image.metadata.lqip}
+                  placeholder="blur"
+                />
+              ))}
+          </Wrapper>
+          <Wrapper className="flex justify-center pt-16 text-dark sm:pt-20 sm:text-xl">
             <PreviousPostCard
               className="pr-3 border-r-2 border-dark"
               previousPost={post.previousPost}
