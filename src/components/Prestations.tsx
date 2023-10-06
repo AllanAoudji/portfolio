@@ -87,7 +87,7 @@ function Prestations() {
     <Wrapper backgroundColor="darker">
       <div ref={textRef}>
         <motion.div
-          className="flex h-[80vh] items-center sm:h-auto sm:pb-10"
+          className="flex pb-20 pt-10 sm:h-auto sm:pb-48 sm:pt-0"
           style={{ translateY: textTranslateY }}
           transition={{ type: 'spring' }}
         >
