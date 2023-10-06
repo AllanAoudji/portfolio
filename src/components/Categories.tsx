@@ -17,10 +17,11 @@ function Categories({ categories, className }: Props) {
   }
 
   return (
-    <div className={`${className} flex flex-col`}>
-      {categories.map((category) => (
+    <div className={`${className}`}>
+      {categories.map((category, index) => (
         <>
           <CategoryCard category={category} key={category.slug} />
+          {index !== categories.length - 1 && <span>{', '}</span>}
         </>
       ))}
     </div>

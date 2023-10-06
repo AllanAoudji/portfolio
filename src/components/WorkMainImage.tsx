@@ -1,5 +1,8 @@
+'use client';
+
+import useWindowSize from '@src/hooks/useWindowSize';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
-import Wrapper from './Wrapper';
 
 type Props = {
   mainImage: {
@@ -11,18 +14,42 @@ type Props = {
 };
 
 function WorkMainImage({ mainImage, title }: Props) {
+  const { scrollY } = useScroll();
+  const { height, width } = useWindowSize();
+  const opacity = useTransform(
+    scrollY,
+    [0, !!height && !!width ? (width < 640 ? width : height) : 0],
+    [1, 0]
+  );
+  const scale = useTransform(
+    scrollY,
+    [0, !!height && !!width ? (width < 640 ? width : height) : 0],
+    [1.1, 1]
+  );
+  const translateY = useTransform(
+    scrollY,
+    [0, !!height && !!width ? (width < 640 ? width : height) : 0],
+    [0, -50]
+  );
+
   return (
-    <Wrapper className="px-0 sm:px-0 md:px-10">
-      <Image
-        alt={mainImage.alt ?? title}
-        className="border-b-2 border-darker h-auto w-screen md:pt-24"
-        src={mainImage.url}
-        width={mainImage.metadata.dimensions.width}
-        height={mainImage.metadata.dimensions.height}
-        blurDataURL={mainImage.metadata.lqip}
-        placeholder="blur"
-      />
-    </Wrapper>
+    <div className="overflow-hidden">
+      <motion.div
+        className="aspect-square overflow-hidden fixed md:aspect-auto md:h-screen -z-10 w-screen top-0"
+        style={{ opacity, translateY, scale }}
+        transition={{ type: 'spring' }}
+      >
+        <Image
+          alt={mainImage.alt ?? title}
+          className="absolute h-full object-cover inset-0 w-full"
+          src={mainImage.url}
+          width={mainImage.metadata.dimensions.width}
+          height={mainImage.metadata.dimensions.height}
+          blurDataURL={mainImage.metadata.lqip}
+          placeholder="blur"
+        />
+      </motion.div>
+    </div>
   );
 }
 

@@ -60,7 +60,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
                 />
               ))}
           </Wrapper>
-          <Wrapper className="flex justify-center pt-16 text-dark sm:pt-20 sm:text-xl">
+          <Wrapper className="flex justify-center pt-16 text-dark sm:pt-20 sm:text-xl md:text-2xl md:pt-36">
             <PreviousPostCard
               className="pr-3 border-r-2 border-dark"
               previousPost={post.previousPost}
@@ -71,7 +71,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
         </>
       }
     >
-      <Grid className="gap-y-12 sm:gap-y-12 lg:gap-y-12">
+      <Grid className="gap-y-12 sm:gap-y-12 lg:gap-y-12 mt-[100vw] md:mt-[100vh]">
         <WorkHeader post={post} />
       </Grid>
     </PageContainer>

@@ -47,6 +47,23 @@ export default defineType({
       ],
     }),
     defineField({
+      name: 'headerImage',
+      title: 'Image de header',
+      type: 'image',
+      description:
+        "image 3:5 (ex. 1080x648). L'image principale sera utiliser si l'image de header est vide.",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: 'alt',
+          title: 'Alt',
+          type: 'string',
+        }),
+      ],
+    }),
+    defineField({
       name: 'year',
       title: 'Year',
       type: 'number',

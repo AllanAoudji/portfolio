@@ -74,7 +74,7 @@ function Wrapper({
       )}`}
     >
       <div
-        className={`duration-300 mx-auto px-4 transition-all sm:px-10 sm:max-w-7xl ${className}`}
+        className={`duration-300 mx-auto px-4 transition-all sm:px-10 sm:max-w-5xl ${className}`}
       >
         {children}
       </div>

@@ -39,7 +39,7 @@ const components: Partial<PortableTextReactComponents> = {
       return (
         <div>
           <span
-            className={`text-sm text-dark sm:text-lg md:text-xl ${vollkorn.className}`}
+            className={`text-sm text-dark sm:text-lg ${vollkorn.className}`}
           >
             {children}
           </span>
@@ -50,14 +50,14 @@ const components: Partial<PortableTextReactComponents> = {
   list: {
     bullet: ({ children }) => (
       <ul
-        className={`list-disc pl-4 sm:pl-10 text-dark text-sm sm:text-lg md:text-xl ${vollkorn.className}`}
+        className={`list-disc pl-4 sm:pl-10 text-dark text-sm sm:text-lg ${vollkorn.className}`}
       >
         {children}
       </ul>
     ),
     number: ({ children }) => (
       <ol
-        className={`list-decimal pl-4 sm:pl-10 text-dark text-sm sm:text-lg md:text-xl ${vollkorn.className}`}
+        className={`list-decimal pl-4 sm:pl-10 text-dark text-sm sm:text-lg ${vollkorn.className}`}
       >
         {children}
       </ol>
