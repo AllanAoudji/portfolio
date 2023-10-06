@@ -1,8 +1,8 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-
 import Image, { StaticImageData } from 'next/image';
+import { useRef } from 'react';
 
 import conseil from '@/public/conseil.png';
 import directionArtistique from '@/public/directionArtistique.png';
@@ -11,24 +11,23 @@ import helloWorld from '@/public/hello-world-light.png';
 import identiteVisuel from '@/public/identiteVisuel.png';
 import siteWeb from '@/public/siteWeb.png';
 import supportsImprimes from '@/public/supportsImprimes.png';
+import useWindowSize from '@src/hooks/useWindowSize';
 
 import Grid from './Grid';
-import Wrapper from './Wrapper';
 import PrestationCard from './PrestationCard';
-import useWindowSize from '@src/hooks/useWindowSize';
-import { useRef } from 'react';
+import Wrapper from './Wrapper';
 
 type Prestation = {
   image: StaticImageData;
-  title: string;
   text: string;
+  title: string;
 };
 
 const PRESTATIONS: Prestation[] = [
   {
     image: identiteVisuel,
-    title: 'Création de votre identité visuelle',
     text: "Logos, charte graphique, branding... Je vous propose la création d'une identité de marque complète, forte, pérenne et adaptée aux supports prints et digitaux...",
+    title: 'Création de votre identité visuelle',
   },
   {
     image: directionArtistique,
@@ -61,8 +60,8 @@ function Prestations() {
   const presentationRef = useRef<HTMLDivElement | null>(null);
   const textRef = useRef<HTMLDivElement | null>(null);
 
-  const { width } = useWindowSize();
   const { scrollY } = useScroll();
+  const { width } = useWindowSize();
   const presentationTranslateY = useTransform(scrollY, (latest) => {
     if (presentationRef.current == null || !width || width < 640) {
       return 0;
@@ -88,15 +87,15 @@ function Prestations() {
     <Wrapper backgroundColor="darker">
       <div ref={textRef}>
         <motion.div
+          className="flex h-[80vh] items-center sm:h-auto sm:pb-10"
           style={{ translateY: textTranslateY }}
           transition={{ type: 'spring' }}
-          className="flex items-center h-[80vh] pt-12 pb-24"
         >
           <Grid>
             <Image
               alt="home-text"
-              src={helloWorld}
               className="col-span-6 sm:col-span-10 sm:col-start-2"
+              src={helloWorld}
             />
           </Grid>
         </motion.div>
@@ -109,9 +108,9 @@ function Prestations() {
           <Grid className="gap-y-12 pb-48 sm:gap-y-16 lg:gap-y-16">
             {PRESTATIONS.map((prestation) => (
               <PrestationCard
-                className="col-span-4 col-start-2 sm:col-span-6 sm:col-start-auto lg:col-span-4"
-                key={prestation.title}
+                className="col-span-4 col-start-2 sm:col-span-4 sm:col-start-auto"
                 image={prestation.image}
+                key={prestation.title}
                 text={prestation.text}
                 title={prestation.title}
               />

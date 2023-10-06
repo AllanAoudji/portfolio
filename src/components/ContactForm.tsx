@@ -371,15 +371,17 @@ function ContactForm({ className = '', title }: Props) {
 
   return (
     <>
-      {!!title && <Title className="text-center">{title}</Title>}
-      <form className={`max-w-xl sm:px-0 ${className}`} onSubmit={handleSubmit}>
+      {!!title && (
+        <Title className="pb-6 pt-52 text-center sm:pt-30">{title}</Title>
+      )}
+      <form className={`max-w-xl ${className}`} onSubmit={handleSubmit}>
         <ReCAPTCHA
           ref={recaptchaRef}
           size="invisible"
           sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
           onChange={onReCAPTCHAChange}
         />
-        <div className="gap-1 grid grid-cols-12">
+        <div className="gap-x-4 grid grid-cols-12">
           <ContactFormInput
             error={firstName.error}
             firstTouch={firstName.firstTouch}

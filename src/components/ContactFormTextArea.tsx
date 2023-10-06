@@ -43,7 +43,7 @@ function ContactFormTextArea({
         value={value}
         onChange={onChange}
         rows={rows}
-        className={`resize-none border-opacity-50 focus:border-opacity-100 bg-transparent border-b-4 py-1 sm:py-2 focus:outline-none font-light text-dark focus:text-darker ${
+        className={`bg-transparent border-b-2 border-opacity-50 font-light py-1 resize-none text-dark focus:border-opacity-100 focus:outline-none focus:text-darker sm:py-2 ${
           error && firstTouch ? 'border-red-500' : 'border-darker'
         }`}
       />

@@ -8,7 +8,7 @@ type Props = {
 function Title({ children, className = '' }: Props) {
   return (
     <h1
-      className={`font-black pt-36 text-6xl text-dark transition-all sm:pt-48 ${className} ${vollkorn.className}`}
+      className={`font-black text-6xl text-dark transition-all ${className} ${vollkorn.className}`}
     >
       {children}
     </h1>

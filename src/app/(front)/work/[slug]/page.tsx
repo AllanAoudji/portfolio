@@ -10,6 +10,7 @@ import LinkImage from '@src/components/LinkImage';
 import PreviousPostCard from '@src/components/PreviousPostCard';
 import Footer from '@src/components/Footer';
 import Wrapper from '@src/components/Wrapper';
+import WorkMainImage from '@src/components/WorkMainImage';
 
 type Props = {
   params: { slug: string };
@@ -41,18 +42,7 @@ async function Post({ params, searchParams: { drawer } }: Props) {
   return (
     <PageContainer
       drawer={drawer}
-      header={
-        <LinkImage
-          alt={post.mainImage.alt ?? `${post.title}`}
-          key={post.mainImage.metadata.lqip}
-          src={post.mainImage.url}
-          width={post.mainImage.metadata.dimensions.width}
-          height={post.mainImage.metadata.dimensions.height}
-          blurDataURL={post.mainImage.metadata.lqip}
-          placeholder="blur"
-          className="pt-20"
-        />
-      }
+      header={<WorkMainImage mainImage={post.mainImage} title={post.title} />}
       footer={
         <>
           {!!post.gallery &&
@@ -67,9 +57,12 @@ async function Post({ params, searchParams: { drawer } }: Props) {
                 placeholder="blur"
               />
             ))}
-          <Wrapper className="text-lg text-darker pt-12 flex justify-between">
-            <PreviousPostCard previousPost={post.previousPost} />
-            <NextPostCard nextPost={post.nextPost} />
+          <Wrapper className="border-darker border-t-2 flex justify-center pt-16 text-dark sm:pt-24 sm:text-xl">
+            <PreviousPostCard
+              className="pr-3 border-r-2 border-dark"
+              previousPost={post.previousPost}
+            />
+            <NextPostCard className="pl-[14px]" nextPost={post.nextPost} />
           </Wrapper>
           <Footer darkBackground={false} />
         </>
