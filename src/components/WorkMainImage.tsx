@@ -18,17 +18,38 @@ function WorkMainImage({ mainImage, title }: Props) {
   const { height, width } = useWindowSize();
   const opacity = useTransform(
     scrollY,
-    [0, !!height && !!width ? (width < 640 ? width : height) : 0],
+    [
+      0,
+      !!height && !!width
+        ? width < 640
+          ? (width * 3) / 4
+          : (height * 3) / 4
+        : 0,
+    ],
     [1, 0]
   );
   const scale = useTransform(
     scrollY,
-    [0, !!height && !!width ? (width < 640 ? width : height) : 0],
+    [
+      0,
+      !!height && !!width
+        ? width < 640
+          ? (width * 3) / 4
+          : (height * 3) / 4
+        : 0,
+    ],
     [1.1, 1]
   );
   const translateY = useTransform(
     scrollY,
-    [0, !!height && !!width ? (width < 640 ? width : height) : 0],
+    [
+      0,
+      !!height && !!width
+        ? width < 640
+          ? (width * 3) / 4
+          : (height * 3) / 4
+        : 0,
+    ],
     [0, -50]
   );
 
