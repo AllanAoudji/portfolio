@@ -8,6 +8,7 @@ import { Metadata } from 'next';
 import Wrapper from '@src/components/Wrapper';
 import ContactForm from '@src/components/ContactForm';
 import Footer from '@src/components/Footer';
+import Grid from '@src/components/Grid';
 
 type Props = {
   params: { slug: string };
@@ -43,14 +44,26 @@ export default async function Page({
     <PageContainer
       drawer={drawer}
       header={
-        <Wrapper className="pb-16 uppercase sm:pb-24">
+        <Wrapper className="pb-16 pt-48 uppercase sm:pb-24">
           <Title>{page.name}</Title>
         </Wrapper>
       }
       footer={<Footer darkBackground={false} />}
     >
-      {page.slug === 'contact' && <ContactForm className="pb-48" />}
-      {page.body && <RichPortableText value={page.body} />}
+      <Grid>
+        {page.slug === 'contact' && (
+          <ContactForm className="col-span-6 mx-auto pb-20 sm:col-span-12 lg:pb-0 lg:col-span-7" />
+        )}
+        {page.body && (
+          <div
+            className={`col-span-6 sm:col-span-12 ${
+              page.slug === 'contact' ? 'lg:col-start-9' : 'md:col-span-12'
+            }`}
+          >
+            <RichPortableText value={page.body} />
+          </div>
+        )}
+      </Grid>
     </PageContainer>
   );
 }
