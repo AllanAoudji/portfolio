@@ -8,6 +8,7 @@ import Title from '@src/components/Title';
 import Wrapper from '@src/components/Wrapper';
 import HomeContactForm from '@src/components/HomeContactForm';
 import Footer from '@src/components/Footer';
+import FormsContainer from '@src/components/FormsContainer';
 
 type Props = {
   searchParams: {
@@ -23,10 +24,11 @@ export default async function Home({ searchParams: { drawer } }: Props) {
       <PageContainer
         drawer={drawer}
         header={
-          <>
+          <div className="relative bg-darker">
             <HomeHeader />
             <Prestations />
-          </>
+            <FormsContainer />
+          </div>
         }
         footer={
           <>

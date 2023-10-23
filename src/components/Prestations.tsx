@@ -84,7 +84,7 @@ function Prestations() {
   });
 
   return (
-    <Wrapper backgroundColor="darker">
+    <Wrapper>
       <div ref={textRef}>
         <motion.div
           className="flex pb-20 pt-10 sm:h-auto sm:pb-48 sm:pt-0"
