@@ -24,10 +24,11 @@ export default async function Home({ searchParams: { drawer } }: Props) {
       <PageContainer
         drawer={drawer}
         header={
-          <div className="relative bg-darker">
+          <div className="relative">
             <HomeHeader />
             <Prestations />
             <FormsContainer />
+            <div className="bg-darker absolute inset-0 -z-20" />
           </div>
         }
         footer={
