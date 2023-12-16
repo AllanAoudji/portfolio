@@ -2,7 +2,7 @@
 
 import useWindowSize from '@src/hooks/useWindowSize';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import Image from 'next/image';
+import { CldImage } from 'next-cloudinary';
 
 function HomeHeaderImage() {
   const { scrollY } = useScroll();
@@ -16,7 +16,12 @@ function HomeHeaderImage() {
       initial={{ scale: 100 }}
       transition={{ type: 'spring' }}
     >
-      <Image alt="logo" src="animated-logo.gif" width={2048} height={1350} />
+      <CldImage
+        alt="animated logo"
+        width="2048"
+        height="1350"
+        src="ba6cduwsop5cwvvtheik"
+      />
     </motion.div>
   );
 }
