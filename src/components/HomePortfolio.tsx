@@ -7,6 +7,8 @@ import HomePartTitle from './HomePartTitle';
 import BackgroundColor from './BackgroundColor';
 import Container from './Container';
 
+import HomePortfolioBackground from './HomePorfolioBackground';
+
 type Props = {
   posts: Post[];
 };
@@ -22,7 +24,7 @@ function HomePortfolio({ posts }: Props) {
   }, []);
 
   return (
-    <BackgroundColor variant="darker">
+    <BackgroundColor className="overflow-hidden relative" variant="darker">
       <Container className="min-h-screen relative flex items-center">
         <div className="absolute inset-0 mx-8 z-20 sm:mx-12">
           <HomePartTitle className="mt-16 sm:mt-24" title="portfolio" />
@@ -36,6 +38,7 @@ function HomePortfolio({ posts }: Props) {
           unsetCurrentWork={unsetCurrentWork}
         />
       </Container>
+      <HomePortfolioBackground />
     </BackgroundColor>
   );
 }

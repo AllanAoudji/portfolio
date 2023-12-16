@@ -17,7 +17,7 @@ function HomePortfolioImage({ className = '', posts, hoverId }: Props) {
             alt={post.mainImage.url ?? post.title}
             className={`duration-1000 ease-in-out object-center object-contain p-16 pointer-events-none transition-all sm:p-32 ${
               hoverId === post._id
-                ? 'opacity-50 scale-[1.01]'
+                ? 'opacity-100 scale-[1.01]'
                 : 'opacity-0 scale-100'
             }`}
             fill={true}
