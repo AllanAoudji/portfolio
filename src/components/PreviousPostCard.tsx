@@ -1,39 +1,25 @@
 import { getLastPost } from '@/sanity/sanity.queries';
-import Link from 'next/link';
+import WorkPostLink from './WorkPostLink';
 
 type Props = {
   className?: string;
   previousPost: NextPost | null;
 };
 
-type LinkImageProps = {
-  post: NextPost;
-};
-
-function LinkPost({ post }: LinkImageProps) {
-  return (
-    <Link className="block uppercase" href={`/work/${post.slug}`}>
-      <div>
-        <span>Projet précédent</span>
-      </div>
-    </Link>
-  );
-}
-
 async function PreviousPostCard({ className = '', previousPost }: Props) {
   if (!previousPost) {
     const lastPost = await getLastPost();
     return (
-      <div className={className}>
-        <LinkPost post={lastPost} />
-      </div>
+      <WorkPostLink className={className} href={lastPost.slug}>
+        projet précédent
+      </WorkPostLink>
     );
   }
 
   return (
-    <div className={className}>
-      <LinkPost post={previousPost} />
-    </div>
+    <WorkPostLink className={className} href={previousPost.slug}>
+      projet précédent
+    </WorkPostLink>
   );
 }
 

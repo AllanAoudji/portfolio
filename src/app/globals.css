@@ -1,8 +1,9 @@
+@import url('https://use.typekit.net/ajn0gbi.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.grecaptcha-badge {
-  visibility: hidden;
-  display: none !important;
+body {
+  font-family: 'baskerville-display-pt', serif;
 }

@@ -1,22 +1,13 @@
-import { notFound } from 'next/navigation';
-
-import NextPostCard from '@src/components/NextPostCard';
-import PageContainer from '@src/components/PageContainer';
-import WorkHeader from '@src/components/WorkHeader';
-import { getPost } from '@/sanity/sanity.queries';
 import { Metadata } from 'next';
-import Grid from '@src/components/Grid';
-import PreviousPostCard from '@src/components/PreviousPostCard';
-import Footer from '@src/components/Footer';
-import Wrapper from '@src/components/Wrapper';
+import { notFound } from 'next/navigation';
+import { getPost } from '@/sanity/sanity.queries';
+import WorkFooter from '@src/components/WorkFooter';
+import WorkImages from '@src/components/WorkImages';
+import WorkInformations from '@src/components/WorkInformations';
 import WorkMainImage from '@src/components/WorkMainImage';
-import Image from 'next/image';
 
 type Props = {
   params: { slug: string };
-  searchParams: {
-    drawer: string | undefined;
-  };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -27,12 +18,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: `Allan Aoudji | ${work.title}`,
     description: 'single work pages',
+    title: `Allan Aoudji | ${work.title}`,
   };
 }
 
-async function Post({ params, searchParams: { drawer } }: Props) {
+async function Post({ params }: Props) {
   const post = await getPost(params.slug);
 
   if (post == null) {
@@ -40,41 +31,12 @@ async function Post({ params, searchParams: { drawer } }: Props) {
   }
 
   return (
-    <PageContainer
-      drawer={drawer}
-      header={<WorkMainImage mainImage={post.mainImage} title={post.title} />}
-      footer={
-        <>
-          <div className="duration-300 mx-auto px-0 transition-all sm:max-w-5xl sm:px-0 md:px-10">
-            {!!post.gallery &&
-              post.gallery.map((image, index) => (
-                <Image
-                  alt={image.alt ?? `${post.title} ${index}`}
-                  className="w-screen h-auto"
-                  key={image.metadata.lqip}
-                  src={image.url}
-                  width={image.metadata.dimensions.width}
-                  height={image.metadata.dimensions.height}
-                  blurDataURL={image.metadata.lqip}
-                  placeholder="blur"
-                />
-              ))}
-          </div>
-          <Wrapper className="flex justify-center pt-16 text-dark sm:pt-20 sm:text-xl md:text-2xl md:pt-36">
-            <PreviousPostCard
-              className="pr-3 border-r-2 border-dark"
-              previousPost={post.previousPost}
-            />
-            <NextPostCard className="pl-[14px]" nextPost={post.nextPost} />
-          </Wrapper>
-          <Footer darkBackground={false} />
-        </>
-      }
-    >
-      <Grid className="gap-y-12 sm:gap-y-12 lg:gap-y-12 mt-[100vh]">
-        <WorkHeader post={post} />
-      </Grid>
-    </PageContainer>
+    <div>
+      <WorkMainImage mainImage={post.mainImage} title={post.title} />
+      <WorkInformations post={post} />
+      <WorkImages gallery={post.gallery} title={post.title} />
+      <WorkFooter nextPost={post.nextPost} previousPost={post.previousPost} />
+    </div>
   );
 }
 

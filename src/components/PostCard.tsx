@@ -43,7 +43,7 @@ function PostCard({ post, showCategories = true }: Props) {
       )}
       <div className="pt-3 grow">
         <h3
-          className={`font-bold text-dark text-3xl uppercase sm:text-2xl ${vollkorn.className}`}
+          className={`font-bold text-dark text-3xl uppercase ${vollkorn.className}`}
         >
           {post.title}
         </h3>

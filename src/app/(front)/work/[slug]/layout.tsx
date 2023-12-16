@@ -1,6 +1,5 @@
-import '../globals.css';
+import WorkHeader from '@src/components/WorkHeader';
 
-import { Analytics } from '@vercel/analytics/react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -14,12 +13,10 @@ type Props = {
 
 const RootLayout = ({ children }: Props) => {
   return (
-    <body
-      className={`bg-light flex flex-col min-h-screen relative text-xl sm:text-2xl`}
-    >
-      <main className="grow">{children}</main>
-      <Analytics />
-    </body>
+    <>
+      <WorkHeader />
+      {children}
+    </>
   );
 };
 
