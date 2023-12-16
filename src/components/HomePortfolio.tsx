@@ -24,7 +24,7 @@ function HomePortfolio({ posts }: Props) {
   return (
     <BackgroundColor variant="darker">
       <Container className="min-h-screen relative flex items-center">
-        <div className="absolute inset-0 mx-8 z-20 sm:mx-16">
+        <div className="absolute inset-0 mx-8 z-20 sm:mx-12">
           <HomePartTitle className="mt-16 sm:mt-24" title="portfolio" />
         </div>
         <HomePortfolioImage className="z-10" posts={posts} hoverId={hoverId} />

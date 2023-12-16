@@ -83,7 +83,7 @@ function WorkInformations({ post }: Props) {
           className="col-span-4 sm:hidden"
         />
         <Year className="col-span-2 sm:hidden" year={post.year} />
-        <h1 className="col-span-6 py-8 text-2xl uppercase sm:col-span-9 sm:col-start-4 sm:pt-0 sm:text-3xl md:text-4xl">
+        <h1 className="col-span-6 py-8 text-3xl uppercase sm:col-span-9 sm:col-start-4 sm:pt-0 md:text-4xl">
           {post.title}
         </h1>
         <div className="hidden col-span-3 sm:block">

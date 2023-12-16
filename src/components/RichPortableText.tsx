@@ -32,7 +32,7 @@ const components: Partial<PortableTextReactComponents> = {
         return <p className="pt-3 first:pt-0 last:pt-0 sm:pt-4" />;
       }
       return (
-        <p className="leading-4 text-sm sm:leading-5 sm:text-base md:leading-6 md:text-lg">
+        <p className="leading-5 text-sm sm:leading-5 sm:text-base md:leading-6 md:text-lg">
           {children}
         </p>
       );
@@ -40,12 +40,12 @@ const components: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="leading-4 text-sm sm:leading-5 sm:text-base md:leading-6 md:text-lg">
+      <ul className="leading-5 text-sm sm:leading-5 sm:text-base md:leading-6 md:text-lg">
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="leading-4 text-sm sm:leading-5 sm:text-base md:leading-6 md:text-lg">
+      <ol className="leading-5 text-sm sm:leading-5 sm:text-base md:leading-6 md:text-lg">
         {children}
       </ol>
     ),

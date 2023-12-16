@@ -20,14 +20,12 @@ function HomePortfolioItem({
       {posts.map((post, i) => (
         <span key={post._id}>
           <Link
-            className={`cursor-pointer duration-500 ease-in-out transition-opacity ${
+            className={`duration-500 ease-in-out transition-opacity ${
               hoverId !== null && hoverId !== post._id && 'opacity-0'
             }`}
             href={`/work/${post.slug}`}
             onMouseEnter={() => setCurrentWork(post._id)}
             onMouseLeave={unsetCurrentWork}
-            onMouseDown={() => setCurrentWork(post._id)}
-            onMouseUp={unsetCurrentWork}
           >
             {post.title}
           </Link>
