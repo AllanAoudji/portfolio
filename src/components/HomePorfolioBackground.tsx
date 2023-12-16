@@ -5,10 +5,10 @@ function HomePortfolioBackground() {
   return (
     <div className="absolute inset-0">
       <Image
-        src={PortfolioBackground}
         alt="portfolio background"
-        fill
         className="object-cover"
+        fill
+        src={PortfolioBackground}
       />
     </div>
   );

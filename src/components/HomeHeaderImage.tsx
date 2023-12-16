@@ -1,6 +1,6 @@
 'use client';
 
-import Logo from '@/public/logo-fixe-dark.png';
+import Logo from '@/public/animated-logo.gif';
 import useWindowSize from '@src/hooks/useWindowSize';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
