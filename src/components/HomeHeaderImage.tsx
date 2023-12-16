@@ -1,6 +1,5 @@
 'use client';
 
-import Logo from '@/public/animated-logo.gif';
 import useWindowSize from '@src/hooks/useWindowSize';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Image from 'next/image';
@@ -17,7 +16,7 @@ function HomeHeaderImage() {
       initial={{ scale: 100 }}
       transition={{ type: 'spring' }}
     >
-      <Image alt="logo" src={Logo} />
+      <Image alt="logo" src="animated-logo.gif" width={2048} height={1350} />
     </motion.div>
   );
 }
