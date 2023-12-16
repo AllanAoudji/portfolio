@@ -25,11 +25,11 @@ function HomePortfolioItem({
             }`}
             href={`/work/${post.slug}`}
             onMouseEnter={() => setCurrentWork(post._id)}
-            onFocus={() => setCurrentWork(post._id)}
-            onMouseDown={unsetCurrentWork}
-            onMouseUp={() => setCurrentWork(post._id)}
             onMouseLeave={unsetCurrentWork}
+            onFocus={() => setCurrentWork(post._id)}
             onBlur={unsetCurrentWork}
+            onMouseDown={() => setCurrentWork(post._id)}
+            onMouseUp={unsetCurrentWork}
           >
             {post.title}
           </Link>
