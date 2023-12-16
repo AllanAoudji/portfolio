@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Container from './Container';
-import Logo from '@/public/logo-fixe-dark.png';
+import Logo from '@/public/logo.png';
 
 function WorkHeader() {
   return (
