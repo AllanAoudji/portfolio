@@ -11,7 +11,7 @@ function HomeHeaderImage() {
 
   return (
     <motion.div
-      className="col-span-4 col-start-2 my-24 sm:col-span-6 sm:col-start-4"
+      className="col-span-4 col-start-2 my-12 sm:col-span-6 sm:col-start-4"
       style={{ scale }}
       initial={{ scale: 100 }}
       transition={{ type: 'spring' }}

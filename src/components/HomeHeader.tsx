@@ -6,7 +6,7 @@ function HomeHeader() {
   return (
     <div className="relative">
       <Container>
-        <Grid className="items-center min-h-screen">
+        <Grid className="items-center min-h-[95vh]">
           <HomeHeaderImage />
         </Grid>
       </Container>
