@@ -37,9 +37,7 @@ function HomeFooter() {
           <Title>Téléphone</Title>
           <Text href="tel:+33674289219">+33674289219</Text>
           <Title>e-mail</Title>
-          <Text href="mailto:allan.aoudji@gmail.com">
-            allan.aoudji@gmail.com
-          </Text>
+          <Text href="mailto:allanaoudji@gmail.com">allanaoudji@gmail.com</Text>
           <Title>instagram</Title>
           <Text href="https://www.instagram.com/allanjouannet/" target="blank">
             @allanjouannet
